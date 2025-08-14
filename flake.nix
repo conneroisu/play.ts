@@ -330,7 +330,7 @@ EOF
             # Set Chrome executable for Puppeteer
             export PUPPETEER_EXECUTABLE_PATH="${pkgs.chromium}/bin/chromium"
             
-            echo "🎨 play.ts - Creative Coding TypeScript Library"
+            echo "🎨 play.ts - creative Coding TypeScript Library"
             echo "================================================"
             echo ""
             echo "📋 Development Commands:"

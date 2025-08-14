@@ -229,4 +229,4 @@ The test suite includes:
 - Utilize TypeScript strict checking
 - Test across multiple environments (browser, Node, Bun)
 
-The library is designed for professional creative coding applications with emphasis on performance, type safety, and developer experience.
+The library is designed for creative coding applications with emphasis on performance, type safety, and developer experience.

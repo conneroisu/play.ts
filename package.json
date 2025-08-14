@@ -102,11 +102,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/play.ts.git"
+    "url": "git+https://github.com/conneroisu/play.ts.git"
   },
-  "homepage": "https://github.com/username/play.ts#readme",
+  "homepage": "https://github.com/conneroisu/play.ts#readme",
   "bugs": {
-    "url": "https://github.com/username/play.ts/issues"
+    "url": "https://github.com/conneroisu/play.ts/issues"
   },
   "engines": {
     "bun": ">=1.0.0"

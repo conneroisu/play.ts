@@ -14,7 +14,7 @@
  * - **Performance First**: All functions optimized for 60fps real-time applications
  * - **Type Safety**: Full TypeScript support with comprehensive type definitions
  * - **Composability**: Functions designed to work seamlessly together
- * - **Creative Focus**: APIs designed for artistic expression and experimentation
+ * - **creative Focus**: APIs designed for artistic expression and experimentation
  * - **Production Ready**: Robust error handling and edge case management
  * 
  * **📦 Module Overview:**
