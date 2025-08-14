@@ -1,0 +1,13 @@
+.direnv
+result
+node_modules
+.vscode
+.idea
+*.iml
+.DS_Store
+dist
+coverage
+.nyc_output
+*.log
+yarn.lock
+package-lock.json
