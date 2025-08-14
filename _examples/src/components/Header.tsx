@@ -50,22 +50,22 @@ export default function Header() {
 		{
 			name: "Examples",
 			path: "/examples",
-			description: "Interactive code examples",
+			description: "All interactive code examples",
 		},
 		{
-			name: "Store Demo",
-			path: "/demo/store",
-			description: "TanStack Store demo",
+			name: "Basic",
+			path: "/examples/basic",
+			description: "Math, color, animation fundamentals",
 		},
 		{
-			name: "Query Demo",
-			path: "/demo/tanstack-query",
-			description: "TanStack Query demo",
+			name: "Engineering",
+			path: "/examples/engineering",
+			description: "Advanced engineering simulations",
 		},
 		{
-			name: "Table Demo",
-			path: "/demo/table",
-			description: "TanStack Table demo",
+			name: "Visual",
+			path: "/examples/visual",
+			description: "Graphics, physics, and creative coding",
 		},
 	];
 
