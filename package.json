@@ -1,5 +1,5 @@
 {
-  "name": "play.ts",
+  "name": "play-ts",
   "version": "1.0.0",
   "description": "A comprehensive TypeScript library for creative coding, providing utilities for math, colors, animations, random generation, and geometric operations",
   "author": "play.ts team",
@@ -113,7 +113,6 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@playwright/test": "^1.53.2",
     "prettier": "^3.0.0",
     "typescript": "^5.0.0"
   },
