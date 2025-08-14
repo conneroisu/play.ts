@@ -1,0 +1,129 @@
+{
+  "name": "play.ts",
+  "version": "1.0.0",
+  "description": "A comprehensive TypeScript library for creative coding, providing utilities for math, colors, animations, random generation, and geometric operations",
+  "author": "play.ts team",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./math": {
+      "types": "./dist/math.d.ts",
+      "import": "./dist/modules/math.js",
+      "require": "./dist/cjs/math.js"
+    },
+    "./color": {
+      "types": "./dist/color.d.ts",
+      "import": "./dist/modules/color.js",
+      "require": "./dist/cjs/color.js"
+    },
+    "./animation": {
+      "types": "./dist/animation.d.ts",
+      "import": "./dist/modules/animation.js",
+      "require": "./dist/cjs/animation.js"
+    },
+    "./random": {
+      "types": "./dist/random.d.ts",
+      "import": "./dist/modules/random.js",
+      "require": "./dist/cjs/random.js"
+    },
+    "./geometry": {
+      "types": "./dist/geometry.d.ts",
+      "import": "./dist/modules/geometry.js",
+      "require": "./dist/cjs/geometry.js"
+    },
+    "./browser": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/browser/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target node --format esm --splitting && bun run build:types",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "dev": "cd _examples && bun run dev",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "lint": "bun run type-check",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write 'src/**/*.ts' 'tests/**/*.ts' 'types/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts' 'tests/**/*.ts' 'examples/**/*.ts'",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "bun run clean && bun run build && bun run test",
+    "size": "bun build src/index.ts --outdir dist --target node --format esm --minify && du -sh dist/",
+    "size:analyze": "bun build src/index.ts --outdir dist --target node --format esm --minify --analyze && du -sh dist/",
+    "build:esm": "bun build src/index.ts --outdir dist/esm --target node --format esm --splitting",
+    "build:cjs": "bun build src/index.ts --outdir dist/cjs --target node --format cjs",
+    "build:browser": "bun build src/index.ts --outdir dist/browser --target browser --format esm --minify",
+    "build:modules": "bun build src/math.ts --outdir dist/modules --target browser --format esm --minify && bun build src/color.ts --outdir dist/modules --target browser --format esm --minify && bun build src/animation.ts --outdir dist/modules --target browser --format esm --minify && bun build src/random.ts --outdir dist/modules --target browser --format esm --minify && bun build src/geometry.ts --outdir dist/modules --target browser --format esm --minify && bun build src/physics.ts --outdir dist/modules --target browser --format esm --minify && bun build src/fractals.ts --outdir dist/modules --target browser --format esm --minify",
+    "build:all": "bun run clean && bun run build:esm && bun run build:cjs && bun run build:browser && bun run build:modules && bun run build:types",
+    "examples": "bun examples/runner.ts",
+    "examples:all": "bun examples/start-examples.ts",
+    "examples:basic": "bun examples/runner.ts basic",
+    "examples:advanced": "bun examples/runner.ts advanced",
+    "examples:visual": "bun examples/runner.ts visual",
+    "examples:serve": "bun examples/server.ts",
+    "examples:verify": "bun examples/verify-examples.ts",
+    "examples:verify-browser": "bun examples/utils/browser-verify.ts",
+    "examples:verify-final": "bun examples/utils/final-verification.ts",
+    "demo": "bun examples/start-examples.ts",
+    "showcase": "bun examples/start-examples.ts"
+  },
+  "keywords": [
+    "creative-coding",
+    "typescript",
+    "graphics",
+    "animation",
+    "math",
+    "colors",
+    "geometry",
+    "random",
+    "noise",
+    "vectors",
+    "canvas",
+    "visualization",
+    "interactive",
+    "art",
+    "generative"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conneroisu/play.ts.git"
+  },
+  "homepage": "https://github.com/conneroisu/play.ts#readme",
+  "bugs": {
+    "url": "https://github.com/conneroisu/play.ts/issues"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@playwright/test": "^1.53.2",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "optionalDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
