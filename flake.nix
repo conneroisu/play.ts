@@ -18,10 +18,6 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          # Build all go packages with go124
-          (final: prev: {
-            buildGoModule = prev.buildGo124Module;
-          })
         ];
       };
 
@@ -34,8 +30,6 @@
           ''
           exec
         ];
-
-      linuxOnly = input: pkgs.lib.optionals pkgs.stdenv.isLinux input;
 
       scripts = {
         dx = {
@@ -87,7 +81,7 @@
         scripts;
 
       shellHook = ''
-        echo "🔥 Connix Console Development Environment"
+        echo "🔥 Play TS Development Environment"
         export NIX_CONFIG="experimental-features = nix-command flakes"
       '';
     in {
@@ -116,7 +110,6 @@
               oxlint
               bun
               protobuf
-              bun2nix.packages.${system}.default
               openssl
               openssl.dev
               pkg-config
@@ -128,10 +121,6 @@
               tailwindcss-language-server
               yaml-language-server
             ])
-            ++ (with pkgs;
-              linuxOnly [
-                chromium # Browser support for testing (Linux only - chromium not required on Darwin)
-              ])
             ++ builtins.attrValues scriptPackages;
           inherit shellHook;
         };
