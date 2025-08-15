@@ -42,17 +42,14 @@
       };
     });
 
-    packages = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in rec {
-      bufrnix-docs = bun2nix.lib.${system}.mkBunDerivation {
-        pname = "bufrnix-docs";
+    packages = forAllSystems (system: rec {
+      play-ts-docs = bun2nix.lib.${system}.mkBunDerivation {
+        pname = "play-ts-docs";
         version = "0.0.1";
         src = self;
         bunNix = ./bun.nix;
 
         buildPhase = ''
-          cp -r ${./../examples} ./.
           # Build the Astro site
           bun run build
         '';
@@ -61,7 +58,7 @@
           cp -r dist $out
         '';
       };
-      default = bufrnix-docs;
+      default = play-ts-docs;
     });
 
     apps = forAllSystems (system: let
