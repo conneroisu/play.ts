@@ -17,7 +17,7 @@
         packages = {
           default = self.packages.${system}.docs-site;
           
-          docs-site = pkgs.callPackage ./default.nix { };
+          docs-site = pkgs.callPackage ./default.nix { inherit bun2nix; };
         };
 
         devShells.default = pkgs.mkShell {
