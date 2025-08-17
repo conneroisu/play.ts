@@ -39,16 +39,11 @@ jobs:
       - name: Build with Nix
         working-directory: ./docs
         run: |
-          # Generate bun.nix if it doesn't exist
-          if [ ! -f "bun.nix" ]; then
-            nix develop --command bun install
-            nix develop --command bun2nix -o bun.nix
-          fi
-          
           # Build the site
           NODE_ENV=production nix build
           
           # Copy build output to workspace
+          mkdir -p ./dist
           cp -r result/* ./dist/
           
       - name: Setup Pages

@@ -17,9 +17,7 @@
         packages = {
           default = self.packages.${system}.docs-site;
           
-          docs-site = pkgs.callPackage ./default.nix {
-            inherit (bun2nix.lib.${system}) mkBunDerivation;
-          };
+          docs-site = pkgs.callPackage ./default.nix { };
         };
 
         devShells.default = pkgs.mkShell {
