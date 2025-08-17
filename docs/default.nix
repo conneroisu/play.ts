@@ -1,10 +1,8 @@
 { pkgs, lib, bun2nix, ... }:
 
 let
-  # Import the bun.nix file if it exists, otherwise use empty deps
-  bunDeps = if builtins.pathExists ./bun.nix 
-    then import ./bun.nix { inherit pkgs; }
-    else { bunNix = { deps = []; }; };
+  # For now, just use empty deps since bun.nix handling is complex
+  bunDeps = { bunNix = { deps = []; }; };
 in
 
 pkgs.stdenv.mkDerivation {
