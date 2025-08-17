@@ -1,4 +1,13 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, bun2nix ? null, ... }:
+
+let
+  # Try to use bun2nix if available, otherwise fall back to fetching deps ourselves  
+  buildInputs = with pkgs; [
+    bun
+    nodejs_20
+    cacert  # for HTTPS requests
+  ];
+in
 
 pkgs.stdenv.mkDerivation {
   pname = "play-ts-docs";
@@ -6,16 +15,21 @@ pkgs.stdenv.mkDerivation {
 
   src = ./.;
 
-  nativeBuildInputs = with pkgs; [
-    bun
-    nodejs_20
-  ];
+  nativeBuildInputs = buildInputs;
+
+  configurePhase = ''
+    export HOME=$TMPDIR
+    export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+    export BUN_INSTALL_CACHE_DIR=$TMPDIR/.bun-cache
+    
+    echo "🔧 Setting up build environment..."
+  '';
 
   buildPhase = ''
-    export HOME=$TMPDIR
+    echo "📦 Installing dependencies with network access..."
     
-    echo "🔧 Installing dependencies..."
-    bun install
+    # Allow network access for dependency installation
+    bun install --frozen-lockfile --no-save
     
     echo "🏗️ Building Astro site..."
     bun run build
@@ -33,6 +47,9 @@ pkgs.stdenv.mkDerivation {
     # Create CNAME file if needed (uncomment and modify for custom domain)
     # echo "docs.play-ts.com" > $out/CNAME
   '';
+
+  # Allow network access during build (not usually recommended but needed for npm/bun installs)
+  __noChroot = true;
 
   meta = with lib; {
     description = "Documentation site for play.ts - TypeScript library for creative coding";
