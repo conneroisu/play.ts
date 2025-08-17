@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import ColorSystemsExample from '../../../components/examples/ColorSystemsExample.tsx';
+---
+
+<Layout title="Color Space Conversion Studio - play.ts">
+	<Header client:load currentPath="/examples/basic/color" />
+	<main class="min-h-screen bg-background">
+		<ColorSystemsExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,72 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'docs/**' ]
+  pull_request:
+    branches: [ main ]
+    paths: [ 'docs/**' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Install Nix
+        uses: cachix/install-nix-action@v24
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v12
+        with:
+          name: garnix
+          skipPush: true
+
+      - name: Build with Nix
+        working-directory: ./docs
+        run: |
+          # Generate bun.nix if it doesn't exist
+          if [ ! -f "bun.nix" ]; then
+            nix develop --command bun install
+            nix develop --command bun2nix -o bun.nix
+          fi
+          
+          # Build the site
+          NODE_ENV=production nix build
+          
+          # Copy build output to workspace
+          cp -r result/* ./dist/
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './docs/dist'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

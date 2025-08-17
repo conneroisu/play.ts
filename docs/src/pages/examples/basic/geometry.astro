@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import GeometryShapesExample from '../../../components/examples/GeometryShapesExample.tsx';
+---
+
+<Layout title="Geometry - play.ts">
+	<Header client:load currentPath="/examples/basic/geometry" />
+	<main class="min-h-screen bg-background">
+		<GeometryShapesExample client:load />
+	</main>
+</Layout>

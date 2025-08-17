@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import RandomGenerationExample from '../../../components/examples/RandomGenerationExample.tsx';
+---
+
+<Layout title="Random Generation - play.ts">
+	<Header client:load currentPath="/examples/basic/random" />
+	<main class="min-h-screen bg-background">
+		<RandomGenerationExample client:load />
+	</main>
+</Layout>

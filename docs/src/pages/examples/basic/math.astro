@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import MathOperationsExample from '../../../components/examples/MathOperationsExample.tsx';
+---
+
+<Layout title="Mathematical Functions Reference - play.ts">
+	<Header client:load currentPath="/examples/basic/math" />
+	<main class="min-h-screen bg-background">
+		<MathOperationsExample client:load />
+	</main>
+</Layout>

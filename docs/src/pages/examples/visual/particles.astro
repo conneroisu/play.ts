@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import ParticleSystemExample from '../../../components/examples/ParticleSystemExample.tsx';
+---
+
+<Layout title="Particle Systems - play.ts">
+	<Header client:load currentPath="/examples/visual/particles" />
+	<main class="min-h-screen bg-background">
+		<ParticleSystemExample client:load />
+	</main>
+</Layout>

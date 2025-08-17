@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.tsx';
+---
+
+<Layout title="Basic Examples - play.ts">
+	<Header client:load currentPath="/examples/basic" />
+	<main class="min-h-screen bg-background">
+		<div class="container mx-auto px-4 py-8">
+			<div class="mb-8">
+				<h1 class="text-3xl font-bold mb-4">Basic Examples</h1>
+				<p class="text-gray-600 dark:text-gray-300 mb-4">
+					Fundamental concepts and building blocks for creative coding with play.ts.
+				</p>
+			</div>
+
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<a href="/examples/basic/math" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Mathematical Functions Reference</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Comprehensive showcase of play.ts's math utilities with vector operations, constants, and edge case examples.
+					</p>
+				</a>
+
+				<a href="/examples/basic/color" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Color Space Conversion Studio</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Interactive HSL/RGB color space conversions with live preview and color theory demonstrations.
+					</p>
+				</a>
+
+				<a href="/examples/basic/animation" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Interactive Easing Functions Showcase</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Visual demonstration of all easing functions with interactive controls and animation timing.
+					</p>
+				</a>
+
+				<a href="/examples/basic/random" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Random Number Generation Suite</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Pseudo-random number generation with seeding, distributions, and visualization tools.
+					</p>
+				</a>
+
+				<a href="/examples/basic/geometry" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Interactive Vector Mathematics Lab</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Interactive 2D geometry calculations with vector operations and geometric visualizations.
+					</p>
+				</a>
+			</div>
+		</div>
+	</main>
+</Layout>

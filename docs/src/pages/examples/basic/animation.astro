@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.tsx';
+import AnimationEasingExample from '../../../components/examples/AnimationEasingExample.tsx';
+---
+
+<Layout title="Animation Easing - play.ts">
+	<Header client:load currentPath="/examples/basic/animation" />
+	<main class="min-h-screen bg-background">
+		<AnimationEasingExample client:load />
+	</main>
+</Layout>

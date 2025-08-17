@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.tsx';
+---
+
+<Layout title="Visual Examples - play.ts">
+	<Header client:load currentPath="/examples/visual" />
+	<main class="min-h-screen bg-background">
+		<div class="container mx-auto px-4 py-8">
+			<div class="mb-8">
+				<h1 class="text-3xl font-bold mb-4">Visual Examples</h1>
+				<p class="text-gray-600 dark:text-gray-300 mb-4">
+					Interactive graphics, physics simulations, fractals, and creative coding projects.
+				</p>
+			</div>
+
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<a href="/examples/visual/basic-shapes" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Interactive Shape Canvas</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Fundamental shape rendering with interactive controls and animation effects.
+					</p>
+				</a>
+
+				<a href="/examples/visual/particle-system" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Advanced Particle Physics System</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Complex particle effects with gravity, collisions, and force-based interactions.
+					</p>
+				</a>
+
+				<a href="/examples/visual/mandelbrot" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Interactive Mandelbrot Set Explorer</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Real-time fractal computation with infinite zoom, multiple color palettes, and progressive rendering.
+					</p>
+				</a>
+
+				<a href="/examples/visual/game-of-life" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Conway's Game of Life Simulator</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Complete cellular automata with famous patterns, interactive editing, and educational rule visualization.
+					</p>
+				</a>
+
+				<a href="/examples/visual/wave-interference" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Advanced Wave Physics Simulator</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Multi-source interference with real-time controls, preset patterns, and educational wave mechanics.
+					</p>
+				</a>
+
+				<a href="/examples/visual/ascii-fire" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">ASCII Fire Simulation</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Real-time fire physics with heat diffusion, wind effects, click-to-ignite interactions, and temperature visualization.
+					</p>
+				</a>
+			</div>
+		</div>
+	</main>
+</Layout>

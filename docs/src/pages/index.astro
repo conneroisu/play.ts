@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.tsx';
+---
+
+<Layout title="play.ts - Creative Coding Library">
+	<Header client:load currentPath="/" />
+	<main class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+		<div class="container mx-auto px-4 py-16">
+			<div class="text-center max-w-4xl mx-auto">
+				<h1 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+					play.ts
+				</h1>
+				<p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+					A comprehensive TypeScript library for creative coding and interactive graphics applications
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+					<a 
+						href="/examples" 
+						class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+					>
+						Explore Examples
+					</a>
+					<a 
+						href="/examples/basic" 
+						class="px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-medium transition-colors"
+					>
+						Get Started
+					</a>
+				</div>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+					<div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+						</svg>
+					</div>
+					<h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Mathematical Functions</h3>
+					<p class="text-gray-600 dark:text-gray-300">
+						Vector operations, interpolation, trigonometry, and matrix transformations optimized for real-time applications.
+					</p>
+				</div>
+
+				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+					<div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V3a1 1 0 011 1v14a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1h10z"></path>
+						</svg>
+					</div>
+					<h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Visual Effects</h3>
+					<p class="text-gray-600 dark:text-gray-300">
+						Particle systems, fractals, physics simulations, and procedural generation for creative coding.
+					</p>
+				</div>
+
+				<div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
+					<div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+						</svg>
+					</div>
+					<h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">60fps Performance</h3>
+					<p class="text-gray-600 dark:text-gray-300">
+						All functions optimized for real-time performance with comprehensive TypeScript support.
+					</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
