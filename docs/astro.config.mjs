@@ -13,8 +13,8 @@ export default defineConfig({
     }
   },
   // GitHub Pages configuration
-  site: 'https://play-ts.github.io',
-  base: process.env.NODE_ENV === 'production' ? '/play.ts' : '/',
+  site: 'https://conneroisu.github.io',
+  base: process.env.GITHUB_PAGES === 'true' ? '/play.ts' : '/',
   trailingSlash: 'always',
   build: {
     assets: '_assets'

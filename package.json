@@ -70,18 +70,7 @@
     "build:cjs": "bun build src/index.ts --outdir dist/cjs --target node --format cjs",
     "build:browser": "bun build src/index.ts --outdir dist/browser --target browser --format esm --minify",
     "build:modules": "bun build src/math.ts --outdir dist/modules --target browser --format esm --minify && bun build src/color.ts --outdir dist/modules --target browser --format esm --minify && bun build src/animation.ts --outdir dist/modules --target browser --format esm --minify && bun build src/random.ts --outdir dist/modules --target browser --format esm --minify && bun build src/geometry.ts --outdir dist/modules --target browser --format esm --minify && bun build src/physics.ts --outdir dist/modules --target browser --format esm --minify && bun build src/fractals.ts --outdir dist/modules --target browser --format esm --minify",
-    "build:all": "bun run clean && bun run build:esm && bun run build:cjs && bun run build:browser && bun run build:modules && bun run build:types",
-    "examples": "bun examples/runner.ts",
-    "examples:all": "bun examples/start-examples.ts",
-    "examples:basic": "bun examples/runner.ts basic",
-    "examples:advanced": "bun examples/runner.ts advanced",
-    "examples:visual": "bun examples/runner.ts visual",
-    "examples:serve": "bun examples/server.ts",
-    "examples:verify": "bun examples/verify-examples.ts",
-    "examples:verify-browser": "bun examples/utils/browser-verify.ts",
-    "examples:verify-final": "bun examples/utils/final-verification.ts",
-    "demo": "bun examples/start-examples.ts",
-    "showcase": "bun examples/start-examples.ts"
+    "build:all": "bun run clean && bun run build:esm && bun run build:cjs && bun run build:browser && bun run build:modules && bun run build:types"
   },
   "keywords": [
     "creative-coding",

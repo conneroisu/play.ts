@@ -1,41 +1,78 @@
 {
-  description = "play.ts documentation site built with Astro";
+  description = "play.ts documentation";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    bun2nix.url = "github:baileyluTCD/bun2nix";
-    bun2nix.inputs.nixpkgs.follows = "nixpkgs";
+    bun2nix = {
+      url = "github:baileyluTCD/bun2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, bun2nix }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages = {
-          default = self.packages.${system}.docs-site;
-          
-          docs-site = pkgs.callPackage ./default.nix { inherit bun2nix; };
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    bun2nix,
+    ...
+  }: let
+    systems = [
+      "x86_64-linux"
+      "x86_64-darwin"
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
 
-        devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            bun
-            nodejs_20
-            bun2nix.packages.${system}.default
-          ];
-          
-          shellHook = ''
-            echo "🚀 play.ts docs development environment"
-            echo "Available commands:"
-            echo "  bun run dev    - Start development server"
-            echo "  bun run build  - Build for production"
-            echo "  bun2nix        - Generate bun.nix"
-            echo "  nix build      - Build with Nix"
-          '';
-        };
-      }
-    );
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    devShells = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          bun
+          nodePackages.typescript
+          bun2nix.packages.${system}.default
+          typescript-language-server
+          astro-language-server
+        ];
+        shellHook = ''
+          # Setup the environment
+          echo "Entering bufrnix-docs devShell"
+        '';
+      };
+    });
+
+    packages = forAllSystems (system: let
+    in rec {
+      bufrnix-docs = bun2nix.lib.${system}.mkBunDerivation {
+        pname = "play-ts-docs";
+        version = "0.0.1";
+        src = self;
+        bunNix = ./bun.nix;
+
+        buildPhase = ''
+          # Build the Astro site
+          bun run build
+        '';
+
+        installPhase = ''
+          cp -r dist $out
+        '';
+      };
+      default = bufrnix-docs;
+    });
+
+    apps = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      default = {
+        type = "app";
+        program = "${pkgs.writeShellScript "serve-docs" ''
+          ${pkgs.python3}/bin/python3 -m http.server 8000 -d ${self.packages.${system}.default}
+        ''}";
+      };
+    });
+
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+  };
 }

@@ -7,11 +7,20 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:gh-pages": "astro build --base /play.ts"
+    "postinstall": "bun2nix -o bun.nix"
   },
   "dependencies": {
+    "@astrojs/react": "^4.3.0",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.2",
-    "cmdk": "^1.1.1"
+    "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1",
+    "lucide-react": "^0.539.0",
+    "play.ts": "^1.0.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
