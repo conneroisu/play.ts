@@ -34,7 +34,17 @@ import { useEffect, useRef, useState } from "react";
 interface EasingFunction {
 	name: string;
 	func: (t: number) => number;
-	category: "linear" | "quad" | "cubic" | "quart" | "quint" | "sine" | "expo" | "back" | "elastic" | "bounce";
+	category:
+		| "linear"
+		| "quad"
+		| "cubic"
+		| "quart"
+		| "quint"
+		| "sine"
+		| "expo"
+		| "back"
+		| "elastic"
+		| "bounce";
 }
 
 const easingFunctions: EasingFunction[] = [
@@ -263,38 +273,53 @@ export default function AnimationEasingExample() {
 
 				<div className="grid grid-cols-3 gap-4 mb-4">
 					<div>
-						<label htmlFor="tween-from" className="block text-sm font-medium text-gray-700 mb-1">
+						<label
+							htmlFor="tween-from"
+							className="block text-sm font-medium text-gray-700 mb-1"
+						>
 							From Value
 						</label>
 						<input
 							id="tween-from"
 							type="number"
 							value={tweenFrom}
-							onChange={(e) => setTweenFrom(Number.parseFloat(e.target.value) || 0)}
+							onChange={(e) =>
+								setTweenFrom(Number.parseFloat(e.target.value) || 0)
+							}
 							className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
 						/>
 					</div>
 					<div>
-						<label htmlFor="tween-to" className="block text-sm font-medium text-gray-700 mb-1">
+						<label
+							htmlFor="tween-to"
+							className="block text-sm font-medium text-gray-700 mb-1"
+						>
 							To Value
 						</label>
 						<input
 							id="tween-to"
 							type="number"
 							value={tweenTo}
-							onChange={(e) => setTweenTo(Number.parseFloat(e.target.value) || 0)}
+							onChange={(e) =>
+								setTweenTo(Number.parseFloat(e.target.value) || 0)
+							}
 							className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
 						/>
 					</div>
 					<div>
-						<label htmlFor="tween-duration" className="block text-sm font-medium text-gray-700 mb-1">
+						<label
+							htmlFor="tween-duration"
+							className="block text-sm font-medium text-gray-700 mb-1"
+						>
 							Duration (ms)
 						</label>
 						<input
 							id="tween-duration"
 							type="number"
 							value={tweenDuration}
-							onChange={(e) => setTweenDuration(Number.parseInt(e.target.value) || 1000)}
+							onChange={(e) =>
+								setTweenDuration(Number.parseInt(e.target.value) || 1000)
+							}
 							className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
 						/>
 					</div>
@@ -314,7 +339,9 @@ export default function AnimationEasingExample() {
 				</div>
 
 				<div className="bg-gray-100 rounded-lg p-3">
-					<div className="text-sm text-gray-600 mb-2">Progress Visualization</div>
+					<div className="text-sm text-gray-600 mb-2">
+						Progress Visualization
+					</div>
 					<div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden">
 						<div
 							className="h-full bg-blue-500 transition-all duration-75"
@@ -329,7 +356,9 @@ export default function AnimationEasingExample() {
 	};
 
 	const EasingSelector = () => {
-		const categories = Array.from(new Set(easingFunctions.map(e => e.category)));
+		const categories = Array.from(
+			new Set(easingFunctions.map((e) => e.category)),
+		);
 
 		return (
 			<div className="bg-white rounded-lg shadow-md p-4">
@@ -355,10 +384,11 @@ export default function AnimationEasingExample() {
 													: "hover:bg-gray-50 border border-transparent"
 											}`}
 											style={{
-												borderLeftColor: selectedEasing.name === easing.name 
-													? categoryColors[category]
-													: 'transparent',
-												borderLeftWidth: '3px'
+												borderLeftColor:
+													selectedEasing.name === easing.name
+														? categoryColors[category]
+														: "transparent",
+												borderLeftWidth: "3px",
 											}}
 										>
 											{easing.name}
@@ -426,14 +456,19 @@ export default function AnimationEasingExample() {
 								Stop
 							</button>
 							<div className="flex items-center gap-2">
-								<label htmlFor="duration" className="text-sm font-medium text-gray-700">
+								<label
+									htmlFor="duration"
+									className="text-sm font-medium text-gray-700"
+								>
 									Duration (ms):
 								</label>
 								<input
 									id="duration"
 									type="number"
 									value={duration}
-									onChange={(e) => setDuration(Number.parseInt(e.target.value) || 2000)}
+									onChange={(e) =>
+										setDuration(Number.parseInt(e.target.value) || 2000)
+									}
 									className="w-20 px-2 py-1 border border-gray-300 rounded text-sm"
 									min="100"
 									max="10000"
@@ -442,7 +477,10 @@ export default function AnimationEasingExample() {
 							</div>
 						</div>
 						<div className="text-sm text-gray-600">
-							Progress: {isPlaying ? `${((currentTime / duration) * 100).toFixed(1)}%` : "0%"}
+							Progress:{" "}
+							{isPlaying
+								? `${((currentTime / duration) * 100).toFixed(1)}%`
+								: "0%"}
 						</div>
 					</div>
 

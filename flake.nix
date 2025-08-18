@@ -145,7 +145,7 @@
           settings.formatter.biome = {
             command = "${pkgs.biome}/bin/biome";
             # options = ["format" "--write"];
-            includes = ["*.ts" "*.tsx"];
+            includes = ["*.ts" "*.tsx" "*.astro"];
           };
         };
       in

@@ -1,3 +1,5 @@
+import { BookOpen, Hash, Search, Settings, X, Zap } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
 	Tooltip,
@@ -5,8 +7,6 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { BookOpen, Hash, Search, Settings, X, Zap } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
 
 interface Example {
 	name: string;

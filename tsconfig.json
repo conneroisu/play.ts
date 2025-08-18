@@ -1,72 +1,69 @@
 {
-  "compilerOptions": {
-    // Target and module configuration for library
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+	"compilerOptions": {
+		// Target and module configuration for library
+		"target": "ES2020",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"moduleDetection": "force",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
 
-    // Output configuration
-    "outDir": "./dist",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "removeComments": false,
-    "emitDeclarationOnly": false,
+		// Output configuration
+		"outDir": "./dist",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"removeComments": false,
+		"emitDeclarationOnly": false,
 
-    // Bundler compatibility
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": false,
-    "isolatedModules": true,
+		// Bundler compatibility
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": false,
+		"isolatedModules": true,
 
-    // Type checking - strict configuration for library
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": false,
-    "noImplicitOverride": true,
-    "exactOptionalPropertyTypes": false,
+		// Type checking - strict configuration for library
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": false,
+		"noImplicitOverride": true,
+		"exactOptionalPropertyTypes": false,
 
-    // Additional checks for library development
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+		// Additional checks for library development
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noPropertyAccessFromIndexSignature": false,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
 
-    // Advanced configuration
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowJs": false,
+		// Advanced configuration
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"allowJs": false,
 
-    // Emit configuration
-    "preserveConstEnums": true,
-    "newLine": "lf"
-  },
-  "include": [
-    "src/**/*",
-    "types/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "tests",
-    "examples",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ],
-  "ts-node": {
-    "esm": true
-  }
+		// Emit configuration
+		"preserveConstEnums": true,
+		"newLine": "lf"
+	},
+	"include": ["src/**/*", "types/**/*"],
+	"exclude": [
+		"node_modules",
+		"dist",
+		"tests",
+		"examples",
+		"**/*.test.ts",
+		"**/*.spec.ts"
+	],
+	"ts-node": {
+		"esm": true
+	}
 }

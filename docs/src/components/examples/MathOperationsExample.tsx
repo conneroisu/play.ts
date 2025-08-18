@@ -1,12 +1,12 @@
 import {
-	PI,
-	TWO_PI,
 	clamp,
 	degrees,
 	lerp,
 	map,
 	normalize,
+	PI,
 	radians,
+	TWO_PI,
 	vec2,
 	vec2Add,
 	vec2Angle,
@@ -79,7 +79,10 @@ export default function MathOperationsExample() {
 	const ResultDisplay = ({
 		title,
 		data,
-	}: { title: string; data: Record<string, unknown> }) => (
+	}: {
+		title: string;
+		data: Record<string, unknown>;
+	}) => (
 		<div className="bg-white rounded-lg shadow-md p-6 mb-4">
 			<h3 className="text-lg font-semibold mb-4 text-blue-600">{title}</h3>
 			<div className="space-y-2">
@@ -112,8 +115,8 @@ export default function MathOperationsExample() {
 				</p>
 				<div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
 					<p className="text-blue-800">
-						📐 This example showcases the mathematical foundation of the
-						play.ts library
+						📐 This example showcases the mathematical foundation of the play.ts
+						library
 					</p>
 				</div>
 			</div>

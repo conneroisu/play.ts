@@ -1,7 +1,8 @@
 import {
-	Particle,
+	circle,
 	circleIntersects,
 	gravity,
+	Particle,
 	randomFloat,
 	randomInt,
 	setSeed,
@@ -12,7 +13,6 @@ import {
 	vec2Mul,
 	vec2Normalize,
 	vec2Sub,
-	circle,
 } from "play.ts";
 import { useEffect, useRef, useState } from "react";
 
@@ -37,7 +37,7 @@ export default function ParticleSystemExample() {
 	const animationRef = useRef<number>();
 	const particlesRef = useRef<Particle[]>([]);
 	const lastTimeRef = useRef<number>(0);
-	
+
 	const [isRunning, setIsRunning] = useState(false);
 	const [mouse, setMouse] = useState<MouseState>({ x: 0, y: 0, isDown: false });
 	const [settings, setSettings] = useState<ParticleSettings>({
@@ -76,7 +76,7 @@ export default function ParticleSystemExample() {
 		if (!canvas) return;
 
 		const particles = particlesRef.current;
-		const dt = Math.min(deltaTime / 1000, 1/60); // Cap at 60fps equivalent
+		const dt = Math.min(deltaTime / 1000, 1 / 60); // Cap at 60fps equivalent
 
 		// Apply forces
 		for (const particle of particles) {
@@ -92,9 +92,12 @@ export default function ParticleSystemExample() {
 				const particlePos = particle.position;
 				const direction = vec2Sub(mousePos, particlePos);
 				const distance = vec2Distance(mousePos, particlePos);
-				
+
 				if (distance > 1) {
-					const force = vec2Mul(direction, settings.mouseAttraction * particle.mass / (distance * distance));
+					const force = vec2Mul(
+						direction,
+						(settings.mouseAttraction * particle.mass) / (distance * distance),
+					);
 					particle.addForce(force);
 				}
 			}
@@ -104,14 +107,14 @@ export default function ParticleSystemExample() {
 				for (const other of particles) {
 					if (particle !== other) {
 						const distance = vec2Distance(particle.position, other.position);
-						
+
 						if (distance < 100) {
 							const restLength = 80;
 							const spring = springForce(
 								particle.position,
 								other.position,
 								restLength,
-								settings.springStrength
+								settings.springStrength,
 							);
 							particle.addForce(spring);
 						}
@@ -123,7 +126,7 @@ export default function ParticleSystemExample() {
 		// Update particle physics
 		for (const particle of particles) {
 			particle.update(dt);
-			
+
 			// Apply damping
 			particle.velocity.x *= settings.damping;
 			particle.velocity.y *= settings.damping;
@@ -135,32 +138,40 @@ export default function ParticleSystemExample() {
 				for (let j = i + 1; j < particles.length; j++) {
 					const p1 = particles[i];
 					const p2 = particles[j];
-					
+
 					const c1 = circle(p1.position.x, p1.position.y, p1.radius);
 					const c2 = circle(p2.position.x, p2.position.y, p2.radius);
-					
+
 					if (circleIntersects(c1, c2)) {
 						// Simple collision response
 						const direction = vec2Normalize(vec2Sub(p2.position, p1.position));
-						const overlap = (p1.radius + p2.radius) - vec2Distance(p1.position, p2.position);
-						
+						const overlap =
+							p1.radius + p2.radius - vec2Distance(p1.position, p2.position);
+
 						// Separate particles
 						const separation = vec2Mul(direction, overlap * 0.5);
 						p1.position.x -= separation.x;
 						p1.position.y -= separation.y;
 						p2.position.x += separation.x;
 						p2.position.y += separation.y;
-						
+
 						// Elastic collision response
 						const restitution = 0.8;
 						const relativeVelocity = vec2Sub(p2.velocity, p1.velocity);
-						const velocityAlongNormal = vec2Distance(relativeVelocity, vec2(0, 0)) * Math.sign(direction.x * relativeVelocity.x + direction.y * relativeVelocity.y);
-						
+						const velocityAlongNormal =
+							vec2Distance(relativeVelocity, vec2(0, 0)) *
+							Math.sign(
+								direction.x * relativeVelocity.x +
+									direction.y * relativeVelocity.y,
+							);
+
 						if (velocityAlongNormal > 0) return; // Objects separating
-						
-						const impulse = -(1 + restitution) * velocityAlongNormal / (1/p1.mass + 1/p2.mass);
+
+						const impulse =
+							(-(1 + restitution) * velocityAlongNormal) /
+							(1 / p1.mass + 1 / p2.mass);
 						const impulseVector = vec2Mul(direction, impulse);
-						
+
 						p1.velocity.x -= impulseVector.x / p1.mass;
 						p1.velocity.y -= impulseVector.y / p1.mass;
 						p2.velocity.x += impulseVector.x / p2.mass;
@@ -173,25 +184,25 @@ export default function ParticleSystemExample() {
 		// Apply boundary constraints
 		for (const particle of particles) {
 			const restitution = 0.7;
-			
+
 			// Left boundary
 			if (particle.position.x - particle.radius < 0) {
 				particle.position.x = particle.radius;
 				particle.velocity.x = -particle.velocity.x * restitution;
 			}
-			
+
 			// Right boundary
 			if (particle.position.x + particle.radius > canvas.width) {
 				particle.position.x = canvas.width - particle.radius;
 				particle.velocity.x = -particle.velocity.x * restitution;
 			}
-			
+
 			// Top boundary
 			if (particle.position.y - particle.radius < 0) {
 				particle.position.y = particle.radius;
 				particle.velocity.y = -particle.velocity.y * restitution;
 			}
-			
+
 			// Bottom boundary
 			if (particle.position.y + particle.radius > canvas.height) {
 				particle.position.y = canvas.height - particle.radius;
@@ -237,7 +248,7 @@ export default function ParticleSystemExample() {
 					const p1 = particles[i];
 					const p2 = particles[j];
 					const distance = vec2Distance(p1.position, p2.position);
-					
+
 					if (distance < 100) {
 						ctx.beginPath();
 						ctx.moveTo(p1.position.x, p1.position.y);
@@ -251,11 +262,20 @@ export default function ParticleSystemExample() {
 		// Draw particles
 		for (const particle of particles) {
 			// Particle body
-			const speed = Math.sqrt(particle.velocity.x * particle.velocity.x + particle.velocity.y * particle.velocity.y);
+			const speed = Math.sqrt(
+				particle.velocity.x * particle.velocity.x +
+					particle.velocity.y * particle.velocity.y,
+			);
 			const hue = Math.min(speed * 20, 360);
 			ctx.fillStyle = `hsl(${hue}, 70%, 60%)`;
 			ctx.beginPath();
-			ctx.arc(particle.position.x, particle.position.y, particle.radius, 0, 2 * Math.PI);
+			ctx.arc(
+				particle.position.x,
+				particle.position.y,
+				particle.radius,
+				0,
+				2 * Math.PI,
+			);
 			ctx.fill();
 
 			// Particle outline
@@ -271,7 +291,7 @@ export default function ParticleSystemExample() {
 				ctx.moveTo(particle.position.x, particle.position.y);
 				ctx.lineTo(
 					particle.position.x + particle.velocity.x * 10,
-					particle.position.y + particle.velocity.y * 10
+					particle.position.y + particle.velocity.y * 10,
 				);
 				ctx.stroke();
 			}
@@ -328,7 +348,7 @@ export default function ParticleSystemExample() {
 		if (!canvas) return;
 
 		const rect = canvas.getBoundingClientRect();
-		setMouse(prev => ({
+		setMouse((prev) => ({
 			...prev,
 			x: e.clientX - rect.left,
 			y: e.clientY - rect.top,
@@ -336,11 +356,11 @@ export default function ParticleSystemExample() {
 	};
 
 	const handleMouseDown = () => {
-		setMouse(prev => ({ ...prev, isDown: true }));
+		setMouse((prev) => ({ ...prev, isDown: true }));
 	};
 
 	const handleMouseUp = () => {
-		setMouse(prev => ({ ...prev, isDown: false }));
+		setMouse((prev) => ({ ...prev, isDown: false }));
 	};
 
 	const toggleSimulation = () => {
@@ -356,13 +376,23 @@ export default function ParticleSystemExample() {
 	const ParticleStats = () => {
 		const particles = particlesRef.current;
 		const totalKineticEnergy = particles.reduce((sum, p) => {
-			const speed = Math.sqrt(p.velocity.x * p.velocity.x + p.velocity.y * p.velocity.y);
+			const speed = Math.sqrt(
+				p.velocity.x * p.velocity.x + p.velocity.y * p.velocity.y,
+			);
 			return sum + 0.5 * p.mass * speed * speed;
 		}, 0);
 
-		const avgSpeed = particles.length > 0 
-			? particles.reduce((sum, p) => sum + Math.sqrt(p.velocity.x * p.velocity.x + p.velocity.y * p.velocity.y), 0) / particles.length
-			: 0;
+		const avgSpeed =
+			particles.length > 0
+				? particles.reduce(
+						(sum, p) =>
+							sum +
+							Math.sqrt(
+								p.velocity.x * p.velocity.x + p.velocity.y * p.velocity.y,
+							),
+						0,
+					) / particles.length
+				: 0;
 
 		return (
 			<div className="bg-white rounded-lg shadow-md p-4">
@@ -384,8 +414,10 @@ export default function ParticleSystemExample() {
 					</div>
 					<div className="flex justify-between">
 						<span>Status:</span>
-						<span className={`font-semibold ${isRunning ? 'text-green-600' : 'text-red-600'}`}>
-							{isRunning ? 'Running' : 'Stopped'}
+						<span
+							className={`font-semibold ${isRunning ? "text-green-600" : "text-red-600"}`}
+						>
+							{isRunning ? "Running" : "Stopped"}
 						</span>
 					</div>
 				</div>
@@ -462,7 +494,10 @@ export default function ParticleSystemExample() {
 						</h3>
 						<div className="space-y-4">
 							<div>
-								<label htmlFor="particle-count" className="block text-sm font-medium text-gray-700 mb-1">
+								<label
+									htmlFor="particle-count"
+									className="block text-sm font-medium text-gray-700 mb-1"
+								>
 									Particle Count: {settings.count}
 								</label>
 								<input
@@ -471,16 +506,21 @@ export default function ParticleSystemExample() {
 									min="10"
 									max="100"
 									value={settings.count}
-									onChange={(e) => setSettings(prev => ({
-										...prev,
-										count: Number.parseInt(e.target.value)
-									}))}
+									onChange={(e) =>
+										setSettings((prev) => ({
+											...prev,
+											count: Number.parseInt(e.target.value),
+										}))
+									}
 									className="w-full"
 								/>
 							</div>
 
 							<div>
-								<label htmlFor="gravity" className="block text-sm font-medium text-gray-700 mb-1">
+								<label
+									htmlFor="gravity"
+									className="block text-sm font-medium text-gray-700 mb-1"
+								>
 									Gravity: {settings.gravity.toFixed(2)}
 								</label>
 								<input
@@ -490,16 +530,21 @@ export default function ParticleSystemExample() {
 									max="2"
 									step="0.1"
 									value={settings.gravity}
-									onChange={(e) => setSettings(prev => ({
-										...prev,
-										gravity: Number.parseFloat(e.target.value)
-									}))}
+									onChange={(e) =>
+										setSettings((prev) => ({
+											...prev,
+											gravity: Number.parseFloat(e.target.value),
+										}))
+									}
 									className="w-full"
 								/>
 							</div>
 
 							<div>
-								<label htmlFor="damping" className="block text-sm font-medium text-gray-700 mb-1">
+								<label
+									htmlFor="damping"
+									className="block text-sm font-medium text-gray-700 mb-1"
+								>
 									Damping: {settings.damping.toFixed(2)}
 								</label>
 								<input
@@ -509,16 +554,21 @@ export default function ParticleSystemExample() {
 									max="1"
 									step="0.01"
 									value={settings.damping}
-									onChange={(e) => setSettings(prev => ({
-										...prev,
-										damping: Number.parseFloat(e.target.value)
-									}))}
+									onChange={(e) =>
+										setSettings((prev) => ({
+											...prev,
+											damping: Number.parseFloat(e.target.value),
+										}))
+									}
 									className="w-full"
 								/>
 							</div>
 
 							<div>
-								<label htmlFor="mouse-attraction" className="block text-sm font-medium text-gray-700 mb-1">
+								<label
+									htmlFor="mouse-attraction"
+									className="block text-sm font-medium text-gray-700 mb-1"
+								>
 									Mouse Force: {settings.mouseAttraction.toFixed(2)}
 								</label>
 								<input
@@ -528,10 +578,12 @@ export default function ParticleSystemExample() {
 									max="1"
 									step="0.1"
 									value={settings.mouseAttraction}
-									onChange={(e) => setSettings(prev => ({
-										...prev,
-										mouseAttraction: Number.parseFloat(e.target.value)
-									}))}
+									onChange={(e) =>
+										setSettings((prev) => ({
+											...prev,
+											mouseAttraction: Number.parseFloat(e.target.value),
+										}))
+									}
 									className="w-full"
 								/>
 							</div>
@@ -541,10 +593,12 @@ export default function ParticleSystemExample() {
 									<input
 										type="checkbox"
 										checked={settings.enableCollisions}
-										onChange={(e) => setSettings(prev => ({
-											...prev,
-											enableCollisions: e.target.checked
-										}))}
+										onChange={(e) =>
+											setSettings((prev) => ({
+												...prev,
+												enableCollisions: e.target.checked,
+											}))
+										}
 										className="mr-2"
 									/>
 									<span className="text-sm font-medium text-gray-700">
@@ -556,10 +610,12 @@ export default function ParticleSystemExample() {
 									<input
 										type="checkbox"
 										checked={settings.enableSprings}
-										onChange={(e) => setSettings(prev => ({
-											...prev,
-											enableSprings: e.target.checked
-										}))}
+										onChange={(e) =>
+											setSettings((prev) => ({
+												...prev,
+												enableSprings: e.target.checked,
+											}))
+										}
 										className="mr-2"
 									/>
 									<span className="text-sm font-medium text-gray-700">
@@ -570,7 +626,10 @@ export default function ParticleSystemExample() {
 
 							{settings.enableSprings && (
 								<div>
-									<label htmlFor="spring-strength" className="block text-sm font-medium text-gray-700 mb-1">
+									<label
+										htmlFor="spring-strength"
+										className="block text-sm font-medium text-gray-700 mb-1"
+									>
 										Spring Strength: {settings.springStrength.toFixed(2)}
 									</label>
 									<input
@@ -580,10 +639,12 @@ export default function ParticleSystemExample() {
 										max="0.5"
 										step="0.01"
 										value={settings.springStrength}
-										onChange={(e) => setSettings(prev => ({
-											...prev,
-											springStrength: Number.parseFloat(e.target.value)
-										}))}
+										onChange={(e) =>
+											setSettings((prev) => ({
+												...prev,
+												springStrength: Number.parseFloat(e.target.value),
+											}))
+										}
 										className="w-full"
 									/>
 								</div>
@@ -596,11 +657,23 @@ export default function ParticleSystemExample() {
 							Physics Concepts
 						</h4>
 						<ul className="text-blue-700 text-sm space-y-1">
-							<li>• <strong>Verlet Integration</strong>: Stable particle motion</li>
-							<li>• <strong>Collision Detection</strong>: Circle-circle collisions</li>
-							<li>• <strong>Force Application</strong>: Gravity, springs, mouse forces</li>
-							<li>• <strong>Constraint Solving</strong>: Boundary conditions</li>
-							<li>• <strong>Energy Conservation</strong>: Realistic physics behavior</li>
+							<li>
+								• <strong>Verlet Integration</strong>: Stable particle motion
+							</li>
+							<li>
+								• <strong>Collision Detection</strong>: Circle-circle collisions
+							</li>
+							<li>
+								• <strong>Force Application</strong>: Gravity, springs, mouse
+								forces
+							</li>
+							<li>
+								• <strong>Constraint Solving</strong>: Boundary conditions
+							</li>
+							<li>
+								• <strong>Energy Conservation</strong>: Realistic physics
+								behavior
+							</li>
 						</ul>
 					</div>
 				</div>

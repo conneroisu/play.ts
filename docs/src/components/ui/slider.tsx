@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
 interface SliderProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	value?: number[];

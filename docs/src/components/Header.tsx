@@ -1,3 +1,5 @@
+import { ChevronRight, Home, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -14,17 +16,13 @@ import {
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { ChevronRight, Home, Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
 import ExampleSearch from "./ExampleSearch";
 
 interface HeaderProps {
 	currentPath?: string;
 }
 
-export default function Header({
-	currentPath = "/play.ts"
-}: HeaderProps) {
+export default function Header({ currentPath = "/play.ts" }: HeaderProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [location, setLocation] = useState({ pathname: currentPath });
 
@@ -37,8 +35,8 @@ export default function Header({
 			setLocation({ pathname: window.location.pathname });
 		};
 
-		window.addEventListener('popstate', handleLocationChange);
-		return () => window.removeEventListener('popstate', handleLocationChange);
+		window.addEventListener("popstate", handleLocationChange);
+		return () => window.removeEventListener("popstate", handleLocationChange);
 	}, []);
 
 	// Generate breadcrumbs using current path
@@ -70,17 +68,24 @@ export default function Header({
 		},
 		{
 			name: "Basic",
-			path: process.env.DEV !== "" ? "/play.ts/examples/basic" : "/examples/basic",
+			path:
+				process.env.DEV !== "" ? "/play.ts/examples/basic" : "/examples/basic",
 			description: "Math, color, animation fundamentals",
 		},
 		{
 			name: "Engineering",
-			path: process.env.DEV !== "" ? "/play.ts/examples/engineering" : "/examples/engineering",
+			path:
+				process.env.DEV !== ""
+					? "/play.ts/examples/engineering"
+					: "/examples/engineering",
 			description: "Advanced engineering simulations",
 		},
 		{
 			name: "Visual",
-			path: process.env.DEV !== "" ? "/play.ts/examples/visual" : "/examples/visual",
+			path:
+				process.env.DEV !== ""
+					? "/play.ts/examples/visual"
+					: "/examples/visual",
 			description: "Graphics, physics, and creative coding",
 		},
 	];
@@ -167,7 +172,11 @@ export default function Header({
 											) : (
 												<BreadcrumbLink asChild>
 													<a
-														href={process.env.DEV !== "" ? `/play.ts${crumb.path}` : crumb.path}
+														href={
+															process.env.DEV !== ""
+																? `/play.ts${crumb.path}`
+																: crumb.path
+														}
 														className="flex items-center gap-1 transition-colors hover:text-foreground"
 													>
 														{crumb.icon && <crumb.icon className="h-4 w-4" />}

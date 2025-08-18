@@ -1,9 +1,9 @@
 import {
-	PI,
 	circle,
 	circleArea,
 	circleCircumference,
 	degrees,
+	PI,
 	rect,
 	rectArea,
 	rectPerimeter,
@@ -231,7 +231,10 @@ export default function GeometryShapesExample() {
 
 				<div className="grid md:grid-cols-2 gap-4 mb-4">
 					<div>
-						<label htmlFor="vectorA-x" className="block text-sm font-medium text-gray-700 mb-2">
+						<label
+							htmlFor="vectorA-x"
+							className="block text-sm font-medium text-gray-700 mb-2"
+						>
 							Vector A
 						</label>
 						<div className="flex space-x-2">
@@ -265,7 +268,10 @@ export default function GeometryShapesExample() {
 					</div>
 
 					<div>
-						<label htmlFor="vectorB-x" className="block text-sm font-medium text-gray-700 mb-2">
+						<label
+							htmlFor="vectorB-x"
+							className="block text-sm font-medium text-gray-700 mb-2"
+						>
 							Vector B
 						</label>
 						<div className="flex space-x-2">
