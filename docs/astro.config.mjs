@@ -14,7 +14,7 @@ export default defineConfig({
   },
   // GitHub Pages configuration
   site: 'https://conneroisu.github.io',
-  base: process.env.GITHUB_PAGES === 'true' ? '/play.ts' : '/',
+  base: process.env.DEV !== '' ? '/play.ts' : '/',
   trailingSlash: 'always',
   build: {
     assets: '_assets'
