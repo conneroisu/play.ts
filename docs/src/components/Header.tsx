@@ -22,7 +22,9 @@ interface HeaderProps {
 	currentPath?: string;
 }
 
-export default function Header({ currentPath = "/" }: HeaderProps) {
+export default function Header({
+	currentPath = "/play.ts"
+}: HeaderProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [location, setLocation] = useState({ pathname: currentPath });
 
