@@ -29,7 +29,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
 	useEffect(() => {
 		// Update location when client-side navigation occurs
 		setLocation({ pathname: window.location.pathname });
-		
+
 		// Listen for navigation changes
 		const handleLocationChange = () => {
 			setLocation({ pathname: window.location.pathname });
@@ -63,22 +63,22 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
 	const navigationItems = [
 		{
 			name: "Examples",
-			path: "/examples",
+			path: process.env.DEV !== "" ? "/play.ts/examples" : "/examples",
 			description: "All interactive code examples",
 		},
 		{
 			name: "Basic",
-			path: "/examples/basic",
+			path: process.env.DEV !== "" ? "/play.ts/examples/basic" : "/examples/basic",
 			description: "Math, color, animation fundamentals",
 		},
 		{
 			name: "Engineering",
-			path: "/examples/engineering",
+			path: process.env.DEV !== "" ? "/play.ts/examples/engineering" : "/examples/engineering",
 			description: "Advanced engineering simulations",
 		},
 		{
 			name: "Visual",
-			path: "/examples/visual",
+			path: process.env.DEV !== "" ? "/play.ts/examples/visual" : "/examples/visual",
 			description: "Graphics, physics, and creative coding",
 		},
 	];
@@ -98,7 +98,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
 					<div className="flex items-center space-x-8">
 						{/* Logo/Brand */}
 						<a
-							href="/"
+							href={process.env.DEV !== "" ? "/play.ts" : "/"}
 							className="flex items-center space-x-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
 						>
 							<span>play.ts</span>
@@ -165,7 +165,7 @@ export default function Header({ currentPath = "/" }: HeaderProps) {
 											) : (
 												<BreadcrumbLink asChild>
 													<a
-														href={crumb.path}
+														href={process.env.DEV !== "" ? `/play.ts${crumb.path}` : crumb.path}
 														className="flex items-center gap-1 transition-colors hover:text-foreground"
 													>
 														{crumb.icon && <crumb.icon className="h-4 w-4" />}
