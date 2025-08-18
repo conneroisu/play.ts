@@ -1,0 +1,12 @@
+---
+import AsciiKubernetesExample from "../../../components/examples/AsciiKubernetesExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Kubernetes - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-kubernetes" : "/examples/visual/ascii-kubernetes"} />
+	<main class="min-h-screen bg-background">
+		<AsciiKubernetesExample client:load />
+	</main>
+</Layout>
