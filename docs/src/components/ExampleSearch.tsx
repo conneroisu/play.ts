@@ -7,6 +7,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { createUrl } from "@/lib/utils";
 
 interface Example {
 	name: string;
@@ -396,6 +397,23 @@ const allExamples: Example[] = [
 		],
 	},
 	{
+		name: "ASCII GPU Cluster Monitor",
+		path: "/examples/visual/ascii-gpu-cluster",
+		description:
+			"High-performance GPU cluster simulation with real-time job scheduling, thermal monitoring, and distributed compute tasks",
+		category: "visual",
+		keywords: [
+			"ascii",
+			"gpu",
+			"cluster",
+			"monitoring",
+			"thermal",
+			"performance",
+			"jobs",
+			"computing",
+		],
+	},
+	{
 		name: "Fluid Dynamics Simulation",
 		path: "/examples/visual/fluid-dynamics",
 		description:
@@ -674,7 +692,7 @@ export default function ExampleSearch() {
 	const handleSelectExample = (path: string) => {
 		setIsOpen(false);
 		setQuery("");
-		window.location.href = path;
+		window.location.href = createUrl(path);
 	};
 
 	return (
@@ -792,7 +810,7 @@ export default function ExampleSearch() {
 										</div>
 										<button
 											type="button"
-											onClick={() => handleSelectExample("/examples/basic")}
+											onClick={() => handleSelectExample(createUrl("/examples/basic"))}
 											className="w-full flex items-center gap-3 px-3 py-3 mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
 										>
 											<BookOpen className="h-4 w-4 text-gray-500 dark:text-gray-400" />
@@ -810,7 +828,7 @@ export default function ExampleSearch() {
 										</button>
 										<button
 											type="button"
-											onClick={() => handleSelectExample("/examples/visual")}
+											onClick={() => handleSelectExample(createUrl("/examples/visual"))}
 											className="w-full flex items-center gap-3 px-3 py-3 mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
 										>
 											<Zap className="h-4 w-4 text-gray-500 dark:text-gray-400" />
@@ -829,7 +847,7 @@ export default function ExampleSearch() {
 										<button
 											type="button"
 											onClick={() =>
-												handleSelectExample("/examples/engineering")
+												handleSelectExample(createUrl("/examples/engineering"))
 											}
 											className="w-full flex items-center gap-3 px-3 py-3 mx-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-left"
 										>

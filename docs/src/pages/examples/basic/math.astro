@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 ---
 
 <Layout title="Mathematical Functions Reference - play.ts">
-	<Header client:load currentPath="/examples/basic/math" />
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/basic/math" : "/examples/basic/math"} />
 	<main class="min-h-screen bg-background">
 		<MathOperationsExample client:load />
 	</main>

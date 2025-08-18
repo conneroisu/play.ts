@@ -1,0 +1,12 @@
+---
+import BridgeAnalysisExample from "../../../components/examples/BridgeAnalysisExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Bridge Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/bridge-analysis" : "/examples/engineering/bridge-analysis"} />
+	<main class="min-h-screen bg-background">
+		<BridgeAnalysisExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import MaterialsScienceExample from "../../../components/examples/MaterialsScienceExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Materials Science - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/materials-science" : "/examples/engineering/materials-science"} />
+	<main class="min-h-screen bg-background">
+		<MaterialsScienceExample client:load />
+	</main>
+</Layout>

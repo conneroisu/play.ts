@@ -1,0 +1,12 @@
+---
+import VibrationAnalysisExample from "../../../components/examples/VibrationAnalysisExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Vibration Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/vibration-analysis" : "/examples/engineering/vibration-analysis"} />
+	<main class="min-h-screen bg-background">
+		<VibrationAnalysisExample client:load />
+	</main>
+</Layout>

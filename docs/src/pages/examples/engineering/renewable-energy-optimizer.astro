@@ -1,0 +1,12 @@
+---
+import RenewableEnergyOptimizerExample from "../../../components/examples/RenewableEnergyOptimizerExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Renewable Energy Optimizer - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/renewable-energy-optimizer" : "/examples/engineering/renewable-energy-optimizer"} />
+	<main class="min-h-screen bg-background">
+		<RenewableEnergyOptimizerExample client:load />
+	</main>
+</Layout>

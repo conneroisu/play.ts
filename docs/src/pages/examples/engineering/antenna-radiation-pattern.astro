@@ -1,0 +1,12 @@
+---
+import AntennaRadiationPatternExample from "../../../components/examples/AntennaRadiationPatternExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Antenna Radiation Pattern - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/antenna-radiation-pattern" : "/examples/engineering/antenna-radiation-pattern"} />
+	<main class="min-h-screen bg-background">
+		<AntennaRadiationPatternExample client:load />
+	</main>
+</Layout>

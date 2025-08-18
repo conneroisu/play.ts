@@ -1,0 +1,12 @@
+---
+import AsciiMatrixRainExample from "../../../components/examples/AsciiMatrixRainExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Matrix Rain - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-matrix-rain" : "/examples/visual/ascii-matrix-rain"} />
+	<main class="min-h-screen bg-background">
+		<AsciiMatrixRainExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import VoronoiExample from "../../../components/examples/VoronoiExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Voronoi Diagram - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/voronoi" : "/examples/visual/voronoi"} />
+	<main class="min-h-screen bg-background">
+		<VoronoiExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import AnimationDemoExample from "../../../components/examples/AnimationDemoExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Animation Demo - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/animation-demo" : "/examples/visual/animation-demo"} />
+	<main class="min-h-screen bg-background">
+		<AnimationDemoExample client:load />
+	</main>
+</Layout>

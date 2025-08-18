@@ -1,0 +1,12 @@
+---
+import FractalTreeExample from "../../../components/examples/FractalTreeExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Fractal Tree - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/fractal-tree" : "/examples/visual/fractal-tree"} />
+	<main class="min-h-screen bg-background">
+		<FractalTreeExample client:load />
+	</main>
+</Layout>

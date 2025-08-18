@@ -1,0 +1,12 @@
+---
+import AsciiFireExample from "../../../components/examples/AsciiFireExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Fire - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-fire" : "/examples/visual/ascii-fire"} />
+	<main class="min-h-screen bg-background">
+		<AsciiFireExample client:load />
+	</main>
+</Layout>

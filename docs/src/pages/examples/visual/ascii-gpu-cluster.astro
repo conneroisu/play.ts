@@ -1,0 +1,12 @@
+---
+import AsciiGpuClusterExample from "../../../components/examples/AsciiGpuClusterExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII GPU Cluster - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-gpu-cluster" : "/examples/visual/ascii-gpu-cluster"} />
+	<main class="min-h-screen bg-background">
+		<AsciiGpuClusterExample client:load />
+	</main>
+</Layout>

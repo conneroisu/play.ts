@@ -1,0 +1,12 @@
+---
+import RfAntennaDesignExample from "../../../components/examples/RfAntennaDesignExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="RF Antenna Design - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/rf-antenna-design" : "/examples/engineering/rf-antenna-design"} />
+	<main class="min-h-screen bg-background">
+		<RfAntennaDesignExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import AsciiGpuComputeFarmExample from "../../../components/examples/AsciiGpuComputeFarmExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII GPU Compute Farm - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-gpu-compute-farm" : "/examples/visual/ascii-gpu-compute-farm"} />
+	<main class="min-h-screen bg-background">
+		<AsciiGpuComputeFarmExample client:load />
+	</main>
+</Layout>

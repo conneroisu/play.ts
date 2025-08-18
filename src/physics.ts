@@ -111,13 +111,13 @@
 
 import type { Vector2 } from "../types/index.ts";
 import {
-	vec2,
-	vec2Add,
-	vec2Distance,
-	vec2Length,
-	vec2Mul,
-	vec2Normalize,
-	vec2Sub,
+  vec2,
+  vec2Add,
+  vec2Distance,
+  vec2Length,
+  vec2Mul,
+  vec2Normalize,
+  vec2Sub,
 } from "./math.ts";
 
 // ============================================================================
@@ -170,7 +170,7 @@ import {
  * @see {@link drag} for velocity-dependent resistance
  */
 export const gravity = (mass: number = 1, strength: number = 9.81): Vector2 =>
-	vec2(0, mass * strength);
+  vec2(0, mass * strength);
 
 /**
  * Calculates kinetic friction force opposing motion.
@@ -223,8 +223,8 @@ export const gravity = (mass: number = 1, strength: number = 9.81): Vector2 =>
  * @see {@link gravity} for constant downward force
  */
 export const friction = (
-	velocity: Vector2,
-	coefficient: number = 0.1,
+  velocity: Vector2,
+  coefficient: number = 0.1,
 ): Vector2 => vec2Mul(velocity, -coefficient);
 
 /**
@@ -284,11 +284,11 @@ export const friction = (
  * @see {@link gravity} for constant acceleration
  */
 export const drag = (
-	velocity: Vector2,
-	coefficient: number = 0.01,
+  velocity: Vector2,
+  coefficient: number = 0.01,
 ): Vector2 => {
-	const speed = vec2Length(velocity);
-	return vec2Mul(vec2Normalize(velocity), -coefficient * speed * speed);
+  const speed = vec2Length(velocity);
+  return vec2Mul(vec2Normalize(velocity), -coefficient * speed * speed);
 };
 
 /**
@@ -363,18 +363,18 @@ export const drag = (
  * @see {@link springForce} for distance-based restoration
  */
 export const attraction = (
-	pos1: Vector2,
-	pos2: Vector2,
-	mass1: number = 1,
-	mass2: number = 1,
-	strength: number = 1,
+  pos1: Vector2,
+  pos2: Vector2,
+  mass1: number = 1,
+  mass2: number = 1,
+  strength: number = 1,
 ): Vector2 => {
-	const direction = vec2Sub(pos2, pos1);
-	const distance = vec2Length(direction);
-	if (distance === 0) return vec2(0, 0);
+  const direction = vec2Sub(pos2, pos1);
+  const distance = vec2Length(direction);
+  if (distance === 0) return vec2(0, 0);
 
-	const force = (strength * mass1 * mass2) / (distance * distance);
-	return vec2Mul(vec2Normalize(direction), force);
+  const force = (strength * mass1 * mass2) / (distance * distance);
+  return vec2Mul(vec2Normalize(direction), force);
 };
 
 /**
@@ -427,14 +427,14 @@ export const attraction = (
  * @see {@link springForce} for restoration to rest length
  */
 export const repulsion = (
-	pos1: Vector2,
-	pos2: Vector2,
-	mass1: number = 1,
-	mass2: number = 1,
-	strength: number = 1,
+  pos1: Vector2,
+  pos2: Vector2,
+  mass1: number = 1,
+  mass2: number = 1,
+  strength: number = 1,
 ): Vector2 => {
-	const attr = attraction(pos1, pos2, mass1, mass2, strength);
-	return vec2Mul(attr, -1);
+  const attr = attraction(pos1, pos2, mass1, mass2, strength);
+  return vec2Mul(attr, -1);
 };
 
 /**
@@ -513,407 +513,399 @@ export const repulsion = (
  * @see {@link VerletConstraint} for more stable constraint solving
  */
 export const springForce = (
-	pos1: Vector2,
-	pos2: Vector2,
-	restLength: number,
-	stiffness: number = 0.1,
-	damping: number = 0.99,
+  pos1: Vector2,
+  pos2: Vector2,
+  restLength: number,
+  stiffness: number = 0.1,
+  damping: number = 0.99,
 ): Vector2 => {
-	const direction = vec2Sub(pos2, pos1);
-	const distance = vec2Length(direction);
-	const displacement = distance - restLength;
+  const direction = vec2Sub(pos2, pos1);
+  const distance = vec2Length(direction);
+  const displacement = distance - restLength;
 
-	if (distance === 0) return vec2(0, 0);
+  if (distance === 0) return vec2(0, 0);
 
-	const force = displacement * stiffness;
-	return vec2Mul(vec2Normalize(direction), force * damping);
+  const force = displacement * stiffness;
+  return vec2Mul(vec2Normalize(direction), force * damping);
 };
 
 // Particle class
 export class Particle {
-	position: Vector2;
-	velocity: Vector2;
-	acceleration: Vector2;
-	mass: number;
-	lifetime: number;
-	maxLifetime: number;
-	isDead: boolean;
+  position: Vector2;
+  velocity: Vector2;
+  acceleration: Vector2;
+  mass: number;
+  lifetime: number;
+  maxLifetime: number;
+  isDead: boolean;
 
-	constructor(
-		x: number = 0,
-		y: number = 0,
-		vx: number = 0,
-		vy: number = 0,
-		mass: number = 1,
-		lifetime: number = Infinity,
-	) {
-		this.position = vec2(x, y);
-		this.velocity = vec2(vx, vy);
-		this.acceleration = vec2(0, 0);
-		this.mass = mass;
-		this.lifetime = lifetime;
-		this.maxLifetime = lifetime;
-		this.isDead = false;
-	}
+  constructor(
+    x: number = 0,
+    y: number = 0,
+    vx: number = 0,
+    vy: number = 0,
+    mass: number = 1,
+    lifetime: number = Infinity,
+  ) {
+    this.position = vec2(x, y);
+    this.velocity = vec2(vx, vy);
+    this.acceleration = vec2(0, 0);
+    this.mass = mass;
+    this.lifetime = lifetime;
+    this.maxLifetime = lifetime;
+    this.isDead = false;
+  }
 
-	addForce(force: Vector2): void {
-		const accel = vec2Mul(force, 1 / this.mass);
-		this.acceleration = vec2Add(this.acceleration, accel);
-	}
+  addForce(force: Vector2): void {
+    const accel = vec2Mul(force, 1 / this.mass);
+    this.acceleration = vec2Add(this.acceleration, accel);
+  }
 
-	update(deltaTime: number = 1): void {
-		// Update velocity with acceleration
-		this.velocity = vec2Add(
-			this.velocity,
-			vec2Mul(this.acceleration, deltaTime),
-		);
+  update(deltaTime: number = 1): void {
+    // Update velocity with acceleration
+    this.velocity = vec2Add(
+      this.velocity,
+      vec2Mul(this.acceleration, deltaTime),
+    );
 
-		// Update position with velocity
-		this.position = vec2Add(this.position, vec2Mul(this.velocity, deltaTime));
+    // Update position with velocity
+    this.position = vec2Add(this.position, vec2Mul(this.velocity, deltaTime));
 
-		// Reset acceleration
-		this.acceleration = vec2(0, 0);
+    // Reset acceleration
+    this.acceleration = vec2(0, 0);
 
-		// Update lifetime
-		if (this.lifetime !== Infinity) {
-			this.lifetime -= deltaTime;
-			if (this.lifetime <= 0) {
-				this.isDead = true;
-			}
-		}
-	}
+    // Update lifetime
+    if (this.lifetime !== Infinity) {
+      this.lifetime -= deltaTime;
+      if (this.lifetime <= 0) {
+        this.isDead = true;
+      }
+    }
+  }
 
-	distanceTo(other: Particle): number {
-		return vec2Distance(this.position, other.position);
-	}
+  distanceTo(other: Particle): number {
+    return vec2Distance(this.position, other.position);
+  }
 
-	attractTo(other: Particle, strength: number = 1): void {
-		const force = attraction(
-			this.position,
-			other.position,
-			this.mass,
-			other.mass,
-			strength,
-		);
-		this.addForce(force);
-	}
+  attractTo(other: Particle, strength: number = 1): void {
+    const force = attraction(
+      this.position,
+      other.position,
+      this.mass,
+      other.mass,
+      strength,
+    );
+    this.addForce(force);
+  }
 
-	repelFrom(other: Particle, strength: number = 1): void {
-		const force = repulsion(
-			this.position,
-			other.position,
-			this.mass,
-			other.mass,
-			strength,
-		);
-		this.addForce(force);
-	}
+  repelFrom(other: Particle, strength: number = 1): void {
+    const force = repulsion(
+      this.position,
+      other.position,
+      this.mass,
+      other.mass,
+      strength,
+    );
+    this.addForce(force);
+  }
 
-	applySpring(
-		anchor: Vector2,
-		restLength: number = 0,
-		stiffness: number = 0.1,
-	): void {
-		const force = springForce(this.position, anchor, restLength, stiffness);
-		this.addForce(force);
-	}
+  applySpring(
+    anchor: Vector2,
+    restLength: number = 0,
+    stiffness: number = 0.1,
+  ): void {
+    const force = springForce(this.position, anchor, restLength, stiffness);
+    this.addForce(force);
+  }
 
-	getAge(): number {
-		return this.maxLifetime - this.lifetime;
-	}
+  getAge(): number {
+    return this.maxLifetime - this.lifetime;
+  }
 
-	getAgeRatio(): number {
-		if (this.maxLifetime === Infinity) return 0;
-		return this.getAge() / this.maxLifetime;
-	}
+  getAgeRatio(): number {
+    if (this.maxLifetime === Infinity) return 0;
+    return this.getAge() / this.maxLifetime;
+  }
 }
 
 // Particle System
 export class ParticleSystem {
-	particles: Particle[];
-	forces: Array<
-		(particle: Particle, index: number, particles: Particle[]) => Vector2
-	>;
+  particles: Particle[];
+  forces: Array<
+    (particle: Particle, index: number, particles: Particle[]) => Vector2
+  >;
 
-	constructor() {
-		this.particles = [];
-		this.forces = [];
-	}
+  constructor() {
+    this.particles = [];
+    this.forces = [];
+  }
 
-	addParticle(particle: Particle): void {
-		this.particles.push(particle);
-	}
+  addParticle(particle: Particle): void {
+    this.particles.push(particle);
+  }
 
-	addForce(
-		force: (
-			particle: Particle,
-			index: number,
-			particles: Particle[],
-		) => Vector2,
-	): void {
-		this.forces.push(force);
-	}
+  addForce(
+    force: (
+      particle: Particle,
+      index: number,
+      particles: Particle[],
+    ) => Vector2,
+  ): void {
+    this.forces.push(force);
+  }
 
-	update(deltaTime: number = 1): void {
-		// Apply forces to all particles
-		for (let i = 0; i < this.particles.length; i++) {
-			const particle = this.particles[i];
+  update(deltaTime: number = 1): void {
+    // Apply forces to all particles
+    for (let i = 0; i < this.particles.length; i++) {
+      const particle = this.particles[i];
 
-			// Apply global forces
-			for (const force of this.forces) {
-				particle.addForce(force(particle, i, this.particles));
-			}
+      // Apply global forces
+      for (const force of this.forces) {
+        particle.addForce(force(particle, i, this.particles));
+      }
 
-			// Update particle
-			particle.update(deltaTime);
-		}
+      // Update particle
+      particle.update(deltaTime);
+    }
 
-		// Remove dead particles
-		this.particles = this.particles.filter((p) => !p.isDead);
-	}
+    // Remove dead particles
+    this.particles = this.particles.filter((p) => !p.isDead);
+  }
 
-	getParticles(): Particle[] {
-		return this.particles;
-	}
+  getParticles(): Particle[] {
+    return this.particles;
+  }
 
-	getAliveCount(): number {
-		return this.particles.length;
-	}
+  getAliveCount(): number {
+    return this.particles.length;
+  }
 
-	clear(): void {
-		this.particles = [];
-	}
+  clear(): void {
+    this.particles = [];
+  }
 }
 
 // Verlet integration for more stable physics
 export class VerletParticle {
-	position: Vector2;
-	oldPosition: Vector2;
-	acceleration: Vector2;
-	mass: number;
-	pinned: boolean;
+  position: Vector2;
+  oldPosition: Vector2;
+  acceleration: Vector2;
+  mass: number;
+  pinned: boolean;
 
-	constructor(x: number = 0, y: number = 0, mass: number = 1) {
-		this.position = vec2(x, y);
-		this.oldPosition = vec2(x, y);
-		this.acceleration = vec2(0, 0);
-		this.mass = mass;
-		this.pinned = false;
-	}
+  constructor(x: number = 0, y: number = 0, mass: number = 1) {
+    this.position = vec2(x, y);
+    this.oldPosition = vec2(x, y);
+    this.acceleration = vec2(0, 0);
+    this.mass = mass;
+    this.pinned = false;
+  }
 
-	addForce(force: Vector2): void {
-		const accel = vec2Mul(force, 1 / this.mass);
-		this.acceleration = vec2Add(this.acceleration, accel);
-	}
+  addForce(force: Vector2): void {
+    const accel = vec2Mul(force, 1 / this.mass);
+    this.acceleration = vec2Add(this.acceleration, accel);
+  }
 
-	update(deltaTime: number = 1): void {
-		if (this.pinned) return;
+  update(deltaTime: number = 1): void {
+    if (this.pinned) return;
 
-		// Verlet integration
-		const velocity = vec2Sub(this.position, this.oldPosition);
-		this.oldPosition = {
-			...this.position,
-		};
+    // Verlet integration
+    const velocity = vec2Sub(this.position, this.oldPosition);
+    this.oldPosition = {
+      ...this.position,
+    };
 
-		const deltaTimeSquared = deltaTime * deltaTime;
-		const accelStep = vec2Mul(this.acceleration, deltaTimeSquared);
+    const deltaTimeSquared = deltaTime * deltaTime;
+    const accelStep = vec2Mul(this.acceleration, deltaTimeSquared);
 
-		this.position = vec2Add(vec2Add(this.position, velocity), accelStep);
+    this.position = vec2Add(vec2Add(this.position, velocity), accelStep);
 
-		// Reset acceleration
-		this.acceleration = vec2(0, 0);
-	}
+    // Reset acceleration
+    this.acceleration = vec2(0, 0);
+  }
 
-	pin(): void {
-		this.pinned = true;
-	}
+  pin(): void {
+    this.pinned = true;
+  }
 
-	unpin(): void {
-		this.pinned = false;
-	}
+  unpin(): void {
+    this.pinned = false;
+  }
 }
 
 // Constraint for Verlet physics
 export class VerletConstraint {
-	p1: VerletParticle;
-	p2: VerletParticle;
-	restLength: number;
-	stiffness: number;
+  p1: VerletParticle;
+  p2: VerletParticle;
+  restLength: number;
+  stiffness: number;
 
-	constructor(p1: VerletParticle, p2: VerletParticle, stiffness: number = 1) {
-		this.p1 = p1;
-		this.p2 = p2;
-		this.restLength = vec2Distance(p1.position, p2.position);
-		this.stiffness = stiffness;
-	}
+  constructor(p1: VerletParticle, p2: VerletParticle, stiffness: number = 1) {
+    this.p1 = p1;
+    this.p2 = p2;
+    this.restLength = vec2Distance(p1.position, p2.position);
+    this.stiffness = stiffness;
+  }
 
-	update(): void {
-		const delta = vec2Sub(this.p2.position, this.p1.position);
-		const distance = vec2Length(delta);
+  update(): void {
+    const delta = vec2Sub(this.p2.position, this.p1.position);
+    const distance = vec2Length(delta);
 
-		if (distance === 0) return;
+    if (distance === 0) return;
 
-		const difference = (this.restLength - distance) / distance;
-		const translate = vec2Mul(delta, difference * 0.5 * this.stiffness);
+    const difference = (this.restLength - distance) / distance;
+    const translate = vec2Mul(delta, difference * 0.5 * this.stiffness);
 
-		if (!this.p1.pinned) {
-			this.p1.position = vec2Sub(this.p1.position, translate);
-		}
-		if (!this.p2.pinned) {
-			this.p2.position = vec2Add(this.p2.position, translate);
-		}
-	}
+    if (!this.p1.pinned) {
+      this.p1.position = vec2Sub(this.p1.position, translate);
+    }
+    if (!this.p2.pinned) {
+      this.p2.position = vec2Add(this.p2.position, translate);
+    }
+  }
 }
 
 // Cloth simulation
 export class Cloth {
-	particles: VerletParticle[][];
-	constraints: VerletConstraint[];
-	width: number;
-	height: number;
+  particles: VerletParticle[][];
+  constraints: VerletConstraint[];
+  width: number;
+  height: number;
 
-	constructor(
-		width: number,
-		height: number,
-		resolution: number = 10,
-		stiffness: number = 1,
-	) {
-		this.width = width;
-		this.height = height;
-		this.particles = [];
-		this.constraints = [];
+  constructor(
+    width: number,
+    height: number,
+    resolution: number = 10,
+    stiffness: number = 1,
+  ) {
+    this.width = width;
+    this.height = height;
+    this.particles = [];
+    this.constraints = [];
 
-		// Create particles
-		const cols = Math.floor(width / resolution);
-		const rows = Math.floor(height / resolution);
+    // Create particles
+    const cols = Math.floor(width / resolution);
+    const rows = Math.floor(height / resolution);
 
-		for (let y = 0; y <= rows; y++) {
-			this.particles[y] = [];
-			for (let x = 0; x <= cols; x++) {
-				const px = (x / cols) * width;
-				const py = (y / rows) * height;
-				this.particles[y][x] = new VerletParticle(px, py);
-			}
-		}
+    for (let y = 0; y <= rows; y++) {
+      this.particles[y] = [];
+      for (let x = 0; x <= cols; x++) {
+        const px = (x / cols) * width;
+        const py = (y / rows) * height;
+        this.particles[y][x] = new VerletParticle(px, py);
+      }
+    }
 
-		// Create constraints
-		for (let y = 0; y <= rows; y++) {
-			for (let x = 0; x <= cols; x++) {
-				const particle = this.particles[y][x];
+    // Create constraints
+    for (let y = 0; y <= rows; y++) {
+      for (let x = 0; x <= cols; x++) {
+        const particle = this.particles[y][x];
 
-				// Right constraint
-				if (x < cols) {
-					this.constraints.push(
-						new VerletConstraint(
-							particle,
-							this.particles[y][x + 1],
-							stiffness,
-						),
-					);
-				}
+        // Right constraint
+        if (x < cols) {
+          this.constraints.push(
+            new VerletConstraint(particle, this.particles[y][x + 1], stiffness),
+          );
+        }
 
-				// Down constraint
-				if (y < rows) {
-					this.constraints.push(
-						new VerletConstraint(
-							particle,
-							this.particles[y + 1][x],
-							stiffness,
-						),
-					);
-				}
-			}
-		}
-	}
+        // Down constraint
+        if (y < rows) {
+          this.constraints.push(
+            new VerletConstraint(particle, this.particles[y + 1][x], stiffness),
+          );
+        }
+      }
+    }
+  }
 
-	update(): void {
-		// Update particles
-		for (const row of this.particles) {
-			for (const particle of row) {
-				particle.update();
-			}
-		}
+  update(): void {
+    // Update particles
+    for (const row of this.particles) {
+      for (const particle of row) {
+        particle.update();
+      }
+    }
 
-		// Update constraints (multiple iterations for stability)
-		for (let i = 0; i < 3; i++) {
-			for (const constraint of this.constraints) {
-				constraint.update();
-			}
-		}
-	}
+    // Update constraints (multiple iterations for stability)
+    for (let i = 0; i < 3; i++) {
+      for (const constraint of this.constraints) {
+        constraint.update();
+      }
+    }
+  }
 
-	pinCorners(): void {
-		const rows = this.particles.length - 1;
-		const cols = this.particles[0].length - 1;
+  pinCorners(): void {
+    const rows = this.particles.length - 1;
+    const cols = this.particles[0].length - 1;
 
-		this.particles[0][0].pin(); // Top-left
-		this.particles[0][cols].pin(); // Top-right
-	}
+    this.particles[0][0].pin(); // Top-left
+    this.particles[0][cols].pin(); // Top-right
+  }
 
-	addWind(force: Vector2): void {
-		for (const row of this.particles) {
-			for (const particle of row) {
-				particle.addForce(force);
-			}
-		}
-	}
+  addWind(force: Vector2): void {
+    for (const row of this.particles) {
+      for (const particle of row) {
+        particle.addForce(force);
+      }
+    }
+  }
 
-	addGravity(strength: number = 0.1): void {
-		for (const row of this.particles) {
-			for (const particle of row) {
-				particle.addForce(vec2(0, strength));
-			}
-		}
-	}
+  addGravity(strength: number = 0.1): void {
+    for (const row of this.particles) {
+      for (const particle of row) {
+        particle.addForce(vec2(0, strength));
+      }
+    }
+  }
 }
 
 // Utility functions for common physics scenarios
 export const createOrbit = (
-	center: Vector2,
-	radius: number,
-	speed: number,
-	angle: number = 0,
+  center: Vector2,
+  radius: number,
+  speed: number,
+  angle: number = 0,
 ): {
-	position: Vector2;
-	velocity: Vector2;
+  position: Vector2;
+  velocity: Vector2;
 } => {
-	const x = center.x + Math.cos(angle) * radius;
-	const y = center.y + Math.sin(angle) * radius;
-	const vx = -Math.sin(angle) * speed;
-	const vy = Math.cos(angle) * speed;
+  const x = center.x + Math.cos(angle) * radius;
+  const y = center.y + Math.sin(angle) * radius;
+  const vx = -Math.sin(angle) * speed;
+  const vy = Math.cos(angle) * speed;
 
-	return {
-		position: vec2(x, y),
-		velocity: vec2(vx, vy),
-	};
+  return {
+    position: vec2(x, y),
+    velocity: vec2(vx, vy),
+  };
 };
 
 export const createExplosion = (
-	center: Vector2,
-	count: number,
-	minSpeed: number = 1,
-	maxSpeed: number = 5,
-	lifetime: number = 100,
+  center: Vector2,
+  count: number,
+  minSpeed: number = 1,
+  maxSpeed: number = 5,
+  lifetime: number = 100,
 ): Particle[] => {
-	const particles: Particle[] = [];
+  const particles: Particle[] = [];
 
-	for (let i = 0; i < count; i++) {
-		const angle = (i / count) * Math.PI * 2;
-		const speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
-		const vx = Math.cos(angle) * speed;
-		const vy = Math.sin(angle) * speed;
+  for (let i = 0; i < count; i++) {
+    const angle = (i / count) * Math.PI * 2;
+    const speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed;
 
-		particles.push(
-			new Particle(
-				center.x,
-				center.y,
-				vx,
-				vy,
-				1,
-				lifetime + Math.random() * lifetime * 0.5,
-			),
-		);
-	}
+    particles.push(
+      new Particle(
+        center.x,
+        center.y,
+        vx,
+        vy,
+        1,
+        lifetime + Math.random() * lifetime * 0.5,
+      ),
+    );
+  }
 
-	return particles;
+  return particles;
 };

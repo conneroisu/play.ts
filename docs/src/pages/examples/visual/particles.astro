@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 ---
 
 <Layout title="Particle Systems - play.ts">
-	<Header client:load currentPath="/examples/visual/particles" />
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/particles" : "/examples/visual/particles"} />
 	<main class="min-h-screen bg-background">
 		<ParticleSystemExample client:load />
 	</main>

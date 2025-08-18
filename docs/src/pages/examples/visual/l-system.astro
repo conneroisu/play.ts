@@ -1,0 +1,12 @@
+---
+import LSystemExample from "../../../components/examples/LSystemExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="L-System - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/l-system" : "/examples/visual/l-system"} />
+	<main class="min-h-screen bg-background">
+		<LSystemExample client:load />
+	</main>
+</Layout>

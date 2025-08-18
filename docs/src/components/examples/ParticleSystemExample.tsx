@@ -15,6 +15,7 @@ import {
 	vec2Sub,
 } from "play.ts";
 import { useEffect, useRef, useState } from "react";
+import { createUrl } from "@/lib/utils";
 
 interface ParticleSettings {
 	count: number;
@@ -681,7 +682,7 @@ export default function ParticleSystemExample() {
 
 			<div className="mt-6">
 				<a
-					href="/examples/visual"
+					href={createUrl("/examples/visual")}
 					className="inline-block px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
 				>
 					← Back to Visual Examples

@@ -1,0 +1,12 @@
+---
+import AsciiGpuSchedulerExample from "../../../components/examples/AsciiGpuSchedulerExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII GPU Scheduler - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-gpu-scheduler" : "/examples/visual/ascii-gpu-scheduler"} />
+	<main class="min-h-screen bg-background">
+		<AsciiGpuSchedulerExample client:load />
+	</main>
+</Layout>

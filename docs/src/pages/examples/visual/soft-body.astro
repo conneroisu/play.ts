@@ -1,0 +1,12 @@
+---
+import SoftBodyExample from "../../../components/examples/SoftBodyExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Soft Body Physics - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/soft-body" : "/examples/visual/soft-body"} />
+	<main class="min-h-screen bg-background">
+		<SoftBodyExample client:load />
+	</main>
+</Layout>

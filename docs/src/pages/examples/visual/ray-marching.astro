@@ -1,0 +1,12 @@
+---
+import RayMarchingExample from "../../../components/examples/RayMarchingExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Ray Marching - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ray-marching" : "/examples/visual/ray-marching"} />
+	<main class="min-h-screen bg-background">
+		<RayMarchingExample client:load />
+	</main>
+</Layout>

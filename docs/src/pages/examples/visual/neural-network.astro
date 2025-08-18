@@ -1,0 +1,12 @@
+---
+import NeuralNetworkExample from "../../../components/examples/NeuralNetworkExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Neural Network - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/neural-network" : "/examples/visual/neural-network"} />
+	<main class="min-h-screen bg-background">
+		<NeuralNetworkExample client:load />
+	</main>
+</Layout>

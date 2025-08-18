@@ -249,759 +249,759 @@ export * from "./random.ts";
 import type { Point } from "../types/index.ts";
 // Import needed types and functions for internal use
 import {
-	AnimationLoop,
-	animate,
-	delay,
-	easeInBack,
-	easeInBounce,
-	easeInCirc,
-	easeInCubic,
-	easeInElastic,
-	easeInExpo,
-	easeInOutBack,
-	easeInOutBounce,
-	easeInOutCirc,
-	easeInOutCubic,
-	easeInOutElastic,
-	easeInOutExpo,
-	easeInOutQuad,
-	easeInOutSine,
-	easeInQuad,
-	easeInSine,
-	easeOutBack,
-	easeOutBounce,
-	easeOutCirc,
-	easeOutCubic,
-	easeOutElastic,
-	easeOutExpo,
-	easeOutQuad,
-	easeOutSine,
-	easings,
-	linear,
-	Spring,
-	spring,
-	Tween,
-	tween,
+  AnimationLoop,
+  animate,
+  delay,
+  easeInBack,
+  easeInBounce,
+  easeInCirc,
+  easeInCubic,
+  easeInElastic,
+  easeInExpo,
+  easeInOutBack,
+  easeInOutBounce,
+  easeInOutCirc,
+  easeInOutCubic,
+  easeInOutElastic,
+  easeInOutExpo,
+  easeInOutQuad,
+  easeInOutSine,
+  easeInQuad,
+  easeInSine,
+  easeOutBack,
+  easeOutBounce,
+  easeOutCirc,
+  easeOutCubic,
+  easeOutElastic,
+  easeOutExpo,
+  easeOutQuad,
+  easeOutSine,
+  easings,
+  linear,
+  Spring,
+  spring,
+  Tween,
+  tween,
 } from "./animation.ts";
 import {
-	analogous,
-	brighten,
-	colorLerp,
-	colorLerpHsl,
-	colors,
-	complementary,
-	darken,
-	desaturate,
-	grayscale,
-	hexToRgb,
-	hsl,
-	hsla,
-	hslToRgb,
-	hueShift,
-	invert,
-	rgb,
-	rgba,
-	rgbToHex,
-	rgbToHsl,
-	saturate,
-	toCssHsl,
-	toCssHsla,
-	toCssRgb,
-	toCssRgba,
-	triadic,
+  analogous,
+  brighten,
+  colorLerp,
+  colorLerpHsl,
+  colors,
+  complementary,
+  darken,
+  desaturate,
+  grayscale,
+  hexToRgb,
+  hsl,
+  hsla,
+  hslToRgb,
+  hueShift,
+  invert,
+  rgb,
+  rgba,
+  rgbToHex,
+  rgbToHsl,
+  saturate,
+  toCssHsl,
+  toCssHsla,
+  toCssRgb,
+  toCssRgba,
+  triadic,
 } from "./color.ts";
 import {
-	barnsleyFern,
-	createKochSnowflake,
-	fractalTree,
-	julia,
-	juliaSet,
-	kochSnowflake,
-	// Fractals and L-Systems
-	LSystem,
-	LSystemInterpreter,
-	lSystems,
-	mandelbrot,
-	mandelbrotSet,
-	sierpinskiTriangle,
-	Turtle,
+  barnsleyFern,
+  createKochSnowflake,
+  fractalTree,
+  julia,
+  juliaSet,
+  kochSnowflake,
+  // Fractals and L-Systems
+  LSystem,
+  LSystemInterpreter,
+  lSystems,
+  mandelbrot,
+  mandelbrotSet,
+  sierpinskiTriangle,
+  Turtle,
 } from "./fractals.ts";
 import {
-	circle,
-	circleArea,
-	circleCenter,
-	circleCircumference,
-	circleIntersects,
-	circlePointAt,
-	circleRectIntersects,
-	cubicBezier,
-	gridPoints,
-	hexagon,
-	hexGrid,
-	line,
-	lineAngle,
-	lineDirection,
-	lineDistanceToPoint,
-	lineIntersection,
-	lineLength,
-	lineNormal,
-	linePointAt,
-	octagon,
-	pentagon,
-	point,
-	pointAngle,
-	pointDistance,
-	pointDistanceSq,
-	pointInCircle,
-	pointInPolygon,
-	pointInRect,
-	pointLerp,
-	polygon,
-	polygonArea,
-	polygonBoundingBox,
-	polygonCentroid,
-	polygonPerimeter,
-	quadraticBezier,
-	rect,
-	rectArea,
-	rectCenter,
-	rectExpand,
-	rectFromCenter,
-	rectFromPoints,
-	rectIntersection,
-	rectIntersects,
-	rectPerimeter,
-	rectScale,
-	rectUnion,
-	regularPolygon,
-	size,
-	sizeArea,
-	sizeAspectRatio,
-	sizeFill,
-	sizeFit,
-	sizePerimeter,
-	sizeScale,
-	square,
-	star,
-	triangle,
+  circle,
+  circleArea,
+  circleCenter,
+  circleCircumference,
+  circleIntersects,
+  circlePointAt,
+  circleRectIntersects,
+  cubicBezier,
+  gridPoints,
+  hexagon,
+  hexGrid,
+  line,
+  lineAngle,
+  lineDirection,
+  lineDistanceToPoint,
+  lineIntersection,
+  lineLength,
+  lineNormal,
+  linePointAt,
+  octagon,
+  pentagon,
+  point,
+  pointAngle,
+  pointDistance,
+  pointDistanceSq,
+  pointInCircle,
+  pointInPolygon,
+  pointInRect,
+  pointLerp,
+  polygon,
+  polygonArea,
+  polygonBoundingBox,
+  polygonCentroid,
+  polygonPerimeter,
+  quadraticBezier,
+  rect,
+  rectArea,
+  rectCenter,
+  rectExpand,
+  rectFromCenter,
+  rectFromPoints,
+  rectIntersection,
+  rectIntersects,
+  rectPerimeter,
+  rectScale,
+  rectUnion,
+  regularPolygon,
+  size,
+  sizeArea,
+  sizeAspectRatio,
+  sizeFill,
+  sizeFit,
+  sizePerimeter,
+  sizeScale,
+  square,
+  star,
+  triangle,
 } from "./geometry.ts";
 import {
-	clamp,
-	degrees,
-	HALF_PI,
-	lerp,
-	map,
-	normalize,
-	PI,
-	radians,
-	TAU,
-	TWO_PI,
-	vec2,
-	vec2Add,
-	vec2Angle,
-	vec2Distance,
-	vec2Div,
-	vec2FromAngle,
-	vec2Length,
-	vec2Lerp,
-	vec2Mul,
-	vec2Normalize,
-	vec2Rotate,
-	vec2Sub,
-	vec3,
-	vec3Add,
-	vec3Cross,
-	vec3Distance,
-	vec3Div,
-	vec3Dot,
-	vec3Length,
-	vec3Lerp,
-	vec3Mul,
-	vec3Normalize,
-	vec3Sub,
+  clamp,
+  degrees,
+  HALF_PI,
+  lerp,
+  map,
+  normalize,
+  PI,
+  radians,
+  TAU,
+  TWO_PI,
+  vec2,
+  vec2Add,
+  vec2Angle,
+  vec2Distance,
+  vec2Div,
+  vec2FromAngle,
+  vec2Length,
+  vec2Lerp,
+  vec2Mul,
+  vec2Normalize,
+  vec2Rotate,
+  vec2Sub,
+  vec3,
+  vec3Add,
+  vec3Cross,
+  vec3Distance,
+  vec3Div,
+  vec3Dot,
+  vec3Length,
+  vec3Lerp,
+  vec3Mul,
+  vec3Normalize,
+  vec3Sub,
 } from "./math.ts";
 
 import {
-	attraction,
-	Cloth,
-	createExplosion,
-	createOrbit,
-	drag,
-	friction,
-	gravity,
-	// Physics classes and forces
-	Particle,
-	ParticleSystem,
-	repulsion,
-	springForce,
-	VerletConstraint,
-	VerletParticle,
+  attraction,
+  Cloth,
+  createExplosion,
+  createOrbit,
+  drag,
+  friction,
+  gravity,
+  // Physics classes and forces
+  Particle,
+  ParticleSystem,
+  repulsion,
+  springForce,
+  VerletConstraint,
+  VerletParticle,
 } from "./physics.ts";
 import {
-	FractalNoise,
-	fractalNoise,
-	noise,
-	PerlinNoise,
-	random,
-	randomAngle,
-	randomBool,
-	randomChoice,
-	randomColor,
-	randomColorHSL,
-	randomDistribution,
-	randomFloat,
-	randomGaussian,
-	randomInCircle,
-	randomInt,
-	randomOnCircle,
-	randomSign,
-	randomWalk,
-	SeededRandom,
-	SimpleNoise,
-	sample,
-	sampleWeighted,
-	setSeed,
-	shuffle,
-	weightedChoice,
+  FractalNoise,
+  fractalNoise,
+  noise,
+  PerlinNoise,
+  random,
+  randomAngle,
+  randomBool,
+  randomChoice,
+  randomColor,
+  randomColorHSL,
+  randomDistribution,
+  randomFloat,
+  randomGaussian,
+  randomInCircle,
+  randomInt,
+  randomOnCircle,
+  randomSign,
+  randomWalk,
+  SeededRandom,
+  SimpleNoise,
+  sample,
+  sampleWeighted,
+  setSeed,
+  shuffle,
+  weightedChoice,
 } from "./random.ts";
 
 export {
-	AnimationLoop,
-	animate,
-	delay,
-	easeInBack,
-	easeInBounce,
-	easeInCirc,
-	easeInCubic,
-	easeInElastic,
-	easeInExpo,
-	easeInOutBack,
-	easeInOutBounce,
-	easeInOutCirc,
-	easeInOutCubic,
-	easeInOutElastic,
-	easeInOutExpo,
-	easeInOutQuad,
-	easeInOutSine,
-	easeInQuad,
-	easeInSine,
-	easeOutBack,
-	easeOutBounce,
-	easeOutCirc,
-	easeOutCubic,
-	easeOutElastic,
-	easeOutExpo,
-	easeOutQuad,
-	easeOutSine,
-	easings,
-	// Animation utilities
-	linear,
-	Spring,
-	spring,
-	Tween,
-	tween,
+  AnimationLoop,
+  animate,
+  delay,
+  easeInBack,
+  easeInBounce,
+  easeInCirc,
+  easeInCubic,
+  easeInElastic,
+  easeInExpo,
+  easeInOutBack,
+  easeInOutBounce,
+  easeInOutCirc,
+  easeInOutCubic,
+  easeInOutElastic,
+  easeInOutExpo,
+  easeInOutQuad,
+  easeInOutSine,
+  easeInQuad,
+  easeInSine,
+  easeOutBack,
+  easeOutBounce,
+  easeOutCirc,
+  easeOutCubic,
+  easeOutElastic,
+  easeOutExpo,
+  easeOutQuad,
+  easeOutSine,
+  easings,
+  // Animation utilities
+  linear,
+  Spring,
+  spring,
+  Tween,
+  tween,
 } from "./animation.ts";
 
 export {
-	analogous,
-	brighten,
-	colorLerp,
-	colorLerpHsl,
-	colors,
-	complementary,
-	darken,
-	desaturate,
-	grayscale,
-	hexToRgb,
-	hsl,
-	hsla,
-	hslToRgb,
-	hueShift,
-	invert,
-	// Color utilities
-	rgb,
-	rgba,
-	rgbToHex,
-	rgbToHsl,
-	saturate,
-	toCssHsl,
-	toCssHsla,
-	toCssRgb,
-	toCssRgba,
-	triadic,
+  analogous,
+  brighten,
+  colorLerp,
+  colorLerpHsl,
+  colors,
+  complementary,
+  darken,
+  desaturate,
+  grayscale,
+  hexToRgb,
+  hsl,
+  hsla,
+  hslToRgb,
+  hueShift,
+  invert,
+  // Color utilities
+  rgb,
+  rgba,
+  rgbToHex,
+  rgbToHsl,
+  saturate,
+  toCssHsl,
+  toCssHsla,
+  toCssRgb,
+  toCssRgba,
+  triadic,
 } from "./color.ts";
 export {
-	barnsleyFern,
-	createKochSnowflake,
-	fractalTree,
-	julia,
-	juliaSet,
-	kochSnowflake,
-	// Fractals and L-Systems
-	LSystem,
-	LSystemInterpreter,
-	lSystems,
-	mandelbrot,
-	mandelbrotSet,
-	sierpinskiTriangle,
-	Turtle,
+  barnsleyFern,
+  createKochSnowflake,
+  fractalTree,
+  julia,
+  juliaSet,
+  kochSnowflake,
+  // Fractals and L-Systems
+  LSystem,
+  LSystemInterpreter,
+  lSystems,
+  mandelbrot,
+  mandelbrotSet,
+  sierpinskiTriangle,
+  Turtle,
 } from "./fractals.ts";
 export {
-	circle,
-	circleArea,
-	circleCenter,
-	circleCircumference,
-	circleIntersects,
-	circlePointAt,
-	circleRectIntersects,
-	cubicBezier,
-	gridPoints,
-	hexagon,
-	hexGrid,
-	line,
-	lineAngle,
-	lineDirection,
-	lineDistanceToPoint,
-	lineIntersection,
-	lineLength,
-	lineNormal,
-	linePointAt,
-	octagon,
-	pentagon,
-	// Geometry utilities
-	point,
-	pointAngle,
-	pointDistance,
-	pointDistanceSq,
-	pointInCircle,
-	pointInPolygon,
-	pointInRect,
-	pointLerp,
-	polygon,
-	polygonArea,
-	polygonBoundingBox,
-	polygonCentroid,
-	polygonPerimeter,
-	quadraticBezier,
-	rect,
-	rectArea,
-	rectCenter,
-	rectExpand,
-	rectFromCenter,
-	rectFromPoints,
-	rectIntersection,
-	rectIntersects,
-	rectPerimeter,
-	rectScale,
-	rectUnion,
-	regularPolygon,
-	size,
-	sizeArea,
-	sizeAspectRatio,
-	sizeFill,
-	sizeFit,
-	sizePerimeter,
-	sizeScale,
-	square,
-	star,
-	triangle,
+  circle,
+  circleArea,
+  circleCenter,
+  circleCircumference,
+  circleIntersects,
+  circlePointAt,
+  circleRectIntersects,
+  cubicBezier,
+  gridPoints,
+  hexagon,
+  hexGrid,
+  line,
+  lineAngle,
+  lineDirection,
+  lineDistanceToPoint,
+  lineIntersection,
+  lineLength,
+  lineNormal,
+  linePointAt,
+  octagon,
+  pentagon,
+  // Geometry utilities
+  point,
+  pointAngle,
+  pointDistance,
+  pointDistanceSq,
+  pointInCircle,
+  pointInPolygon,
+  pointInRect,
+  pointLerp,
+  polygon,
+  polygonArea,
+  polygonBoundingBox,
+  polygonCentroid,
+  polygonPerimeter,
+  quadraticBezier,
+  rect,
+  rectArea,
+  rectCenter,
+  rectExpand,
+  rectFromCenter,
+  rectFromPoints,
+  rectIntersection,
+  rectIntersects,
+  rectPerimeter,
+  rectScale,
+  rectUnion,
+  regularPolygon,
+  size,
+  sizeArea,
+  sizeAspectRatio,
+  sizeFill,
+  sizeFit,
+  sizePerimeter,
+  sizeScale,
+  square,
+  star,
+  triangle,
 } from "./geometry.ts";
 // Re-export commonly used utilities with shorter names
 export {
-	// Math utilities
-	clamp,
-	degrees,
-	HALF_PI,
-	lerp,
-	map,
-	normalize,
-	PI,
-	radians,
-	TAU,
-	TWO_PI,
-	vec2,
-	vec2Add,
-	vec2Angle,
-	vec2Distance,
-	vec2Div,
-	vec2FromAngle,
-	vec2Length,
-	vec2Lerp,
-	vec2Mul,
-	vec2Normalize,
-	vec2Rotate,
-	vec2Sub,
-	vec3,
-	vec3Add,
-	vec3Cross,
-	vec3Distance,
-	vec3Div,
-	vec3Dot,
-	vec3Length,
-	vec3Lerp,
-	vec3Mul,
-	vec3Normalize,
-	vec3Sub,
+  // Math utilities
+  clamp,
+  degrees,
+  HALF_PI,
+  lerp,
+  map,
+  normalize,
+  PI,
+  radians,
+  TAU,
+  TWO_PI,
+  vec2,
+  vec2Add,
+  vec2Angle,
+  vec2Distance,
+  vec2Div,
+  vec2FromAngle,
+  vec2Length,
+  vec2Lerp,
+  vec2Mul,
+  vec2Normalize,
+  vec2Rotate,
+  vec2Sub,
+  vec3,
+  vec3Add,
+  vec3Cross,
+  vec3Distance,
+  vec3Div,
+  vec3Dot,
+  vec3Length,
+  vec3Lerp,
+  vec3Mul,
+  vec3Normalize,
+  vec3Sub,
 } from "./math.ts";
 
 export {
-	attraction,
-	Cloth,
-	createExplosion,
-	createOrbit,
-	drag,
-	friction,
-	gravity,
-	// Physics utilities
-	Particle,
-	ParticleSystem,
-	repulsion,
-	springForce,
-	VerletConstraint,
-	VerletParticle,
+  attraction,
+  Cloth,
+  createExplosion,
+  createOrbit,
+  drag,
+  friction,
+  gravity,
+  // Physics utilities
+  Particle,
+  ParticleSystem,
+  repulsion,
+  springForce,
+  VerletConstraint,
+  VerletParticle,
 } from "./physics.ts";
 export {
-	FractalNoise,
-	fractalNoise,
-	noise,
-	PerlinNoise,
-	random,
-	randomAngle,
-	randomBool,
-	randomChoice,
-	randomColor,
-	randomColorHSL,
-	randomDistribution,
-	randomFloat,
-	randomGaussian,
-	randomInCircle,
-	randomInt,
-	randomOnCircle,
-	randomSign,
-	randomWalk,
-	// Random utilities
-	SeededRandom,
-	SimpleNoise,
-	sample,
-	sampleWeighted,
-	setSeed,
-	shuffle,
-	weightedChoice,
+  FractalNoise,
+  fractalNoise,
+  noise,
+  PerlinNoise,
+  random,
+  randomAngle,
+  randomBool,
+  randomChoice,
+  randomColor,
+  randomColorHSL,
+  randomDistribution,
+  randomFloat,
+  randomGaussian,
+  randomInCircle,
+  randomInt,
+  randomOnCircle,
+  randomSign,
+  randomWalk,
+  // Random utilities
+  SeededRandom,
+  SimpleNoise,
+  sample,
+  sampleWeighted,
+  setSeed,
+  shuffle,
+  weightedChoice,
 } from "./random.ts";
 
 // Utility classes and functions
 export class Play {
-	private static instance: Play;
-	private animationLoop: AnimationLoop;
-	private canvas?: HTMLCanvasElement;
-	private context?: CanvasRenderingContext2D;
+  private static instance: Play;
+  private animationLoop: AnimationLoop;
+  private canvas?: HTMLCanvasElement;
+  private context?: CanvasRenderingContext2D;
 
-	private constructor() {
-		this.animationLoop = new AnimationLoop();
-	}
+  private constructor() {
+    this.animationLoop = new AnimationLoop();
+  }
 
-	// Canvas dimension properties
-	get width(): number {
-		return this.canvas?.width ?? 0;
-	}
+  // Canvas dimension properties
+  get width(): number {
+    return this.canvas?.width ?? 0;
+  }
 
-	get height(): number {
-		return this.canvas?.height ?? 0;
-	}
+  get height(): number {
+    return this.canvas?.height ?? 0;
+  }
 
-	static getInstance(): Play {
-		if (!Play.instance) {
-			Play.instance = new Play();
-		}
-		return Play.instance;
-	}
+  static getInstance(): Play {
+    if (!Play.instance) {
+      Play.instance = new Play();
+    }
+    return Play.instance;
+  }
 
-	// Canvas setup
-	setCanvas(canvas: HTMLCanvasElement): void {
-		this.canvas = canvas;
-		const ctx = canvas.getContext("2d");
-		this.context = ctx ?? undefined;
-	}
+  // Canvas setup
+  setCanvas(canvas: HTMLCanvasElement): void {
+    this.canvas = canvas;
+    const ctx = canvas.getContext("2d");
+    this.context = ctx ?? undefined;
+  }
 
-	getCanvas(): HTMLCanvasElement | undefined {
-		return this.canvas;
-	}
+  getCanvas(): HTMLCanvasElement | undefined {
+    return this.canvas;
+  }
 
-	getContext(): CanvasRenderingContext2D | undefined {
-		return this.context;
-	}
+  getContext(): CanvasRenderingContext2D | undefined {
+    return this.context;
+  }
 
-	// Animation loop
-	start(
-		callback: (frame: {
-			time: number;
-			deltaTime: number;
-			frame: number;
-		}) => void,
-	): () => void {
-		return this.animationLoop.onFrame(callback);
-	}
+  // Animation loop
+  start(
+    callback: (frame: {
+      time: number;
+      deltaTime: number;
+      frame: number;
+    }) => void,
+  ): () => void {
+    return this.animationLoop.onFrame(callback);
+  }
 
-	play(): void {
-		this.animationLoop.start();
-	}
+  play(): void {
+    this.animationLoop.start();
+  }
 
-	pause(): void {
-		this.animationLoop.stop();
-	}
+  pause(): void {
+    this.animationLoop.stop();
+  }
 
-	// Utilities
-	clear(color?: string | any): void {
-		if (!this.context || !this.canvas) return;
+  // Utilities
+  clear(color?: string | any): void {
+    if (!this.context || !this.canvas) return;
 
-		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-		if (color) {
-			const prevFillStyle = this.context.fillStyle;
-			this.context.fillStyle = this.convertColor(color);
-			this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-			this.context.fillStyle = prevFillStyle;
-		}
-	}
+    if (color) {
+      const prevFillStyle = this.context.fillStyle;
+      this.context.fillStyle = this.convertColor(color);
+      this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      this.context.fillStyle = prevFillStyle;
+    }
+  }
 
-	background(color: string | any): void {
-		this.clear(color);
-	}
+  background(color: string | any): void {
+    this.clear(color);
+  }
 
-	// Drawing utilities
-	setStroke(color: string | any, width: number = 1): void {
-		if (!this.context) return;
-		this.context.strokeStyle = this.convertColor(color);
-		this.context.lineWidth = width;
-	}
+  // Drawing utilities
+  setStroke(color: string | any, width: number = 1): void {
+    if (!this.context) return;
+    this.context.strokeStyle = this.convertColor(color);
+    this.context.lineWidth = width;
+  }
 
-	fill(color: string | any): void {
-		if (!this.context) return;
-		this.context.fillStyle = this.convertColor(color);
-	}
+  fill(color: string | any): void {
+    if (!this.context) return;
+    this.context.fillStyle = this.convertColor(color);
+  }
 
-	private convertColor(color: string | any): string {
-		if (typeof color === "string") return color;
+  private convertColor(color: string | any): string {
+    if (typeof color === "string") return color;
 
-		// Handle RGB color objects
-		if (
-			color &&
-			typeof color.r === "number" &&
-			typeof color.g === "number" &&
-			typeof color.b === "number"
-		) {
-			if (typeof color.a === "number") {
-				return toCssRgba(color);
-			}
-			return toCssRgb(color);
-		}
+    // Handle RGB color objects
+    if (
+      color &&
+      typeof color.r === "number" &&
+      typeof color.g === "number" &&
+      typeof color.b === "number"
+    ) {
+      if (typeof color.a === "number") {
+        return toCssRgba(color);
+      }
+      return toCssRgb(color);
+    }
 
-		// Handle HSL color objects
-		if (
-			color &&
-			typeof color.h === "number" &&
-			typeof color.s === "number" &&
-			typeof color.l === "number"
-		) {
-			if (typeof color.a === "number") {
-				return toCssHsla(color);
-			}
-			return toCssHsl(color);
-		}
+    // Handle HSL color objects
+    if (
+      color &&
+      typeof color.h === "number" &&
+      typeof color.s === "number" &&
+      typeof color.l === "number"
+    ) {
+      if (typeof color.a === "number") {
+        return toCssHsla(color);
+      }
+      return toCssHsl(color);
+    }
 
-		return "#000000"; // fallback
-	}
+    return "#000000"; // fallback
+  }
 
-	noStroke(): void {
-		if (!this.context) return;
-		this.context.strokeStyle = "transparent";
-	}
+  noStroke(): void {
+    if (!this.context) return;
+    this.context.strokeStyle = "transparent";
+  }
 
-	noFill(): void {
-		if (!this.context) return;
-		this.context.fillStyle = "transparent";
-	}
+  noFill(): void {
+    if (!this.context) return;
+    this.context.fillStyle = "transparent";
+  }
 
-	// Shape drawing
-	drawCircle(
-		x: number,
-		y: number,
-		radius: number,
-		filled: boolean = true,
-	): void {
-		if (!this.context) return;
+  // Shape drawing
+  drawCircle(
+    x: number,
+    y: number,
+    radius: number,
+    filled: boolean = true,
+  ): void {
+    if (!this.context) return;
 
-		this.context.beginPath();
-		this.context.arc(x, y, radius, 0, TWO_PI);
+    this.context.beginPath();
+    this.context.arc(x, y, radius, 0, TWO_PI);
 
-		if (filled) {
-			this.context.fill();
-		} else {
-			this.context.stroke();
-		}
-	}
+    if (filled) {
+      this.context.fill();
+    } else {
+      this.context.stroke();
+    }
+  }
 
-	drawRect(
-		x: number,
-		y: number,
-		width: number,
-		height: number,
-		filled: boolean = true,
-	): void {
-		if (!this.context) return;
+  drawRect(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    filled: boolean = true,
+  ): void {
+    if (!this.context) return;
 
-		if (filled) {
-			this.context.fillRect(x, y, width, height);
-		} else {
-			this.context.strokeRect(x, y, width, height);
-		}
-	}
+    if (filled) {
+      this.context.fillRect(x, y, width, height);
+    } else {
+      this.context.strokeRect(x, y, width, height);
+    }
+  }
 
-	drawLine(x1: number, y1: number, x2: number, y2: number): void {
-		if (!this.context) return;
+  drawLine(x1: number, y1: number, x2: number, y2: number): void {
+    if (!this.context) return;
 
-		this.context.beginPath();
-		this.context.moveTo(x1, y1);
-		this.context.lineTo(x2, y2);
-		this.context.stroke();
-	}
+    this.context.beginPath();
+    this.context.moveTo(x1, y1);
+    this.context.lineTo(x2, y2);
+    this.context.stroke();
+  }
 
-	drawPolygon(points: Point[], filled: boolean = true): void {
-		if (!this.context || points.length < 3) return;
+  drawPolygon(points: Point[], filled: boolean = true): void {
+    if (!this.context || points.length < 3) return;
 
-		this.context.beginPath();
-		this.context.moveTo(points[0].x, points[0].y);
+    this.context.beginPath();
+    this.context.moveTo(points[0].x, points[0].y);
 
-		for (let i = 1; i < points.length; i++) {
-			this.context.lineTo(points[i].x, points[i].y);
-		}
+    for (let i = 1; i < points.length; i++) {
+      this.context.lineTo(points[i].x, points[i].y);
+    }
 
-		this.context.closePath();
+    this.context.closePath();
 
-		if (filled) {
-			this.context.fill();
-		} else {
-			this.context.stroke();
-		}
-	}
+    if (filled) {
+      this.context.fill();
+    } else {
+      this.context.stroke();
+    }
+  }
 
-	// Text drawing
-	drawText(text: string, x: number, y: number, font?: string): void {
-		if (!this.context) return;
+  // Text drawing
+  drawText(text: string, x: number, y: number, font?: string): void {
+    if (!this.context) return;
 
-		if (font) {
-			this.context.font = font;
-		}
+    if (font) {
+      this.context.font = font;
+    }
 
-		this.context.fillText(text, x, y);
-	}
+    this.context.fillText(text, x, y);
+  }
 
-	// Transformations
-	translate(x: number, y: number): void {
-		if (!this.context) return;
-		this.context.translate(x, y);
-	}
+  // Transformations
+  translate(x: number, y: number): void {
+    if (!this.context) return;
+    this.context.translate(x, y);
+  }
 
-	rotate(angle: number): void {
-		if (!this.context) return;
-		this.context.rotate(angle);
-	}
+  rotate(angle: number): void {
+    if (!this.context) return;
+    this.context.rotate(angle);
+  }
 
-	scale(x: number, y: number = x): void {
-		if (!this.context) return;
-		this.context.scale(x, y);
-	}
+  scale(x: number, y: number = x): void {
+    if (!this.context) return;
+    this.context.scale(x, y);
+  }
 
-	pushMatrix(): void {
-		if (!this.context) return;
-		this.context.save();
-	}
+  pushMatrix(): void {
+    if (!this.context) return;
+    this.context.save();
+  }
 
-	popMatrix(): void {
-		if (!this.context) return;
-		this.context.restore();
-	}
+  popMatrix(): void {
+    if (!this.context) return;
+    this.context.restore();
+  }
 
-	// Convenience drawing methods
-	rect(x: number, y: number, width: number, height: number): void {
-		this.drawRect(x, y, width, height, true);
-	}
+  // Convenience drawing methods
+  rect(x: number, y: number, width: number, height: number): void {
+    this.drawRect(x, y, width, height, true);
+  }
 
-	circle(x: number, y: number, radius: number): void {
-		this.drawCircle(x, y, radius, true);
-	}
+  circle(x: number, y: number, radius: number): void {
+    this.drawCircle(x, y, radius, true);
+  }
 
-	line(x1: number, y1: number, x2: number, y2: number): void {
-		this.drawLine(x1, y1, x2, y2);
-	}
+  line(x1: number, y1: number, x2: number, y2: number): void {
+    this.drawLine(x1, y1, x2, y2);
+  }
 
-	polygon(points: Point[]): void {
-		this.drawPolygon(points, true);
-	}
+  polygon(points: Point[]): void {
+    this.drawPolygon(points, true);
+  }
 
-	text(
-		text: string,
-		x: number,
-		y: number,
-		options?: {
-			align?: "left" | "center" | "right";
-			size?: number;
-			weight?: "normal" | "bold";
-			family?: string;
-		},
-	): void {
-		if (!this.context) return;
+  text(
+    text: string,
+    x: number,
+    y: number,
+    options?: {
+      align?: "left" | "center" | "right";
+      size?: number;
+      weight?: "normal" | "bold";
+      family?: string;
+    },
+  ): void {
+    if (!this.context) return;
 
-		let font = "";
+    let font = "";
 
-		if (options?.weight) {
-			font += options.weight + " ";
-		}
+    if (options?.weight) {
+      font += options.weight + " ";
+    }
 
-		if (options?.size) {
-			font += options.size + "px ";
-		}
+    if (options?.size) {
+      font += options.size + "px ";
+    }
 
-		if (options?.family) {
-			font += options.family;
-		} else {
-			font += "Arial, sans-serif";
-		}
+    if (options?.family) {
+      font += options.family;
+    } else {
+      font += "Arial, sans-serif";
+    }
 
-		this.context.font = font.trim();
+    this.context.font = font.trim();
 
-		if (options?.align) {
-			this.context.textAlign = options.align;
-		}
+    if (options?.align) {
+      this.context.textAlign = options.align;
+    }
 
-		this.context.fillText(text, x, y);
-	}
+    this.context.fillText(text, x, y);
+  }
 
-	strokeWeight(weight: number): void {
-		if (!this.context) return;
-		this.context.lineWidth = weight;
-	}
+  strokeWeight(weight: number): void {
+    if (!this.context) return;
+    this.context.lineWidth = weight;
+  }
 
-	// Path drawing methods
-	beginPath(): void {
-		if (!this.context) return;
-		this.context.beginPath();
-	}
+  // Path drawing methods
+  beginPath(): void {
+    if (!this.context) return;
+    this.context.beginPath();
+  }
 
-	moveTo(x: number, y: number): void {
-		if (!this.context) return;
-		this.context.moveTo(x, y);
-	}
+  moveTo(x: number, y: number): void {
+    if (!this.context) return;
+    this.context.moveTo(x, y);
+  }
 
-	lineTo(x: number, y: number): void {
-		if (!this.context) return;
-		this.context.lineTo(x, y);
-	}
+  lineTo(x: number, y: number): void {
+    if (!this.context) return;
+    this.context.lineTo(x, y);
+  }
 
-	stroke(): void {
-		if (!this.context) return;
-		this.context.stroke();
-	}
+  stroke(): void {
+    if (!this.context) return;
+    this.context.stroke();
+  }
 }
 
 // Global Play instance
@@ -1009,8 +1009,8 @@ export const play = Play.getInstance();
 
 // Quick setup function
 export const setup = (canvas: HTMLCanvasElement): Play => {
-	play.setCanvas(canvas);
-	return play;
+  play.setCanvas(canvas);
+  return play;
 };
 
 // Version information
@@ -1018,251 +1018,251 @@ export const version = "1.0.0";
 
 // Library information
 export const info = {
-	name: "play.ts",
-	version,
-	description: "A TypeScript library for creative coding",
-	author: "play.ts team",
-	license: "MIT",
-	modules: {
-		math: "Mathematical utilities including vectors, matrices, and interpolation",
-		color: "Color manipulation and conversion utilities",
-		animation: "Easing functions and animation utilities",
-		random: "Random number generation and noise functions",
-		geometry: "Geometric shapes and collision detection",
-		physics: "Physics simulation with forces, particles, and constraints",
-		fractals: "Fractal generation, L-Systems, and procedural patterns",
-	},
+  name: "play.ts",
+  version,
+  description: "A TypeScript library for creative coding",
+  author: "play.ts team",
+  license: "MIT",
+  modules: {
+    math: "Mathematical utilities including vectors, matrices, and interpolation",
+    color: "Color manipulation and conversion utilities",
+    animation: "Easing functions and animation utilities",
+    random: "Random number generation and noise functions",
+    geometry: "Geometric shapes and collision detection",
+    physics: "Physics simulation with forces, particles, and constraints",
+    fractals: "Fractal generation, L-Systems, and procedural patterns",
+  },
 };
 
 // Default export
 export default {
-	// Core modules
-	math: {
-		clamp,
-		lerp,
-		map,
-		normalize,
-		vec2,
-		vec2Add,
-		vec2Sub,
-		vec2Mul,
-		vec2Div,
-		vec2Length,
-		vec2Normalize,
-		vec2Distance,
-		vec2Angle,
-		vec2FromAngle,
-		vec2Lerp,
-		vec2Rotate,
-		vec3,
-		vec3Add,
-		vec3Sub,
-		vec3Mul,
-		vec3Div,
-		vec3Length,
-		vec3Normalize,
-		vec3Distance,
-		vec3Lerp,
-		vec3Cross,
-		vec3Dot,
-		PI,
-		TWO_PI,
-		HALF_PI,
-		TAU,
-		degrees,
-		radians,
-	},
+  // Core modules
+  math: {
+    clamp,
+    lerp,
+    map,
+    normalize,
+    vec2,
+    vec2Add,
+    vec2Sub,
+    vec2Mul,
+    vec2Div,
+    vec2Length,
+    vec2Normalize,
+    vec2Distance,
+    vec2Angle,
+    vec2FromAngle,
+    vec2Lerp,
+    vec2Rotate,
+    vec3,
+    vec3Add,
+    vec3Sub,
+    vec3Mul,
+    vec3Div,
+    vec3Length,
+    vec3Normalize,
+    vec3Distance,
+    vec3Lerp,
+    vec3Cross,
+    vec3Dot,
+    PI,
+    TWO_PI,
+    HALF_PI,
+    TAU,
+    degrees,
+    radians,
+  },
 
-	color: {
-		rgb,
-		rgba,
-		hsl,
-		hsla,
-		rgbToHsl,
-		hslToRgb,
-		rgbToHex,
-		hexToRgb,
-		colorLerp,
-		colorLerpHsl,
-		brighten,
-		darken,
-		saturate,
-		desaturate,
-		hueShift,
-		grayscale,
-		invert,
-		complementary,
-		triadic,
-		analogous,
-		colors,
-		toCssRgb,
-		toCssRgba,
-		toCssHsl,
-		toCssHsla,
-	},
+  color: {
+    rgb,
+    rgba,
+    hsl,
+    hsla,
+    rgbToHsl,
+    hslToRgb,
+    rgbToHex,
+    hexToRgb,
+    colorLerp,
+    colorLerpHsl,
+    brighten,
+    darken,
+    saturate,
+    desaturate,
+    hueShift,
+    grayscale,
+    invert,
+    complementary,
+    triadic,
+    analogous,
+    colors,
+    toCssRgb,
+    toCssRgba,
+    toCssHsl,
+    toCssHsla,
+  },
 
-	animation: {
-		linear,
-		easeInQuad,
-		easeOutQuad,
-		easeInOutQuad,
-		easeInCubic,
-		easeOutCubic,
-		easeInOutCubic,
-		easeInSine,
-		easeOutSine,
-		easeInOutSine,
-		easeInExpo,
-		easeOutExpo,
-		easeInOutExpo,
-		easeInCirc,
-		easeOutCirc,
-		easeInOutCirc,
-		easeInBack,
-		easeOutBack,
-		easeInOutBack,
-		easeInElastic,
-		easeOutElastic,
-		easeInOutElastic,
-		easeInBounce,
-		easeOutBounce,
-		easeInOutBounce,
-		easings,
-		AnimationLoop,
-		Tween,
-		tween,
-		animate,
-		Spring,
-		spring,
-		delay,
-	},
+  animation: {
+    linear,
+    easeInQuad,
+    easeOutQuad,
+    easeInOutQuad,
+    easeInCubic,
+    easeOutCubic,
+    easeInOutCubic,
+    easeInSine,
+    easeOutSine,
+    easeInOutSine,
+    easeInExpo,
+    easeOutExpo,
+    easeInOutExpo,
+    easeInCirc,
+    easeOutCirc,
+    easeInOutCirc,
+    easeInBack,
+    easeOutBack,
+    easeInOutBack,
+    easeInElastic,
+    easeOutElastic,
+    easeInOutElastic,
+    easeInBounce,
+    easeOutBounce,
+    easeInOutBounce,
+    easings,
+    AnimationLoop,
+    Tween,
+    tween,
+    animate,
+    Spring,
+    spring,
+    delay,
+  },
 
-	random: {
-		SeededRandom,
-		SimpleNoise,
-		FractalNoise,
-		PerlinNoise,
-		random,
-		noise,
-		fractalNoise,
-		randomInt,
-		randomFloat,
-		randomBool,
-		randomChoice,
-		randomSign,
-		randomAngle,
-		randomInCircle,
-		randomOnCircle,
-		randomGaussian,
-		setSeed,
-		weightedChoice,
-		shuffle,
-		randomColor,
-		randomColorHSL,
-		randomDistribution,
-		randomWalk,
-		sample,
-		sampleWeighted,
-	},
+  random: {
+    SeededRandom,
+    SimpleNoise,
+    FractalNoise,
+    PerlinNoise,
+    random,
+    noise,
+    fractalNoise,
+    randomInt,
+    randomFloat,
+    randomBool,
+    randomChoice,
+    randomSign,
+    randomAngle,
+    randomInCircle,
+    randomOnCircle,
+    randomGaussian,
+    setSeed,
+    weightedChoice,
+    shuffle,
+    randomColor,
+    randomColorHSL,
+    randomDistribution,
+    randomWalk,
+    sample,
+    sampleWeighted,
+  },
 
-	geometry: {
-		point,
-		pointDistance,
-		pointDistanceSq,
-		pointLerp,
-		pointAngle,
-		size,
-		sizeArea,
-		sizePerimeter,
-		sizeAspectRatio,
-		sizeScale,
-		sizeFit,
-		sizeFill,
-		rect,
-		rectFromPoints,
-		rectFromCenter,
-		rectCenter,
-		rectArea,
-		rectPerimeter,
-		rectExpand,
-		rectScale,
-		rectUnion,
-		rectIntersection,
-		circle,
-		circleCenter,
-		circleArea,
-		circleCircumference,
-		circlePointAt,
-		pointInRect,
-		pointInCircle,
-		rectIntersects,
-		circleIntersects,
-		circleRectIntersects,
-		line,
-		lineLength,
-		lineAngle,
-		linePointAt,
-		lineNormal,
-		lineDirection,
-		lineDistanceToPoint,
-		lineIntersection,
-		polygon,
-		polygonArea,
-		polygonCentroid,
-		polygonPerimeter,
-		pointInPolygon,
-		polygonBoundingBox,
-		regularPolygon,
-		quadraticBezier,
-		cubicBezier,
-		gridPoints,
-		hexGrid,
-		triangle,
-		square,
-		pentagon,
-		hexagon,
-		octagon,
-		star,
-	},
+  geometry: {
+    point,
+    pointDistance,
+    pointDistanceSq,
+    pointLerp,
+    pointAngle,
+    size,
+    sizeArea,
+    sizePerimeter,
+    sizeAspectRatio,
+    sizeScale,
+    sizeFit,
+    sizeFill,
+    rect,
+    rectFromPoints,
+    rectFromCenter,
+    rectCenter,
+    rectArea,
+    rectPerimeter,
+    rectExpand,
+    rectScale,
+    rectUnion,
+    rectIntersection,
+    circle,
+    circleCenter,
+    circleArea,
+    circleCircumference,
+    circlePointAt,
+    pointInRect,
+    pointInCircle,
+    rectIntersects,
+    circleIntersects,
+    circleRectIntersects,
+    line,
+    lineLength,
+    lineAngle,
+    linePointAt,
+    lineNormal,
+    lineDirection,
+    lineDistanceToPoint,
+    lineIntersection,
+    polygon,
+    polygonArea,
+    polygonCentroid,
+    polygonPerimeter,
+    pointInPolygon,
+    polygonBoundingBox,
+    regularPolygon,
+    quadraticBezier,
+    cubicBezier,
+    gridPoints,
+    hexGrid,
+    triangle,
+    square,
+    pentagon,
+    hexagon,
+    octagon,
+    star,
+  },
 
-	physics: {
-		Particle,
-		ParticleSystem,
-		VerletParticle,
-		VerletConstraint,
-		Cloth,
-		gravity,
-		friction,
-		drag,
-		attraction,
-		repulsion,
-		springForce,
-		createOrbit,
-		createExplosion,
-	},
+  physics: {
+    Particle,
+    ParticleSystem,
+    VerletParticle,
+    VerletConstraint,
+    Cloth,
+    gravity,
+    friction,
+    drag,
+    attraction,
+    repulsion,
+    springForce,
+    createOrbit,
+    createExplosion,
+  },
 
-	fractals: {
-		LSystem,
-		Turtle,
-		LSystemInterpreter,
-		lSystems,
-		mandelbrot,
-		mandelbrotSet,
-		julia,
-		juliaSet,
-		sierpinskiTriangle,
-		barnsleyFern,
-		kochSnowflake,
-		createKochSnowflake,
-		fractalTree,
-	},
+  fractals: {
+    LSystem,
+    Turtle,
+    LSystemInterpreter,
+    lSystems,
+    mandelbrot,
+    mandelbrotSet,
+    julia,
+    juliaSet,
+    sierpinskiTriangle,
+    barnsleyFern,
+    kochSnowflake,
+    createKochSnowflake,
+    fractalTree,
+  },
 
-	// Utility classes
-	Play,
-	play,
-	setup,
+  // Utility classes
+  Play,
+  play,
+  setup,
 
-	// Info
-	version,
-	info,
+  // Info
+  version,
+  info,
 };

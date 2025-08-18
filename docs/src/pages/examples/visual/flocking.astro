@@ -1,0 +1,12 @@
+---
+import FlockingExample from "../../../components/examples/FlockingExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Flocking Simulation - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/flocking" : "/examples/visual/flocking"} />
+	<main class="min-h-screen bg-background">
+		<FlockingExample client:load />
+	</main>
+</Layout>

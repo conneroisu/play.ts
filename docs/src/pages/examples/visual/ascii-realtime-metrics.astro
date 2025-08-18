@@ -1,0 +1,12 @@
+---
+import AsciiRealtimeMetricsExample from "../../../components/examples/AsciiRealtimeMetricsExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Real-time Metrics - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-realtime-metrics" : "/examples/visual/ascii-realtime-metrics"} />
+	<main class="min-h-screen bg-background">
+		<AsciiRealtimeMetricsExample client:load />
+	</main>
+</Layout>

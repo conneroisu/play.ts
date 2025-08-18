@@ -1,0 +1,12 @@
+---
+import ChemicalReactorDesignExample from "../../../components/examples/ChemicalReactorDesignExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Chemical Reactor Design - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/chemical-reactor-design" : "/examples/engineering/chemical-reactor-design"} />
+	<main class="min-h-screen bg-background">
+		<ChemicalReactorDesignExample client:load />
+	</main>
+</Layout>

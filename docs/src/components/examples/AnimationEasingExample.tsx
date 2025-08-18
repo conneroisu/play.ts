@@ -30,6 +30,7 @@ import {
 	tween,
 } from "play.ts";
 import { useEffect, useRef, useState } from "react";
+import { createUrl } from "@/lib/utils";
 
 interface EasingFunction {
 	name: string;
@@ -526,7 +527,7 @@ export default function AnimationEasingExample() {
 
 			<div className="mt-6">
 				<a
-					href="/examples/basic"
+					href={createUrl("/examples/basic")}
 					className="inline-block px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
 				>
 					← Back to Examples

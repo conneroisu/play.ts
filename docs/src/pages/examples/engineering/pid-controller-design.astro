@@ -1,0 +1,12 @@
+---
+import PidControllerDesignExample from "../../../components/examples/PidControllerDesignExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="PID Controller Design - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/pid-controller-design" : "/examples/engineering/pid-controller-design"} />
+	<main class="min-h-screen bg-background">
+		<PidControllerDesignExample client:load />
+	</main>
+</Layout>

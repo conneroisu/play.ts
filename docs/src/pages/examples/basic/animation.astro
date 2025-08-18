@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 ---
 
 <Layout title="Animation Easing - play.ts">
-	<Header client:load currentPath="/examples/basic/animation" />
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/basic/animation" : "/examples/basic/animation"} />
 	<main class="min-h-screen bg-background">
 		<AnimationEasingExample client:load />
 	</main>

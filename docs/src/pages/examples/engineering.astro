@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Engineering Examples - play.ts">
-	<Header client:load currentPath="/examples/engineering" />
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering" : "/examples/engineering"} />
 	<main class="min-h-screen bg-background">
 		<div class="container mx-auto px-4 py-8">
 			<div class="mb-8">
@@ -15,42 +15,49 @@ import Layout from "../../layouts/Layout.astro";
 			</div>
 
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<a href="/examples/engineering/signal-processing" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/signal-processing" : "/examples/engineering/signal-processing"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Signal Processing & FFT Analysis</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Advanced signal generation, filtering, and frequency domain analysis with real-time FFT visualization.
 					</p>
 				</a>
 
-				<a href="/examples/engineering/circuit-analysis" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/circuit-analysis" : "/examples/engineering/circuit-analysis"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Circuit Analysis & Simulation</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						AC/DC circuit analysis with impedance calculations, phasor diagrams, and interactive component placement.
 					</p>
 				</a>
 
-				<a href="/examples/engineering/structural-analysis" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/electrical-load-flow" : "/examples/engineering/electrical-load-flow"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Electrical Load Flow Analysis</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Power system analysis tool for voltage regulation, power flow calculation, and system stability assessment.
+					</p>
+				</a>
+
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/structural-analysis" : "/examples/engineering/structural-analysis"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Structural Analysis & FEA</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Finite element analysis for beams and trusses with stress visualization and load distribution.
 					</p>
 				</a>
 
-				<a href="/examples/engineering/heat-transfer" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/heat-transfer" : "/examples/engineering/heat-transfer"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Heat Transfer Simulation</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						2D heat conduction simulation with temperature field visualization and thermal boundary conditions.
 					</p>
 				</a>
 
-				<a href="/examples/engineering/control-systems" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/control-systems" : "/examples/engineering/control-systems"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Control Systems Analysis</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Control theory demonstrations with step response, bode plots, and stability analysis.
 					</p>
 				</a>
 
-				<a href="/examples/engineering/vibration-analysis" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/engineering/vibration-analysis" : "/examples/engineering/vibration-analysis"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Vibration Analysis & Modal Testing</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Structural vibration analysis with frequency response, modal shapes, and resonance identification.

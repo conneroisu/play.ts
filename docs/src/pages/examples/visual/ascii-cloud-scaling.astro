@@ -1,0 +1,12 @@
+---
+import AsciiCloudScalingExample from "../../../components/examples/AsciiCloudScalingExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Cloud Scaling - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-cloud-scaling" : "/examples/visual/ascii-cloud-scaling"} />
+	<main class="min-h-screen bg-background">
+		<AsciiCloudScalingExample client:load />
+	</main>
+</Layout>

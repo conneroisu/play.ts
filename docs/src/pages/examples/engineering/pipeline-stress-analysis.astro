@@ -1,0 +1,12 @@
+---
+import PipelineStressAnalysisExample from "../../../components/examples/PipelineStressAnalysisExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Pipeline Stress Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/pipeline-stress-analysis" : "/examples/engineering/pipeline-stress-analysis"} />
+	<main class="min-h-screen bg-background">
+		<PipelineStressAnalysisExample client:load />
+	</main>
+</Layout>

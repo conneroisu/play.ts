@@ -184,13 +184,10 @@ export const PHI = (1 + Math.sqrt(5)) / 2;
  * @see {@link map} for remapping between different ranges
  */
 export const clamp = (value: number, min: number, max: number): number => {
-	if (min > max) {
-		[min, max] = [
-			max,
-			min,
-		];
-	}
-	return Math.min(Math.max(value, min), max);
+  if (min > max) {
+    [min, max] = [max, min];
+  }
+  return Math.min(Math.max(value, min), max);
 };
 
 /**
@@ -239,17 +236,17 @@ export const clamp = (value: number, min: number, max: number): number => {
  * @see {@link colorLerp} for color interpolation
  */
 export const lerp = (a: number, b: number, t: number): number => {
-	// Handle extreme values
-	if (isNaN(a) || isNaN(b) || isNaN(t)) return NaN;
-	if (t === 0) return a;
-	if (t === 1) return b;
-	if (a === Infinity && b === -Infinity) return NaN;
-	if (a === -Infinity && b === Infinity) return NaN;
-	if (a === Infinity) return Infinity;
-	if (b === Infinity) return Infinity;
-	if (a === -Infinity) return -Infinity;
-	if (b === -Infinity) return -Infinity;
-	return a + (b - a) * t;
+  // Handle extreme values
+  if (isNaN(a) || isNaN(b) || isNaN(t)) return NaN;
+  if (t === 0) return a;
+  if (t === 1) return b;
+  if (a === Infinity && b === -Infinity) return NaN;
+  if (a === -Infinity && b === Infinity) return NaN;
+  if (a === Infinity) return Infinity;
+  if (b === Infinity) return Infinity;
+  if (a === -Infinity) return -Infinity;
+  if (b === -Infinity) return -Infinity;
+  return a + (b - a) * t;
 };
 
 /**
@@ -300,15 +297,15 @@ export const lerp = (a: number, b: number, t: number): number => {
  * @see {@link clamp} for constraining the result to bounds
  */
 export const map = (
-	value: number,
-	inMin: number,
-	inMax: number,
-	outMin: number,
-	outMax: number,
+  value: number,
+  inMin: number,
+  inMax: number,
+  outMin: number,
+  outMax: number,
 ): number => {
-	// Handle zero input range
-	if (inMax === inMin) return Infinity;
-	return outMin + ((value - inMin) * (outMax - outMin)) / (inMax - inMin);
+  // Handle zero input range
+  if (inMax === inMin) return Infinity;
+  return outMin + ((value - inMin) * (outMax - outMin)) / (inMax - inMin);
 };
 
 /**
@@ -354,12 +351,12 @@ export const map = (
  * @see {@link lerp} for converting normalized values back to ranges
  */
 export const normalize = (value: number, min: number, max: number): number => {
-	// Handle zero range
-	if (max === min) {
-		if (value === min) return NaN;
-		return Infinity;
-	}
-	return (value - min) / (max - min);
+  // Handle zero range
+  if (max === min) {
+    if (value === min) return NaN;
+    return Infinity;
+  }
+  return (value - min) / (max - min);
 };
 
 /**
@@ -397,13 +394,9 @@ export const normalize = (value: number, min: number, max: number): number => {
  * @see {@link lerp} for linear interpolation
  * @see {@link clamp} for hard clamping
  */
-export const smoothstep = (
-	edge0: number,
-	edge1: number,
-	x: number,
-): number => {
-	const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
-	return t * t * (3 - 2 * t);
+export const smoothstep = (edge0: number, edge1: number, x: number): number => {
+  const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+  return t * t * (3 - 2 * t);
 };
 
 /**
@@ -442,12 +435,12 @@ export const smoothstep = (
  * @see {@link easeInOutCubic} for animation easing functions
  */
 export const smootherstep = (
-	edge0: number,
-	edge1: number,
-	x: number,
+  edge0: number,
+  edge1: number,
+  x: number,
 ): number => {
-	const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
-	return t * t * t * (t * (t * 6 - 15) + 10);
+  const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+  return t * t * t * (t * (t * 6 - 15) + 10);
 };
 
 /**
@@ -474,7 +467,7 @@ export const smootherstep = (
  * @see {@link PI} and {@link TWO_PI} for common radian constants
  */
 export const degrees = (radians: number): number => {
-	return (radians * 180) / PI;
+  return (radians * 180) / PI;
 };
 
 /**
@@ -501,7 +494,7 @@ export const degrees = (radians: number): number => {
  * @see {@link sin}, {@link cos}, {@link tan} for trigonometric functions that expect radians
  */
 export const radians = (degrees: number): number => {
-	return (degrees * PI) / 180;
+  return (degrees * PI) / 180;
 };
 
 /**
@@ -533,7 +526,7 @@ export const radians = (degrees: number): number => {
  * ```
  */
 export const sign = (x: number): number => {
-	return x > 0 ? 1 : x < 0 ? -1 : 0;
+  return x > 0 ? 1 : x < 0 ? -1 : 0;
 };
 
 /**
@@ -570,7 +563,7 @@ export const sign = (x: number): number => {
  * @see {@link floor} for the integer part
  */
 export const fract = (x: number): number => {
-	return x - Math.floor(x);
+  return x - Math.floor(x);
 };
 
 /**
@@ -613,8 +606,8 @@ export const fract = (x: number): number => {
  * @see {@link map} for range remapping
  */
 export const wrap = (value: number, min: number, max: number): number => {
-	const range = max - min;
-	return range === 0 ? min : min + ((((value - min) % range) + range) % range);
+  const range = max - min;
+  return range === 0 ? min : min + ((((value - min) % range) + range) % range);
 };
 
 // ============================================================================
@@ -646,8 +639,8 @@ export const wrap = (value: number, min: number, max: number): number => {
  * @see {@link vec2Normalize} for unit vectors
  */
 export const vec2 = (x: number, y: number): Vector2 => ({
-	x,
-	y,
+  x,
+  y,
 });
 
 /**
@@ -682,8 +675,8 @@ export const vec2 = (x: number, y: number): Vector2 => ({
  * @see {@link vec2Mul}, {@link vec2Div} for scalar operations
  */
 export const vec2Add = (a: Vector2, b: Vector2): Vector2 => ({
-	x: a.x + b.x,
-	y: a.y + b.y,
+  x: a.x + b.x,
+  y: a.y + b.y,
 });
 
 /**
@@ -719,8 +712,8 @@ export const vec2Add = (a: Vector2, b: Vector2): Vector2 => ({
  * @see {@link vec2Normalize} for unit direction vectors
  */
 export const vec2Sub = (a: Vector2, b: Vector2): Vector2 => ({
-	x: a.x - b.x,
-	y: a.y - b.y,
+  x: a.x - b.x,
+  y: a.y - b.y,
 });
 
 /**
@@ -759,8 +752,8 @@ export const vec2Sub = (a: Vector2, b: Vector2): Vector2 => ({
  * @see {@link vec2Length} for magnitude calculation
  */
 export const vec2Mul = (a: Vector2, scalar: number): Vector2 => ({
-	x: a.x * scalar === 0 ? 0 : a.x * scalar,
-	y: a.y * scalar === 0 ? 0 : a.y * scalar,
+  x: a.x * scalar === 0 ? 0 : a.x * scalar,
+  y: a.y * scalar === 0 ? 0 : a.y * scalar,
 });
 
 /**
@@ -798,8 +791,8 @@ export const vec2Mul = (a: Vector2, scalar: number): Vector2 => ({
  * @see {@link vec2Length} for magnitude calculation
  */
 export const vec2Div = (a: Vector2, scalar: number): Vector2 => ({
-	x: a.x / scalar,
-	y: a.y / scalar,
+  x: a.x / scalar,
+  y: a.y / scalar,
 });
 
 /**
@@ -839,185 +832,165 @@ export const vec2Div = (a: Vector2, scalar: number): Vector2 => ({
  * @see {@link vec2Normalize} for unit vectors
  */
 export const vec2Dot = (a: Vector2, b: Vector2): number => {
-	return a.x * b.x + a.y * b.y;
+  return a.x * b.x + a.y * b.y;
 };
 
 export const vec2Length = (v: Vector2): number => {
-	return Math.sqrt(v.x * v.x + v.y * v.y);
+  return Math.sqrt(v.x * v.x + v.y * v.y);
 };
 
 export const vec2LengthSq = (v: Vector2): number => {
-	return v.x * v.x + v.y * v.y;
+  return v.x * v.x + v.y * v.y;
 };
 
 export const vec2Normalize = (v: Vector2): Vector2 => {
-	const lengthSq = v.x * v.x + v.y * v.y;
-	if (lengthSq === 0) return vec2(0, 0);
-	if (!isFinite(lengthSq)) return vec2(NaN, NaN);
-	const length = Math.sqrt(lengthSq);
-	return {
-		x: v.x / length,
-		y: v.y / length,
-	};
+  const lengthSq = v.x * v.x + v.y * v.y;
+  if (lengthSq === 0) return vec2(0, 0);
+  if (!isFinite(lengthSq)) return vec2(NaN, NaN);
+  const length = Math.sqrt(lengthSq);
+  return {
+    x: v.x / length,
+    y: v.y / length,
+  };
 };
 
 export const vec2Distance = (a: Vector2, b: Vector2): number => {
-	const dx = a.x - b.x;
-	const dy = a.y - b.y;
-	return Math.sqrt(dx * dx + dy * dy);
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return Math.sqrt(dx * dx + dy * dy);
 };
 
 export const vec2Angle = (v: Vector2): number => {
-	return Math.atan2(v.y, v.x);
+  return Math.atan2(v.y, v.x);
 };
 
 export const vec2FromAngle = (angle: number, length: number = 1): Vector2 => ({
-	x: Math.cos(angle) * length,
-	y: Math.sin(angle) * length,
+  x: Math.cos(angle) * length,
+  y: Math.sin(angle) * length,
 });
 
 export const vec2Lerp = (a: Vector2, b: Vector2, t: number): Vector2 => ({
-	x: lerp(a.x, b.x, t),
-	y: lerp(a.y, b.y, t),
+  x: lerp(a.x, b.x, t),
+  y: lerp(a.y, b.y, t),
 });
 
 export const vec2Rotate = (v: Vector2, angle: number): Vector2 => {
-	const cos = Math.cos(angle);
-	const sin = Math.sin(angle);
-	return {
-		x: v.x * cos - v.y * sin,
-		y: v.x * sin + v.y * cos,
-	};
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  return {
+    x: v.x * cos - v.y * sin,
+    y: v.x * sin + v.y * cos,
+  };
 };
 
 // Vector3 utilities
 export const vec3 = (x: number, y: number, z: number): Vector3 => ({
-	x,
-	y,
-	z,
+  x,
+  y,
+  z,
 });
 
 export const vec3Add = (a: Vector3, b: Vector3): Vector3 => ({
-	x: a.x + b.x,
-	y: a.y + b.y,
-	z: a.z + b.z,
+  x: a.x + b.x,
+  y: a.y + b.y,
+  z: a.z + b.z,
 });
 
 export const vec3Sub = (a: Vector3, b: Vector3): Vector3 => ({
-	x: a.x - b.x,
-	y: a.y - b.y,
-	z: a.z - b.z,
+  x: a.x - b.x,
+  y: a.y - b.y,
+  z: a.z - b.z,
 });
 
 export const vec3Mul = (a: Vector3, scalar: number): Vector3 => ({
-	x: a.x * scalar,
-	y: a.y * scalar,
-	z: a.z * scalar,
+  x: a.x * scalar,
+  y: a.y * scalar,
+  z: a.z * scalar,
 });
 
 export const vec3Div = (a: Vector3, scalar: number): Vector3 => ({
-	x: a.x / scalar,
-	y: a.y / scalar,
-	z: a.z / scalar,
+  x: a.x / scalar,
+  y: a.y / scalar,
+  z: a.z / scalar,
 });
 
 export const vec3Dot = (a: Vector3, b: Vector3): number => {
-	return a.x * b.x + a.y * b.y + a.z * b.z;
+  return a.x * b.x + a.y * b.y + a.z * b.z;
 };
 
 export const vec3Cross = (a: Vector3, b: Vector3): Vector3 => ({
-	x: a.y * b.z - a.z * b.y,
-	y: a.z * b.x - a.x * b.z,
-	z: a.x * b.y - a.y * b.x,
+  x: a.y * b.z - a.z * b.y,
+  y: a.z * b.x - a.x * b.z,
+  z: a.x * b.y - a.y * b.x,
 });
 
 export const vec3Length = (v: Vector3): number => {
-	return Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+  return Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 };
 
 export const vec3LengthSq = (v: Vector3): number => {
-	return v.x * v.x + v.y * v.y + v.z * v.z;
+  return v.x * v.x + v.y * v.y + v.z * v.z;
 };
 
 export const vec3Normalize = (v: Vector3): Vector3 => {
-	const length = vec3Length(v);
-	return length > 0 ? vec3Div(v, length) : vec3(0, 0, 0);
+  const length = vec3Length(v);
+  return length > 0 ? vec3Div(v, length) : vec3(0, 0, 0);
 };
 
 export const vec3Distance = (a: Vector3, b: Vector3): number => {
-	return vec3Length(vec3Sub(a, b));
+  return vec3Length(vec3Sub(a, b));
 };
 
 export const vec3Lerp = (a: Vector3, b: Vector3, t: number): Vector3 => ({
-	x: lerp(a.x, b.x, t),
-	y: lerp(a.y, b.y, t),
-	z: lerp(a.z, b.z, t),
+  x: lerp(a.x, b.x, t),
+  y: lerp(a.y, b.y, t),
+  z: lerp(a.z, b.z, t),
 });
 
 // Matrix utilities
 export const mat3Identity = (): Matrix3x3 => ({
-	elements: [
-		1,
-		0,
-		0,
-		0,
-		1,
-		0,
-		0,
-		0,
-		1,
-	],
+  elements: [1, 0, 0, 0, 1, 0, 0, 0, 1],
 });
 
 export const mat3FromValues = (
-	m00: number,
-	m01: number,
-	m02: number,
-	m10: number,
-	m11: number,
-	m12: number,
-	m20: number,
-	m21: number,
-	m22: number,
+  m00: number,
+  m01: number,
+  m02: number,
+  m10: number,
+  m11: number,
+  m12: number,
+  m20: number,
+  m21: number,
+  m22: number,
 ): Matrix3x3 => ({
-	elements: [
-		m00,
-		m01,
-		m02,
-		m10,
-		m11,
-		m12,
-		m20,
-		m21,
-		m22,
-	],
+  elements: [m00, m01, m02, m10, m11, m12, m20, m21, m22],
 });
 
 export const mat3Multiply = (a: Matrix3x3, b: Matrix3x3): Matrix3x3 => {
-	const ae = a.elements;
-	const be = b.elements;
+  const ae = a.elements;
+  const be = b.elements;
 
-	return {
-		elements: [
-			ae[0] * be[0] + ae[1] * be[3] + ae[2] * be[6],
-			ae[0] * be[1] + ae[1] * be[4] + ae[2] * be[7],
-			ae[0] * be[2] + ae[1] * be[5] + ae[2] * be[8],
-			ae[3] * be[0] + ae[4] * be[3] + ae[5] * be[6],
-			ae[3] * be[1] + ae[4] * be[4] + ae[5] * be[7],
-			ae[3] * be[2] + ae[4] * be[5] + ae[5] * be[8],
-			ae[6] * be[0] + ae[7] * be[3] + ae[8] * be[6],
-			ae[6] * be[1] + ae[7] * be[4] + ae[8] * be[7],
-			ae[6] * be[2] + ae[7] * be[5] + ae[8] * be[8],
-		],
-	};
+  return {
+    elements: [
+      ae[0] * be[0] + ae[1] * be[3] + ae[2] * be[6],
+      ae[0] * be[1] + ae[1] * be[4] + ae[2] * be[7],
+      ae[0] * be[2] + ae[1] * be[5] + ae[2] * be[8],
+      ae[3] * be[0] + ae[4] * be[3] + ae[5] * be[6],
+      ae[3] * be[1] + ae[4] * be[4] + ae[5] * be[7],
+      ae[3] * be[2] + ae[4] * be[5] + ae[5] * be[8],
+      ae[6] * be[0] + ae[7] * be[3] + ae[8] * be[6],
+      ae[6] * be[1] + ae[7] * be[4] + ae[8] * be[7],
+      ae[6] * be[2] + ae[7] * be[5] + ae[8] * be[8],
+    ],
+  };
 };
 
 export const mat3TransformVec2 = (m: Matrix3x3, v: Vector2): Vector2 => {
-	const e = m.elements;
-	return {
-		x: e[0] * v.x + e[1] * v.y + e[2],
-		y: e[3] * v.x + e[4] * v.y + e[5],
-	};
+  const e = m.elements;
+  return {
+    x: e[0] * v.x + e[1] * v.y + e[2],
+    y: e[3] * v.x + e[4] * v.y + e[5],
+  };
 };
 
 // Trigonometry utilities

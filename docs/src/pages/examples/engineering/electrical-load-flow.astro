@@ -1,0 +1,12 @@
+---
+import ElectricalLoadFlowExample from "../../../components/examples/ElectricalLoadFlowExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Electrical Load Flow - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/electrical-load-flow" : "/examples/engineering/electrical-load-flow"} />
+	<main class="min-h-screen bg-background">
+		<ElectricalLoadFlowExample client:load />
+	</main>
+</Layout>

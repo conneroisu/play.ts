@@ -1,0 +1,12 @@
+---
+import PowerSystemsExample from "../../../components/examples/PowerSystemsExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Power Systems Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/power-systems" : "/examples/engineering/power-systems"} />
+	<main class="min-h-screen bg-background">
+		<PowerSystemsExample client:load />
+	</main>
+</Layout>

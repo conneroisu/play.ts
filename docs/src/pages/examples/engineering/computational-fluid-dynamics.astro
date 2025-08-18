@@ -1,0 +1,12 @@
+---
+import ComputationalFluidDynamicsExample from "../../../components/examples/ComputationalFluidDynamicsExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Computational Fluid Dynamics - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/computational-fluid-dynamics" : "/examples/engineering/computational-fluid-dynamics"} />
+	<main class="min-h-screen bg-background">
+		<ComputationalFluidDynamicsExample client:load />
+	</main>
+</Layout>

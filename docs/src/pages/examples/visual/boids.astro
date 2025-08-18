@@ -1,0 +1,12 @@
+---
+import BoidsExample from "../../../components/examples/BoidsExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Boids Simulation - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/boids" : "/examples/visual/boids"} />
+	<main class="min-h-screen bg-background">
+		<BoidsExample client:load />
+	</main>
+</Layout>

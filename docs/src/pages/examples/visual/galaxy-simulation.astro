@@ -1,0 +1,12 @@
+---
+import GalaxySimulationExample from "../../../components/examples/GalaxySimulationExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Galaxy Simulation - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/galaxy-simulation" : "/examples/visual/galaxy-simulation"} />
+	<main class="min-h-screen bg-background">
+		<GalaxySimulationExample client:load />
+	</main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import TrafficFlowOptimizationExample from "../../../components/examples/TrafficFlowOptimizationExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Traffic Flow Optimization - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/traffic-flow-optimization" : "/examples/engineering/traffic-flow-optimization"} />
+	<main class="min-h-screen bg-background">
+		<TrafficFlowOptimizationExample client:load />
+	</main>
+</Layout>

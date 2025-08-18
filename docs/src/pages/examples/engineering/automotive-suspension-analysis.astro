@@ -1,0 +1,12 @@
+---
+import AutomotiveSuspensionAnalysisExample from "../../../components/examples/AutomotiveSuspensionAnalysisExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Automotive Suspension Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/automotive-suspension-analysis" : "/examples/engineering/automotive-suspension-analysis"} />
+	<main class="min-h-screen bg-background">
+		<AutomotiveSuspensionAnalysisExample client:load />
+	</main>
+</Layout>

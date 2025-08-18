@@ -1,0 +1,12 @@
+---
+import SignalProcessingExample from "../../../components/examples/SignalProcessingExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Signal Processing - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/signal-processing" : "/examples/engineering/signal-processing"} />
+	<main class="min-h-screen bg-background">
+		<SignalProcessingExample client:load />
+	</main>
+</Layout>

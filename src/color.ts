@@ -89,9 +89,9 @@ import { clamp, lerp } from "./math.ts";
  * @see {@link colors} for predefined color constants
  */
 export const rgb = (r: number, g: number, b: number): RGB => ({
-	r: clamp(r, 0, 255),
-	g: clamp(g, 0, 255),
-	b: clamp(b, 0, 255),
+  r: clamp(r, 0, 255),
+  g: clamp(g, 0, 255),
+  b: clamp(b, 0, 255),
 });
 
 /**
@@ -134,10 +134,10 @@ export const rgb = (r: number, g: number, b: number): RGB => ({
  * @see {@link toCssRgba} for CSS string conversion
  */
 export const rgba = (r: number, g: number, b: number, a: number): RGBA => ({
-	r: clamp(r, 0, 255),
-	g: clamp(g, 0, 255),
-	b: clamp(b, 0, 255),
-	a: clamp(a, 0, 1),
+  r: clamp(r, 0, 255),
+  g: clamp(g, 0, 255),
+  b: clamp(b, 0, 255),
+  a: clamp(a, 0, 1),
 });
 
 /**
@@ -189,9 +189,9 @@ export const rgba = (r: number, g: number, b: number, a: number): RGBA => ({
  * @see {@link hueShift} for hue manipulation
  */
 export const hsl = (h: number, s: number, l: number): HSL => ({
-	h: ((h % 360) + 360) % 360, // Wrap hue to 0-360
-	s: clamp(s, 0, 100),
-	l: clamp(l, 0, 100),
+  h: ((h % 360) + 360) % 360, // Wrap hue to 0-360
+  s: clamp(s, 0, 100),
+  l: clamp(l, 0, 100),
 });
 
 /**
@@ -234,10 +234,10 @@ export const hsl = (h: number, s: number, l: number): HSL => ({
  * @see {@link toCssHsla} for CSS string conversion
  */
 export const hsla = (h: number, s: number, l: number, a: number): HSLA => ({
-	h: ((h % 360) + 360) % 360,
-	s: clamp(s, 0, 100),
-	l: clamp(l, 0, 100),
-	a: clamp(a, 0, 1),
+  h: ((h % 360) + 360) % 360,
+  s: clamp(s, 0, 100),
+  l: clamp(l, 0, 100),
+  a: clamp(a, 0, 1),
 });
 
 // ============================================================================
@@ -286,39 +286,39 @@ export const hsla = (h: number, s: number, l: number, a: number): HSLA => ({
  * @see {@link hueShift} for hue-based manipulation
  */
 export const rgbToHsl = (color: RGB): HSL => {
-	const r = color.r / 255;
-	const g = color.g / 255;
-	const b = color.b / 255;
+  const r = color.r / 255;
+  const g = color.g / 255;
+  const b = color.b / 255;
 
-	const max = Math.max(r, g, b);
-	const min = Math.min(r, g, b);
-	const delta = max - min;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const delta = max - min;
 
-	let h = 0;
-	let s = 0;
-	const l = (max + min) / 2;
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
 
-	if (delta !== 0) {
-		s = l > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+  if (delta !== 0) {
+    s = l > 0.5 ? delta / (2 - max - min) : delta / (max + min);
 
-		switch (max) {
-			case r:
-				h = ((g - b) / delta + (g < b ? 6 : 0)) / 6;
-				break;
-			case g:
-				h = ((b - r) / delta + 2) / 6;
-				break;
-			case b:
-				h = ((r - g) / delta + 4) / 6;
-				break;
-		}
-	}
+    switch (max) {
+      case r:
+        h = ((g - b) / delta + (g < b ? 6 : 0)) / 6;
+        break;
+      case g:
+        h = ((b - r) / delta + 2) / 6;
+        break;
+      case b:
+        h = ((r - g) / delta + 4) / 6;
+        break;
+    }
+  }
 
-	return {
-		h: h * 360,
-		s: s * 100,
-		l: l * 100,
-	};
+  return {
+    h: h * 360,
+    s: s * 100,
+    l: l * 100,
+  };
 };
 
 /**
@@ -363,32 +363,32 @@ export const rgbToHsl = (color: RGB): HSL => {
  * @see {@link toCssRgb} for CSS string output
  */
 export const hslToRgb = (color: HSL): RGB => {
-	const h = color.h / 360;
-	const s = color.s / 100;
-	const l = color.l / 100;
+  const h = color.h / 360;
+  const s = color.s / 100;
+  const l = color.l / 100;
 
-	const hue2rgb = (p: number, q: number, t: number): number => {
-		if (t < 0) t += 1;
-		if (t > 1) t -= 1;
-		if (t < 1 / 6) return p + (q - p) * 6 * t;
-		if (t < 1 / 2) return q;
-		if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-		return p;
-	};
+  const hue2rgb = (p: number, q: number, t: number): number => {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  };
 
-	if (s === 0) {
-		const gray = Math.round(l * 255);
-		return rgb(gray, gray, gray);
-	}
+  if (s === 0) {
+    const gray = Math.round(l * 255);
+    return rgb(gray, gray, gray);
+  }
 
-	const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-	const p = 2 * l - q;
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+  const p = 2 * l - q;
 
-	const r = hue2rgb(p, q, h + 1 / 3);
-	const g = hue2rgb(p, q, h);
-	const b = hue2rgb(p, q, h - 1 / 3);
+  const r = hue2rgb(p, q, h + 1 / 3);
+  const g = hue2rgb(p, q, h);
+  const b = hue2rgb(p, q, h - 1 / 3);
 
-	return rgb(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+  return rgb(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
 };
 
 /**
@@ -427,12 +427,12 @@ export const hslToRgb = (color: HSL): RGB => {
  * @see {@link colors} for predefined hex values
  */
 export const rgbToHex = (color: RGB): string => {
-	const toHex = (n: number): string => {
-		const hex = Math.round(clamp(n, 0, 255)).toString(16);
-		return hex.length === 1 ? "0" + hex : hex;
-	};
+  const toHex = (n: number): string => {
+    const hex = Math.round(clamp(n, 0, 255)).toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  };
 
-	return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
+  return `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
 };
 
 /**
@@ -473,21 +473,21 @@ export const rgbToHex = (color: RGB): string => {
  * @see {@link colors} for predefined color constants
  */
 export const hexToRgb = (hex: string): RGB => {
-	const cleanHex = hex.replace("#", "");
-	const bigint = parseInt(cleanHex, 16);
+  const cleanHex = hex.replace("#", "");
+  const bigint = parseInt(cleanHex, 16);
 
-	if (cleanHex.length === 3) {
-		const r = (bigint >> 8) & 15;
-		const g = (bigint >> 4) & 15;
-		const b = bigint & 15;
-		return rgb(r * 17, g * 17, b * 17);
-	}
+  if (cleanHex.length === 3) {
+    const r = (bigint >> 8) & 15;
+    const g = (bigint >> 4) & 15;
+    const b = bigint & 15;
+    return rgb(r * 17, g * 17, b * 17);
+  }
 
-	const r = (bigint >> 16) & 255;
-	const g = (bigint >> 8) & 255;
-	const b = bigint & 255;
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
 
-	return rgb(r, g, b);
+  return rgb(r, g, b);
 };
 
 // ============================================================================
@@ -537,9 +537,9 @@ export const hexToRgb = (hex: string): RGB => {
  * @see {@link Tween} for animated color transitions
  */
 export const colorLerp = (a: RGB, b: RGB, t: number): RGB => ({
-	r: lerp(a.r, b.r, t),
-	g: lerp(a.g, b.g, t),
-	b: lerp(a.b, b.b, t),
+  r: lerp(a.r, b.r, t),
+  g: lerp(a.g, b.g, t),
+  b: lerp(a.b, b.b, t),
 });
 
 /**
@@ -588,28 +588,28 @@ export const colorLerp = (a: RGB, b: RGB, t: number): RGB => ({
  * @see {@link rgbToHsl} and {@link hslToRgb} for color space conversion
  */
 export const colorLerpHsl = (a: HSL, b: HSL, t: number): HSL => {
-	const h1 = a.h;
-	let h2 = b.h;
+  const h1 = a.h;
+  let h2 = b.h;
 
-	// Check if we're crossing the 0°/360° boundary
-	const diff = h2 - h1;
+  // Check if we're crossing the 0°/360° boundary
+  const diff = h2 - h1;
 
-	// Only use shortest path when the difference suggests crossing boundary
-	if (diff > 180) {
-		// Going the long way, use direct interpolation
-		// 0° to 240° should give 120° at t=0.5
-	} else if (diff < -180) {
-		// Crossing 0° boundary, adjust for shortest path
-		h2 += 360;
-	}
+  // Only use shortest path when the difference suggests crossing boundary
+  if (diff > 180) {
+    // Going the long way, use direct interpolation
+    // 0° to 240° should give 120° at t=0.5
+  } else if (diff < -180) {
+    // Crossing 0° boundary, adjust for shortest path
+    h2 += 360;
+  }
 
-	const h = ((lerp(h1, h2, t) % 360) + 360) % 360;
+  const h = ((lerp(h1, h2, t) % 360) + 360) % 360;
 
-	return {
-		h,
-		s: lerp(a.s, b.s, t),
-		l: lerp(a.l, b.l, t),
-	};
+  return {
+    h,
+    s: lerp(a.s, b.s, t),
+    l: lerp(a.l, b.l, t),
+  };
 };
 
 /**
@@ -651,9 +651,9 @@ export const colorLerpHsl = (a: HSL, b: HSL, t: number): HSL => {
  * @see {@link hsl} for direct HSL color creation
  */
 export const brighten = (color: RGB, amount: number): RGB => {
-	const hslColor = rgbToHsl(color);
-	const newHsl = hsl(hslColor.h, hslColor.s, hslColor.l + amount);
-	return hslToRgb(newHsl);
+  const hslColor = rgbToHsl(color);
+  const newHsl = hsl(hslColor.h, hslColor.s, hslColor.l + amount);
+  return hslToRgb(newHsl);
 };
 
 /**
@@ -680,7 +680,7 @@ export const brighten = (color: RGB, amount: number): RGB => {
  * @see {@link saturate} and {@link desaturate} for saturation control
  */
 export const darken = (color: RGB, amount: number): RGB => {
-	return brighten(color, -amount);
+  return brighten(color, -amount);
 };
 
 /**
@@ -722,9 +722,9 @@ export const darken = (color: RGB, amount: number): RGB => {
  * @see {@link grayscale} for complete desaturation
  */
 export const saturate = (color: RGB, amount: number): RGB => {
-	const hslColor = rgbToHsl(color);
-	const newHsl = hsl(hslColor.h, hslColor.s + amount, hslColor.l);
-	return hslToRgb(newHsl);
+  const hslColor = rgbToHsl(color);
+  const newHsl = hsl(hslColor.h, hslColor.s + amount, hslColor.l);
+  return hslToRgb(newHsl);
 };
 
 /**
@@ -762,7 +762,7 @@ export const saturate = (color: RGB, amount: number): RGB => {
  * @see {@link grayscale} for complete desaturation
  */
 export const desaturate = (color: RGB, amount: number): RGB => {
-	return saturate(color, -amount);
+  return saturate(color, -amount);
 };
 
 /**
@@ -804,9 +804,9 @@ export const desaturate = (color: RGB, amount: number): RGB => {
  * @see {@link analogous} for small hue variations
  */
 export const hueShift = (color: RGB, degrees: number): RGB => {
-	const hslColor = rgbToHsl(color);
-	const newHsl = hsl(hslColor.h + degrees, hslColor.s, hslColor.l);
-	return hslToRgb(newHsl);
+  const hslColor = rgbToHsl(color);
+  const newHsl = hsl(hslColor.h + degrees, hslColor.s, hslColor.l);
+  return hslToRgb(newHsl);
 };
 
 /**
@@ -854,8 +854,8 @@ export const hueShift = (color: RGB, degrees: number): RGB => {
  * @see {@link colorDistance} for color similarity
  */
 export const grayscale = (color: RGB): RGB => {
-	const gray = Math.round(0.299 * color.r + 0.587 * color.g + 0.114 * color.b);
-	return rgb(gray, gray, gray);
+  const gray = Math.round(0.299 * color.r + 0.587 * color.g + 0.114 * color.b);
+  return rgb(gray, gray, gray);
 };
 
 /**
@@ -892,9 +892,9 @@ export const grayscale = (color: RGB): RGB => {
  * @see {@link contrast} for contrast adjustment
  */
 export const invert = (color: RGB): RGB => ({
-	r: 255 - color.r,
-	g: 255 - color.g,
-	b: 255 - color.b,
+  r: 255 - color.r,
+  g: 255 - color.g,
+  b: 255 - color.b,
 });
 
 /**
@@ -940,12 +940,12 @@ export const invert = (color: RGB): RGB => ({
  * @see {@link saturate} and {@link desaturate} for saturation adjustment
  */
 export const contrast = (color: RGB, amount: number): RGB => {
-	const factor = (259 * (amount + 255)) / (255 * (259 - amount));
-	return rgb(
-		clamp(factor * (color.r - 128) + 128, 0, 255),
-		clamp(factor * (color.g - 128) + 128, 0, 255),
-		clamp(factor * (color.b - 128) + 128, 0, 255),
-	);
+  const factor = (259 * (amount + 255)) / (255 * (259 - amount));
+  return rgb(
+    clamp(factor * (color.r - 128) + 128, 0, 255),
+    clamp(factor * (color.g - 128) + 128, 0, 255),
+    clamp(factor * (color.b - 128) + 128, 0, 255),
+  );
 };
 
 // ============================================================================
@@ -986,9 +986,9 @@ export const contrast = (color: RGB, amount: number): RGB => {
  * @see {@link hueShift} for custom hue rotations
  */
 export const complementary = (color: RGB): RGB => {
-	const hslColor = rgbToHsl(color);
-	const newHsl = hsl(hslColor.h + 180, hslColor.s, hslColor.l);
-	return hslToRgb(newHsl);
+  const hslColor = rgbToHsl(color);
+  const newHsl = hsl(hslColor.h + 180, hslColor.s, hslColor.l);
+  return hslToRgb(newHsl);
 };
 
 /**
@@ -1023,19 +1023,11 @@ export const complementary = (color: RGB): RGB => {
  * @see {@link analogous} for subtle harmonies
  * @see {@link tetradic} for four-color harmony
  */
-export const triadic = (
-	color: RGB,
-): [
-	RGB,
-	RGB,
-] => {
-	const hslColor = rgbToHsl(color);
-	const color1 = hslToRgb(hsl(hslColor.h + 120, hslColor.s, hslColor.l));
-	const color2 = hslToRgb(hsl(hslColor.h + 240, hslColor.s, hslColor.l));
-	return [
-		color1,
-		color2,
-	];
+export const triadic = (color: RGB): [RGB, RGB] => {
+  const hslColor = rgbToHsl(color);
+  const color1 = hslToRgb(hsl(hslColor.h + 120, hslColor.s, hslColor.l));
+  const color2 = hslToRgb(hsl(hslColor.h + 240, hslColor.s, hslColor.l));
+  return [color1, color2];
 };
 
 /**
@@ -1071,53 +1063,26 @@ export const triadic = (
  * @see {@link triadic} for balanced three-color schemes
  * @see {@link hueShift} for custom angle shifts
  */
-export const analogous = (
-	color: RGB,
-	angle: number = 30,
-): [
-	RGB,
-	RGB,
-] => {
-	const hslColor = rgbToHsl(color);
-	const color1 = hslToRgb(hsl(hslColor.h + angle, hslColor.s, hslColor.l));
-	const color2 = hslToRgb(hsl(hslColor.h - angle, hslColor.s, hslColor.l));
-	return [
-		color1,
-		color2,
-	];
+export const analogous = (color: RGB, angle: number = 30): [RGB, RGB] => {
+  const hslColor = rgbToHsl(color);
+  const color1 = hslToRgb(hsl(hslColor.h + angle, hslColor.s, hslColor.l));
+  const color2 = hslToRgb(hsl(hslColor.h - angle, hslColor.s, hslColor.l));
+  return [color1, color2];
 };
 
-export const splitComplementary = (
-	color: RGB,
-): [
-	RGB,
-	RGB,
-] => {
-	const hslColor = rgbToHsl(color);
-	const color1 = hslToRgb(hsl(hslColor.h + 150, hslColor.s, hslColor.l));
-	const color2 = hslToRgb(hsl(hslColor.h + 210, hslColor.s, hslColor.l));
-	return [
-		color1,
-		color2,
-	];
+export const splitComplementary = (color: RGB): [RGB, RGB] => {
+  const hslColor = rgbToHsl(color);
+  const color1 = hslToRgb(hsl(hslColor.h + 150, hslColor.s, hslColor.l));
+  const color2 = hslToRgb(hsl(hslColor.h + 210, hslColor.s, hslColor.l));
+  return [color1, color2];
 };
 
-export const tetradic = (
-	color: RGB,
-): [
-	RGB,
-	RGB,
-	RGB,
-] => {
-	const hslColor = rgbToHsl(color);
-	const color1 = hslToRgb(hsl(hslColor.h + 90, hslColor.s, hslColor.l));
-	const color2 = hslToRgb(hsl(hslColor.h + 180, hslColor.s, hslColor.l));
-	const color3 = hslToRgb(hsl(hslColor.h + 270, hslColor.s, hslColor.l));
-	return [
-		color1,
-		color2,
-		color3,
-	];
+export const tetradic = (color: RGB): [RGB, RGB, RGB] => {
+  const hslColor = rgbToHsl(color);
+  const color1 = hslToRgb(hsl(hslColor.h + 90, hslColor.s, hslColor.l));
+  const color2 = hslToRgb(hsl(hslColor.h + 180, hslColor.s, hslColor.l));
+  const color3 = hslToRgb(hsl(hslColor.h + 270, hslColor.s, hslColor.l));
+  return [color1, color2, color3];
 };
 
 // ============================================================================
@@ -1162,10 +1127,10 @@ export const tetradic = (
  * @see {@link colorSimilarity} for normalized similarity (0-1)
  */
 export const colorDistance = (a: RGB, b: RGB): number => {
-	const dr = a.r - b.r;
-	const dg = a.g - b.g;
-	const db = a.b - b.b;
-	return Math.sqrt(dr * dr + dg * dg + db * db);
+  const dr = a.r - b.r;
+  const dg = a.g - b.g;
+  const db = a.b - b.b;
+  return Math.sqrt(dr * dr + dg * dg + db * db);
 };
 
 /**
@@ -1210,50 +1175,50 @@ export const colorDistance = (a: RGB, b: RGB): number => {
  * @see {@link colorDistance} for raw distance values
  */
 export const colorSimilarity = (a: RGB, b: RGB): number => {
-	const maxDistance = Math.sqrt(3 * 255 * 255);
-	return 1 - colorDistance(a, b) / maxDistance;
+  const maxDistance = Math.sqrt(3 * 255 * 255);
+  return 1 - colorDistance(a, b) / maxDistance;
 };
 
 // Predefined colors
 export const colors = {
-	// Web colors
-	white: rgb(255, 255, 255),
-	black: rgb(0, 0, 0),
-	red: rgb(255, 0, 0),
-	green: rgb(0, 255, 0),
-	blue: rgb(0, 0, 255),
-	yellow: rgb(255, 255, 0),
-	cyan: rgb(0, 255, 255),
-	magenta: rgb(255, 0, 255),
+  // Web colors
+  white: rgb(255, 255, 255),
+  black: rgb(0, 0, 0),
+  red: rgb(255, 0, 0),
+  green: rgb(0, 255, 0),
+  blue: rgb(0, 0, 255),
+  yellow: rgb(255, 255, 0),
+  cyan: rgb(0, 255, 255),
+  magenta: rgb(255, 0, 255),
 
-	// Grays
-	gray: rgb(128, 128, 128),
-	lightGray: rgb(192, 192, 192),
-	darkGray: rgb(64, 64, 64),
+  // Grays
+  gray: rgb(128, 128, 128),
+  lightGray: rgb(192, 192, 192),
+  darkGray: rgb(64, 64, 64),
 
-	// Common colors
-	orange: rgb(255, 165, 0),
-	purple: rgb(128, 0, 128),
-	pink: rgb(255, 192, 203),
-	brown: rgb(165, 42, 42),
+  // Common colors
+  orange: rgb(255, 165, 0),
+  purple: rgb(128, 0, 128),
+  pink: rgb(255, 192, 203),
+  brown: rgb(165, 42, 42),
 
-	// Transparent
-	transparent: rgba(0, 0, 0, 0),
+  // Transparent
+  transparent: rgba(0, 0, 0, 0),
 } as const;
 
 // CSS color string functions
 export const toCssRgb = (color: RGB): string => {
-	return `rgb(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)})`;
+  return `rgb(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)})`;
 };
 
 export const toCssRgba = (color: RGBA): string => {
-	return `rgba(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)}, ${color.a})`;
+  return `rgba(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)}, ${color.a})`;
 };
 
 export const toCssHsl = (color: HSL): string => {
-	return `hsl(${Math.round(color.h)}, ${Math.round(color.s)}%, ${Math.round(color.l)}%)`;
+  return `hsl(${Math.round(color.h)}, ${Math.round(color.s)}%, ${Math.round(color.l)}%)`;
 };
 
 export const toCssHsla = (color: HSLA): string => {
-	return `hsla(${Math.round(color.h)}, ${Math.round(color.s)}%, ${Math.round(color.l)}%, ${color.a})`;
+  return `hsla(${Math.round(color.h)}, ${Math.round(color.s)}%, ${Math.round(color.l)}%, ${color.a})`;
 };

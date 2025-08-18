@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Visual Examples - play.ts">
-	<Header client:load currentPath="/examples/visual" />
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual" : "/examples/visual"} />
 	<main class="min-h-screen bg-background">
 		<div class="container mx-auto px-4 py-8">
 			<div class="mb-8">
@@ -15,45 +15,66 @@ import Layout from "../../layouts/Layout.astro";
 			</div>
 
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-				<a href="/examples/visual/basic-shapes" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/basic-shapes" : "/examples/visual/basic-shapes"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Interactive Shape Canvas</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Fundamental shape rendering with interactive controls and animation effects.
 					</p>
 				</a>
 
-				<a href="/examples/visual/particle-system" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/particles" : "/examples/visual/particles"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Advanced Particle Physics System</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Complex particle effects with gravity, collisions, and force-based interactions.
 					</p>
 				</a>
 
-				<a href="/examples/visual/mandelbrot" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/flocking" : "/examples/visual/flocking"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Craig Reynolds Boids Flocking</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Complete emergent behavior simulation with interactive forces, real-time parameters, and visual debugging.
+					</p>
+				</a>
+
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/mandelbrot" : "/examples/visual/mandelbrot"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Interactive Mandelbrot Set Explorer</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Real-time fractal computation with infinite zoom, multiple color palettes, and progressive rendering.
 					</p>
 				</a>
 
-				<a href="/examples/visual/game-of-life" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/conway" : "/examples/visual/conway"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Conway's Game of Life Simulator</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Complete cellular automata with famous patterns, interactive editing, and educational rule visualization.
 					</p>
 				</a>
 
-				<a href="/examples/visual/wave-interference" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/wave-interference" : "/examples/visual/wave-interference"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Advanced Wave Physics Simulator</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Multi-source interference with real-time controls, preset patterns, and educational wave mechanics.
 					</p>
 				</a>
 
-				<a href="/examples/visual/ascii-fire" class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-fire" : "/examples/visual/ascii-fire"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
 					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">ASCII Fire Simulation</h3>
 					<p class="text-gray-600 dark:text-gray-300 text-sm">
 						Real-time fire physics with heat diffusion, wind effects, click-to-ignite interactions, and temperature visualization.
+					</p>
+				</a>
+
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/voronoi" : "/examples/visual/voronoi"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Interactive Voronoi Tessellation</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Lloyd's relaxation optimization with multiple patterns, click-to-add sites, and educational visualizations.
+					</p>
+				</a>
+
+				<a href={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-blockchain-mining" : "/examples/visual/ascii-blockchain-mining"} class="group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+					<h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">ASCII Blockchain Mining Farm</h3>
+					<p class="text-gray-600 dark:text-gray-300 text-sm">
+						Real-time crypto mining simulation with GPU rigs, ASIC miners, hashrate monitoring, and profitability tracking.
 					</p>
 				</a>
 			</div>

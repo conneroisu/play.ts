@@ -104,8 +104,8 @@ import { clamp, cos, PI, pow, sin, sqrt } from "./math.ts";
  * In Node.js, falls back to setTimeout with 16ms interval (~60fps).
  */
 const requestAnimationFrame =
-	(typeof window !== "undefined" && window.requestAnimationFrame) ||
-	((callback: FrameRequestCallback) => setTimeout(callback, 16));
+  (typeof window !== "undefined" && window.requestAnimationFrame) ||
+  ((callback: FrameRequestCallback) => setTimeout(callback, 16));
 
 // ============================================================================
 // Core Easing Functions
@@ -219,7 +219,7 @@ export const easeOutQuad: EasingFunction = (t: number): number => t * (2 - t);
  * ```
  */
 export const easeInOutQuad: EasingFunction = (t: number): number => {
-	return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 };
 
 // ============================================================================
@@ -278,7 +278,7 @@ export const easeInCubic: EasingFunction = (t: number): number => t * t * t;
  * ```
  */
 export const easeOutCubic: EasingFunction = (t: number): number => {
-	return 1 + --t * t * t;
+  return 1 + --t * t * t;
 };
 
 /**
@@ -309,31 +309,30 @@ export const easeOutCubic: EasingFunction = (t: number): number => {
  * ```
  */
 export const easeInOutCubic: EasingFunction = (t: number): number => {
-	return t < 0.5 ? 4 * t * t * t : 1 - 4 * (1 - t) * (1 - t) * (1 - t);
+  return t < 0.5 ? 4 * t * t * t : 1 - 4 * (1 - t) * (1 - t) * (1 - t);
 };
 
 // Quartic easing functions
-export const easeInQuart: EasingFunction = (t: number): number =>
-	t * t * t * t;
+export const easeInQuart: EasingFunction = (t: number): number => t * t * t * t;
 
 export const easeOutQuart: EasingFunction = (t: number): number => {
-	return 1 - --t * t * t * t;
+  return 1 - --t * t * t * t;
 };
 
 export const easeInOutQuart: EasingFunction = (t: number): number => {
-	return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
+  return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * --t * t * t * t;
 };
 
 // Quintic easing functions
 export const easeInQuint: EasingFunction = (t: number): number =>
-	t * t * t * t * t;
+  t * t * t * t * t;
 
 export const easeOutQuint: EasingFunction = (t: number): number => {
-	return 1 + --t * t * t * t * t;
+  return 1 + --t * t * t * t * t;
 };
 
 export const easeInOutQuint: EasingFunction = (t: number): number => {
-	return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
+  return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
 };
 
 // ============================================================================
@@ -366,7 +365,7 @@ export const easeInOutQuint: EasingFunction = (t: number): number => {
  * ```
  */
 export const easeInSine: EasingFunction = (t: number): number => {
-	return 1 - cos((t * PI) / 2);
+  return 1 - cos((t * PI) / 2);
 };
 
 /**
@@ -396,7 +395,7 @@ export const easeInSine: EasingFunction = (t: number): number => {
  * ```
  */
 export const easeOutSine: EasingFunction = (t: number): number => {
-	return sin((t * PI) / 2);
+  return sin((t * PI) / 2);
 };
 
 /**
@@ -426,394 +425,392 @@ export const easeOutSine: EasingFunction = (t: number): number => {
  * ```
  */
 export const easeInOutSine: EasingFunction = (t: number): number => {
-	return 0.5 * (1 - cos(PI * t));
+  return 0.5 * (1 - cos(PI * t));
 };
 
 // Exponential easing functions
 export const easeInExpo: EasingFunction = (t: number): number => {
-	return t === 0 ? 0 : pow(2, 10 * (t - 1));
+  return t === 0 ? 0 : pow(2, 10 * (t - 1));
 };
 
 export const easeOutExpo: EasingFunction = (t: number): number => {
-	return t === 1 ? 1 : 1 - pow(2, -10 * t);
+  return t === 1 ? 1 : 1 - pow(2, -10 * t);
 };
 
 export const easeInOutExpo: EasingFunction = (t: number): number => {
-	if (t === 0) return 0;
-	if (t === 1) return 1;
-	return t < 0.5
-		? 0.5 * pow(2, 20 * t - 10)
-		: 0.5 * (2 - pow(2, -20 * t + 10));
+  if (t === 0) return 0;
+  if (t === 1) return 1;
+  return t < 0.5 ? 0.5 * pow(2, 20 * t - 10) : 0.5 * (2 - pow(2, -20 * t + 10));
 };
 
 // Circular easing functions
 export const easeInCirc: EasingFunction = (t: number): number => {
-	return 1 - sqrt(1 - t * t);
+  return 1 - sqrt(1 - t * t);
 };
 
 export const easeOutCirc: EasingFunction = (t: number): number => {
-	return sqrt(1 - --t * t);
+  return sqrt(1 - --t * t);
 };
 
 export const easeInOutCirc: EasingFunction = (t: number): number => {
-	return t < 0.5
-		? 0.5 * (1 - sqrt(1 - 4 * t * t))
-		: 0.5 * (sqrt(1 - (2 * t - 2) * (2 * t - 2)) + 1);
+  return t < 0.5
+    ? 0.5 * (1 - sqrt(1 - 4 * t * t))
+    : 0.5 * (sqrt(1 - (2 * t - 2) * (2 * t - 2)) + 1);
 };
 
 // Back easing functions
 export const easeInBack: EasingFunction = (t: number): number => {
-	const c1 = 1.70158;
-	const c3 = c1 + 1;
-	return c3 * t * t * t - c1 * t * t;
+  const c1 = 1.70158;
+  const c3 = c1 + 1;
+  return c3 * t * t * t - c1 * t * t;
 };
 
 export const easeOutBack: EasingFunction = (t: number): number => {
-	const c1 = 1.70158;
-	const c3 = c1 + 1;
-	return 1 + c3 * pow(t - 1, 3) + c1 * pow(t - 1, 2);
+  const c1 = 1.70158;
+  const c3 = c1 + 1;
+  return 1 + c3 * pow(t - 1, 3) + c1 * pow(t - 1, 2);
 };
 
 export const easeInOutBack: EasingFunction = (t: number): number => {
-	const c1 = 1.70158;
-	const c2 = c1 * 1.525;
-	return t < 0.5
-		? (pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
-		: (pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+  const c1 = 1.70158;
+  const c2 = c1 * 1.525;
+  return t < 0.5
+    ? (pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+    : (pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
 };
 
 // Elastic easing functions
 export const easeInElastic: EasingFunction = (t: number): number => {
-	const c4 = (2 * PI) / 3;
-	return t === 0
-		? 0
-		: t === 1
-			? 1
-			: -pow(2, 10 * t - 10) * sin((t * 10 - 10.75) * c4);
+  const c4 = (2 * PI) / 3;
+  return t === 0
+    ? 0
+    : t === 1
+      ? 1
+      : -pow(2, 10 * t - 10) * sin((t * 10 - 10.75) * c4);
 };
 
 export const easeOutElastic: EasingFunction = (t: number): number => {
-	const c4 = (2 * PI) / 3;
-	return t === 0
-		? 0
-		: t === 1
-			? 1
-			: pow(2, -10 * t) * sin((t * 10 - 0.75) * c4) + 1;
+  const c4 = (2 * PI) / 3;
+  return t === 0
+    ? 0
+    : t === 1
+      ? 1
+      : pow(2, -10 * t) * sin((t * 10 - 0.75) * c4) + 1;
 };
 
 export const easeInOutElastic: EasingFunction = (t: number): number => {
-	const c5 = (2 * PI) / 4.5;
-	return t === 0
-		? 0
-		: t === 1
-			? 1
-			: t < 0.5
-				? -(pow(2, 20 * t - 10) * sin((20 * t - 11.125) * c5)) / 2
-				: (pow(2, -20 * t + 10) * sin((20 * t - 11.125) * c5)) / 2 + 1;
+  const c5 = (2 * PI) / 4.5;
+  return t === 0
+    ? 0
+    : t === 1
+      ? 1
+      : t < 0.5
+        ? -(pow(2, 20 * t - 10) * sin((20 * t - 11.125) * c5)) / 2
+        : (pow(2, -20 * t + 10) * sin((20 * t - 11.125) * c5)) / 2 + 1;
 };
 
 // Bounce easing functions
 export const easeInBounce: EasingFunction = (t: number): number => {
-	return 1 - easeOutBounce(1 - t);
+  return 1 - easeOutBounce(1 - t);
 };
 
 export const easeOutBounce: EasingFunction = (t: number): number => {
-	const n1 = 7.5625;
-	const d1 = 2.75;
+  const n1 = 7.5625;
+  const d1 = 2.75;
 
-	if (t < 1 / d1) {
-		return n1 * t * t;
-	} else if (t < 2 / d1) {
-		return n1 * (t -= 1.5 / d1) * t + 0.75;
-	} else if (t < 2.5 / d1) {
-		return n1 * (t -= 2.25 / d1) * t + 0.9375;
-	} else {
-		return n1 * (t -= 2.625 / d1) * t + 0.984375;
-	}
+  if (t < 1 / d1) {
+    return n1 * t * t;
+  } else if (t < 2 / d1) {
+    return n1 * (t -= 1.5 / d1) * t + 0.75;
+  } else if (t < 2.5 / d1) {
+    return n1 * (t -= 2.25 / d1) * t + 0.9375;
+  } else {
+    return n1 * (t -= 2.625 / d1) * t + 0.984375;
+  }
 };
 
 export const easeInOutBounce: EasingFunction = (t: number): number => {
-	return t < 0.5
-		? (1 - easeOutBounce(1 - 2 * t)) / 2
-		: (1 + easeOutBounce(2 * t - 1)) / 2;
+  return t < 0.5
+    ? (1 - easeOutBounce(1 - 2 * t)) / 2
+    : (1 + easeOutBounce(2 * t - 1)) / 2;
 };
 
 // Easing collection
 export const easings = {
-	linear,
-	easeInQuad,
-	easeOutQuad,
-	easeInOutQuad,
-	easeInCubic,
-	easeOutCubic,
-	easeInOutCubic,
-	easeInQuart,
-	easeOutQuart,
-	easeInOutQuart,
-	easeInQuint,
-	easeOutQuint,
-	easeInOutQuint,
-	easeInSine,
-	easeOutSine,
-	easeInOutSine,
-	easeInExpo,
-	easeOutExpo,
-	easeInOutExpo,
-	easeInCirc,
-	easeOutCirc,
-	easeInOutCirc,
-	easeInBack,
-	easeOutBack,
-	easeInOutBack,
-	easeInElastic,
-	easeOutElastic,
-	easeInOutElastic,
-	easeInBounce,
-	easeOutBounce,
-	easeInOutBounce,
+  linear,
+  easeInQuad,
+  easeOutQuad,
+  easeInOutQuad,
+  easeInCubic,
+  easeOutCubic,
+  easeInOutCubic,
+  easeInQuart,
+  easeOutQuart,
+  easeInOutQuart,
+  easeInQuint,
+  easeOutQuint,
+  easeInOutQuint,
+  easeInSine,
+  easeOutSine,
+  easeInOutSine,
+  easeInExpo,
+  easeOutExpo,
+  easeInOutExpo,
+  easeInCirc,
+  easeOutCirc,
+  easeInOutCirc,
+  easeInBack,
+  easeOutBack,
+  easeInOutBack,
+  easeInElastic,
+  easeOutElastic,
+  easeInOutElastic,
+  easeInBounce,
+  easeOutBounce,
+  easeInOutBounce,
 } as const;
 
 // Animation frame utilities
 export const createAnimationFrame = (
-	time: number,
-	deltaTime: number,
-	frame: number,
+  time: number,
+  deltaTime: number,
+  frame: number,
 ): AnimationFrame => ({
-	time,
-	deltaTime,
-	frame,
+  time,
+  deltaTime,
+  frame,
 });
 
 // Animation loop utilities
 export class AnimationLoop {
-	private running = false;
-	private startTime = 0;
-	private lastTime = 0;
-	private frameCount = 0;
-	private callbacks: Array<(frame: AnimationFrame) => void> = [];
+  private running = false;
+  private startTime = 0;
+  private lastTime = 0;
+  private frameCount = 0;
+  private callbacks: Array<(frame: AnimationFrame) => void> = [];
 
-	start(): void {
-		if (this.running) return;
+  start(): void {
+    if (this.running) return;
 
-		this.running = true;
-		this.startTime = performance.now();
-		this.lastTime = this.startTime;
-		this.frameCount = 0;
+    this.running = true;
+    this.startTime = performance.now();
+    this.lastTime = this.startTime;
+    this.frameCount = 0;
 
-		this.loop();
-	}
+    this.loop();
+  }
 
-	stop(): void {
-		this.running = false;
-	}
+  stop(): void {
+    this.running = false;
+  }
 
-	onFrame(callback: (frame: AnimationFrame) => void): () => void {
-		this.callbacks.push(callback);
+  onFrame(callback: (frame: AnimationFrame) => void): () => void {
+    this.callbacks.push(callback);
 
-		// Return unsubscribe function
-		return () => {
-			const index = this.callbacks.indexOf(callback);
-			if (index > -1) {
-				this.callbacks.splice(index, 1);
-			}
-		};
-	}
+    // Return unsubscribe function
+    return () => {
+      const index = this.callbacks.indexOf(callback);
+      if (index > -1) {
+        this.callbacks.splice(index, 1);
+      }
+    };
+  }
 
-	private loop(): void {
-		if (!this.running) return;
+  private loop(): void {
+    if (!this.running) return;
 
-		const currentTime = performance.now();
-		const deltaTime = currentTime - this.lastTime;
-		const totalTime = currentTime - this.startTime;
+    const currentTime = performance.now();
+    const deltaTime = currentTime - this.lastTime;
+    const totalTime = currentTime - this.startTime;
 
-		const frame = createAnimationFrame(totalTime, deltaTime, this.frameCount);
+    const frame = createAnimationFrame(totalTime, deltaTime, this.frameCount);
 
-		this.callbacks.forEach((callback) => callback(frame));
+    this.callbacks.forEach((callback) => callback(frame));
 
-		this.lastTime = currentTime;
-		this.frameCount++;
+    this.lastTime = currentTime;
+    this.frameCount++;
 
-		requestAnimationFrame(() => this.loop());
-	}
+    requestAnimationFrame(() => this.loop());
+  }
 }
 
 // Tween utilities
 export class Tween {
-	private startValue: number;
-	private endValue: number;
-	private duration: number;
-	private easing: EasingFunction;
-	private onUpdate: (value: number) => void;
-	private onComplete?: () => void;
-	private startTime = 0;
-	private running = false;
+  private startValue: number;
+  private endValue: number;
+  private duration: number;
+  private easing: EasingFunction;
+  private onUpdate: (value: number) => void;
+  private onComplete?: () => void;
+  private startTime = 0;
+  private running = false;
 
-	constructor(
-		startValue: number,
-		endValue: number,
-		duration: number,
-		easing: EasingFunction = linear,
-		onUpdate: (value: number) => void,
-		onComplete?: () => void,
-	) {
-		this.startValue = startValue;
-		this.endValue = endValue;
-		this.duration = duration;
-		this.easing = easing;
-		this.onUpdate = onUpdate;
-		this.onComplete = onComplete;
-	}
+  constructor(
+    startValue: number,
+    endValue: number,
+    duration: number,
+    easing: EasingFunction = linear,
+    onUpdate: (value: number) => void,
+    onComplete?: () => void,
+  ) {
+    this.startValue = startValue;
+    this.endValue = endValue;
+    this.duration = duration;
+    this.easing = easing;
+    this.onUpdate = onUpdate;
+    this.onComplete = onComplete;
+  }
 
-	start(): void {
-		if (this.running) return;
+  start(): void {
+    if (this.running) return;
 
-		this.running = true;
-		this.startTime = performance.now();
-		this.update();
-	}
+    this.running = true;
+    this.startTime = performance.now();
+    this.update();
+  }
 
-	stop(): void {
-		this.running = false;
-	}
+  stop(): void {
+    this.running = false;
+  }
 
-	private update(): void {
-		if (!this.running) return;
+  private update(): void {
+    if (!this.running) return;
 
-		const currentTime = performance.now();
-		const elapsed = currentTime - this.startTime;
-		const progress = clamp(elapsed / this.duration, 0, 1);
+    const currentTime = performance.now();
+    const elapsed = currentTime - this.startTime;
+    const progress = clamp(elapsed / this.duration, 0, 1);
 
-		const easedProgress = this.easing(progress);
-		const currentValue =
-			this.startValue + (this.endValue - this.startValue) * easedProgress;
+    const easedProgress = this.easing(progress);
+    const currentValue =
+      this.startValue + (this.endValue - this.startValue) * easedProgress;
 
-		this.onUpdate(currentValue);
+    this.onUpdate(currentValue);
 
-		if (progress >= 1) {
-			this.running = false;
-			this.onComplete?.();
-		} else {
-			requestAnimationFrame(() => this.update());
-		}
-	}
+    if (progress >= 1) {
+      this.running = false;
+      this.onComplete?.();
+    } else {
+      requestAnimationFrame(() => this.update());
+    }
+  }
 }
 
 // Utility functions for common animations
 export const tween = (
-	startValue: number,
-	endValue: number,
-	duration: number,
-	easing: EasingFunction = linear,
-	onUpdate: (value: number) => void,
-	onComplete?: () => void,
+  startValue: number,
+  endValue: number,
+  duration: number,
+  easing: EasingFunction = linear,
+  onUpdate: (value: number) => void,
+  onComplete?: () => void,
 ): Tween => {
-	const tweenInstance = new Tween(
-		startValue,
-		endValue,
-		duration,
-		easing,
-		onUpdate,
-		onComplete,
-	);
-	tweenInstance.start();
-	return tweenInstance;
+  const tweenInstance = new Tween(
+    startValue,
+    endValue,
+    duration,
+    easing,
+    onUpdate,
+    onComplete,
+  );
+  tweenInstance.start();
+  return tweenInstance;
 };
 
 export const delay = (ms: number): Promise<void> => {
-	return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 export const animate = (
-	duration: number,
-	easing: EasingFunction = linear,
-	onUpdate: (progress: number) => void,
-	onComplete?: () => void,
+  duration: number,
+  easing: EasingFunction = linear,
+  onUpdate: (progress: number) => void,
+  onComplete?: () => void,
 ): Tween => {
-	return tween(0, 1, duration, easing, onUpdate, onComplete);
+  return tween(0, 1, duration, easing, onUpdate, onComplete);
 };
 
 // Spring animation utilities
 export class Spring {
-	private value: number;
-	private target: number;
-	private velocity = 0;
-	private stiffness: number;
-	private damping: number;
-	private mass: number;
-	private onUpdate: (value: number) => void;
-	private running = false;
+  private value: number;
+  private target: number;
+  private velocity = 0;
+  private stiffness: number;
+  private damping: number;
+  private mass: number;
+  private onUpdate: (value: number) => void;
+  private running = false;
 
-	constructor(
-		initialValue: number,
-		stiffness: number = 0.1,
-		damping: number = 0.8,
-		mass: number = 1,
-		onUpdate: (value: number) => void,
-	) {
-		this.value = initialValue;
-		this.target = initialValue;
-		this.stiffness = stiffness;
-		this.damping = damping;
-		this.mass = mass;
-		this.onUpdate = onUpdate;
-	}
+  constructor(
+    initialValue: number,
+    stiffness: number = 0.1,
+    damping: number = 0.8,
+    mass: number = 1,
+    onUpdate: (value: number) => void,
+  ) {
+    this.value = initialValue;
+    this.target = initialValue;
+    this.stiffness = stiffness;
+    this.damping = damping;
+    this.mass = mass;
+    this.onUpdate = onUpdate;
+  }
 
-	setTarget(target: number): void {
-		this.target = target;
-		if (!this.running) {
-			this.start();
-		}
-	}
+  setTarget(target: number): void {
+    this.target = target;
+    if (!this.running) {
+      this.start();
+    }
+  }
 
-	setValue(value: number): void {
-		this.value = value;
-		this.velocity = 0;
-		this.onUpdate(this.value);
-	}
+  setValue(value: number): void {
+    this.value = value;
+    this.velocity = 0;
+    this.onUpdate(this.value);
+  }
 
-	start(): void {
-		if (this.running) return;
-		this.running = true;
-		this.update();
-	}
+  start(): void {
+    if (this.running) return;
+    this.running = true;
+    this.update();
+  }
 
-	stop(): void {
-		this.running = false;
-	}
+  stop(): void {
+    this.running = false;
+  }
 
-	private update(): void {
-		if (!this.running) return;
+  private update(): void {
+    if (!this.running) return;
 
-		const force = -this.stiffness * (this.value - this.target);
-		const acceleration = force / this.mass;
+    const force = -this.stiffness * (this.value - this.target);
+    const acceleration = force / this.mass;
 
-		this.velocity += acceleration;
-		this.velocity *= this.damping;
-		this.value += this.velocity;
+    this.velocity += acceleration;
+    this.velocity *= this.damping;
+    this.value += this.velocity;
 
-		this.onUpdate(this.value);
+    this.onUpdate(this.value);
 
-		// Stop if close enough to target and velocity is low
-		if (
-			Math.abs(this.value - this.target) < 0.001 &&
-			Math.abs(this.velocity) < 0.001
-		) {
-			this.value = this.target;
-			this.velocity = 0;
-			this.onUpdate(this.value);
-			this.running = false;
-		} else {
-			requestAnimationFrame(() => this.update());
-		}
-	}
+    // Stop if close enough to target and velocity is low
+    if (
+      Math.abs(this.value - this.target) < 0.001 &&
+      Math.abs(this.velocity) < 0.001
+    ) {
+      this.value = this.target;
+      this.velocity = 0;
+      this.onUpdate(this.value);
+      this.running = false;
+    } else {
+      requestAnimationFrame(() => this.update());
+    }
+  }
 }
 
 export const spring = (
-	initialValue: number,
-	stiffness: number = 0.1,
-	damping: number = 0.8,
-	mass: number = 1,
-	onUpdate: (value: number) => void,
+  initialValue: number,
+  stiffness: number = 0.1,
+  damping: number = 0.8,
+  mass: number = 1,
+  onUpdate: (value: number) => void,
 ): Spring => {
-	return new Spring(initialValue, stiffness, damping, mass, onUpdate);
+  return new Spring(initialValue, stiffness, damping, mass, onUpdate);
 };

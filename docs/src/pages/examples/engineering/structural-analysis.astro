@@ -1,0 +1,12 @@
+---
+import StructuralAnalysisExample from "../../../components/examples/StructuralAnalysisExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Structural Analysis - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/structural-analysis" : "/examples/engineering/structural-analysis"} />
+	<main class="min-h-screen bg-background">
+		<StructuralAnalysisExample client:load />
+	</main>
+</Layout>

@@ -52,27 +52,27 @@
  */
 
 import type {
-	Circle,
-	Point,
-	Rectangle,
-	Size,
-	Vector2,
+  Circle,
+  Point,
+  Rectangle,
+  Size,
+  Vector2,
 } from "../types/index.ts";
 import {
-	abs,
-	atan2,
-	cos,
-	max,
-	min,
-	PI,
-	sin,
-	TWO_PI,
-	vec2,
-	vec2Add,
-	vec2Distance,
-	vec2Mul,
-	vec2Normalize,
-	vec2Sub,
+  abs,
+  atan2,
+  cos,
+  max,
+  min,
+  PI,
+  sin,
+  TWO_PI,
+  vec2,
+  vec2Add,
+  vec2Distance,
+  vec2Mul,
+  vec2Normalize,
+  vec2Sub,
 } from "./math.ts";
 
 // ============================================================================
@@ -119,8 +119,8 @@ import {
  * @see {@link Vector2} for vector operations
  */
 export const point = (x: number, y: number): Point => ({
-	x,
-	y,
+  x,
+  y,
 });
 
 /**
@@ -168,7 +168,7 @@ export const point = (x: number, y: number): Point => ({
  * @see {@link vec2Distance} for the underlying vector calculation
  */
 export const pointDistance = (a: Point, b: Point): number => {
-	return vec2Distance(a, b);
+  return vec2Distance(a, b);
 };
 
 /**
@@ -224,9 +224,9 @@ export const pointDistance = (a: Point, b: Point): number => {
  * @see {@link vec2LengthSq} for vector magnitude squared
  */
 export const pointDistanceSq = (a: Point, b: Point): number => {
-	const dx = a.x - b.x;
-	const dy = a.y - b.y;
-	return dx * dx + dy * dy;
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return dx * dx + dy * dy;
 };
 
 /**
@@ -299,10 +299,10 @@ export const pointDistanceSq = (a: Point, b: Point): number => {
  * @see {@link quadraticBezier} and {@link cubicBezier} for curved interpolation
  */
 export const pointLerp = (a: Point, b: Point, t: number): Point => {
-	return {
-		x: a.x + (b.x - a.x) * t,
-		y: a.y + (b.y - a.y) * t,
-	};
+  return {
+    x: a.x + (b.x - a.x) * t,
+    y: a.y + (b.y - a.y) * t,
+  };
 };
 
 /**
@@ -375,7 +375,7 @@ export const pointLerp = (a: Point, b: Point, t: number): Point => {
  * @see {@link vec2FromAngle} for creating vectors from angles
  */
 export const pointAngle = (a: Point, b: Point): number => {
-	return atan2(b.y - a.y, b.x - a.x);
+  return atan2(b.y - a.y, b.x - a.x);
 };
 
 // ============================================================================
@@ -421,8 +421,8 @@ export const pointAngle = (a: Point, b: Point): number => {
  * @see {@link rect} for creating rectangles with size
  */
 export const size = (width: number, height: number): Size => ({
-	width,
-	height,
+  width,
+  height,
 });
 
 /**
@@ -447,7 +447,7 @@ export const size = (width: number, height: number): Size => ({
  * @see {@link sizePerimeter} for perimeter calculations
  */
 export const sizeArea = (s: Size): number => {
-	return s.width * s.height;
+  return s.width * s.height;
 };
 
 /**
@@ -467,7 +467,7 @@ export const sizeArea = (s: Size): number => {
  * ```
  */
 export const sizePerimeter = (s: Size): number => {
-	return 2 * (s.width + s.height);
+  return 2 * (s.width + s.height);
 };
 
 /**
@@ -502,7 +502,7 @@ export const sizePerimeter = (s: Size): number => {
  * @see {@link sizeFit} and {@link sizeFill} for aspect-ratio-aware scaling
  */
 export const sizeAspectRatio = (s: Size): number => {
-	return s.width / s.height;
+  return s.width / s.height;
 };
 
 /**
@@ -540,8 +540,8 @@ export const sizeAspectRatio = (s: Size): number => {
  * @see {@link sizeFill} for container-filling scaling
  */
 export const sizeScale = (s: Size, factor: number): Size => ({
-	width: s.width * factor,
-	height: s.height * factor,
+  width: s.width * factor,
+  height: s.height * factor,
 });
 
 /**
@@ -584,8 +584,8 @@ export const sizeScale = (s: Size, factor: number): Size => ({
  * @see {@link sizeAspectRatio} for aspect ratio calculations
  */
 export const sizeFit = (s: Size, container: Size): Size => {
-	const scale = min(container.width / s.width, container.height / s.height);
-	return sizeScale(s, scale);
+  const scale = min(container.width / s.width, container.height / s.height);
+  return sizeScale(s, scale);
 };
 
 /**
@@ -627,8 +627,8 @@ export const sizeFit = (s: Size, container: Size): Size => {
  * @see {@link sizeAspectRatio} for aspect ratio calculations
  */
 export const sizeFill = (s: Size, container: Size): Size => {
-	const scale = max(container.width / s.width, container.height / s.height);
-	return sizeScale(s, scale);
+  const scale = max(container.width / s.width, container.height / s.height);
+  return sizeScale(s, scale);
 };
 
 // ============================================================================
@@ -663,15 +663,15 @@ export const sizeFill = (s: Size, container: Size): Size => {
  * @see {@link size} for dimension objects
  */
 export const rect = (
-	x: number,
-	y: number,
-	width: number,
-	height: number,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
 ): Rectangle => ({
-	x,
-	y,
-	width,
-	height,
+  x,
+  y,
+  width,
+  height,
 });
 
 /**
@@ -708,11 +708,11 @@ export const rect = (
  * @see {@link polygonBoundingBox} for polygon bounds
  */
 export const rectFromPoints = (p1: Point, p2: Point): Rectangle => {
-	const x = min(p1.x, p2.x);
-	const y = min(p1.y, p2.y);
-	const width = abs(p2.x - p1.x);
-	const height = abs(p2.y - p1.y);
-	return rect(x, y, width, height);
+  const x = min(p1.x, p2.x);
+  const y = min(p1.y, p2.y);
+  const width = abs(p2.x - p1.x);
+  const height = abs(p2.y - p1.y);
+  return rect(x, y, width, height);
 };
 
 /**
@@ -748,40 +748,40 @@ export const rectFromPoints = (p1: Point, p2: Point): Rectangle => {
  * @see {@link size} for dimension objects
  */
 export const rectFromCenter = (center: Point, size: Size): Rectangle => {
-	return rect(
-		center.x - size.width / 2,
-		center.y - size.height / 2,
-		size.width,
-		size.height,
-	);
+  return rect(
+    center.x - size.width / 2,
+    center.y - size.height / 2,
+    size.width,
+    size.height,
+  );
 };
 
 export const rectCenter = (r: Rectangle): Point => {
-	return point(r.x + r.width / 2, r.y + r.height / 2);
+  return point(r.x + r.width / 2, r.y + r.height / 2);
 };
 
 export const rectTopLeft = (r: Rectangle): Point => {
-	return point(r.x, r.y);
+  return point(r.x, r.y);
 };
 
 export const rectTopRight = (r: Rectangle): Point => {
-	return point(r.x + r.width, r.y);
+  return point(r.x + r.width, r.y);
 };
 
 export const rectBottomLeft = (r: Rectangle): Point => {
-	return point(r.x, r.y + r.height);
+  return point(r.x, r.y + r.height);
 };
 
 export const rectBottomRight = (r: Rectangle): Point => {
-	return point(r.x + r.width, r.y + r.height);
+  return point(r.x + r.width, r.y + r.height);
 };
 
 export const rectArea = (r: Rectangle): number => {
-	return r.width * r.height;
+  return r.width * r.height;
 };
 
 export const rectPerimeter = (r: Rectangle): number => {
-	return 2 * (r.width + r.height);
+  return 2 * (r.width + r.height);
 };
 
 /**
@@ -818,12 +818,12 @@ export const rectPerimeter = (r: Rectangle): number => {
  * @see {@link rectCenter} for center calculations
  */
 export const rectExpand = (r: Rectangle, amount: number): Rectangle => {
-	return rect(
-		r.x - amount,
-		r.y - amount,
-		r.width + 2 * amount,
-		r.height + 2 * amount,
-	);
+  return rect(
+    r.x - amount,
+    r.y - amount,
+    r.width + 2 * amount,
+    r.height + 2 * amount,
+  );
 };
 
 /**
@@ -860,15 +860,15 @@ export const rectExpand = (r: Rectangle, amount: number): Rectangle => {
  * @see {@link sizeScale} for size-only scaling
  */
 export const rectScale = (r: Rectangle, factor: number): Rectangle => {
-	const center = rectCenter(r);
-	const newWidth = r.width * factor;
-	const newHeight = r.height * factor;
-	return rect(
-		center.x - newWidth / 2,
-		center.y - newHeight / 2,
-		newWidth,
-		newHeight,
-	);
+  const center = rectCenter(r);
+  const newWidth = r.width * factor;
+  const newHeight = r.height * factor;
+  return rect(
+    center.x - newWidth / 2,
+    center.y - newHeight / 2,
+    newWidth,
+    newHeight,
+  );
 };
 
 /**
@@ -906,11 +906,11 @@ export const rectScale = (r: Rectangle, factor: number): Rectangle => {
  * @see {@link polygonBoundingBox} for polygon bounds
  */
 export const rectUnion = (a: Rectangle, b: Rectangle): Rectangle => {
-	const x = min(a.x, b.x);
-	const y = min(a.y, b.y);
-	const right = max(a.x + a.width, b.x + b.width);
-	const bottom = max(a.y + a.height, b.y + b.height);
-	return rect(x, y, right - x, bottom - y);
+  const x = min(a.x, b.x);
+  const y = min(a.y, b.y);
+  const right = max(a.x + a.width, b.x + b.width);
+  const bottom = max(a.y + a.height, b.y + b.height);
+  return rect(x, y, right - x, bottom - y);
 };
 
 /**
@@ -953,417 +953,415 @@ export const rectUnion = (a: Rectangle, b: Rectangle): Rectangle => {
  * @see {@link pointInRect} for point containment
  */
 export const rectIntersection = (
-	a: Rectangle,
-	b: Rectangle,
+  a: Rectangle,
+  b: Rectangle,
 ): Rectangle | null => {
-	const x = max(a.x, b.x);
-	const y = max(a.y, b.y);
-	const right = min(a.x + a.width, b.x + b.width);
-	const bottom = min(a.y + a.height, b.y + b.height);
+  const x = max(a.x, b.x);
+  const y = max(a.y, b.y);
+  const right = min(a.x + a.width, b.x + b.width);
+  const bottom = min(a.y + a.height, b.y + b.height);
 
-	if (x >= right || y >= bottom) {
-		return null;
-	}
+  if (x >= right || y >= bottom) {
+    return null;
+  }
 
-	return rect(x, y, right - x, bottom - y);
+  return rect(x, y, right - x, bottom - y);
 };
 
 // Circle utilities
 export const circle = (x: number, y: number, radius: number): Circle => ({
-	x,
-	y,
-	radius,
+  x,
+  y,
+  radius,
 });
 
 export const circleFromPoints = (p1: Point, p2: Point, p3: Point): Circle => {
-	const ax = p1.x;
-	const ay = p1.y;
-	const bx = p2.x;
-	const by = p2.y;
-	const cx = p3.x;
-	const cy = p3.y;
+  const ax = p1.x;
+  const ay = p1.y;
+  const bx = p2.x;
+  const by = p2.y;
+  const cx = p3.x;
+  const cy = p3.y;
 
-	const d = 2 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by));
+  const d = 2 * (ax * (by - cy) + bx * (cy - ay) + cx * (ay - by));
 
-	if (abs(d) < 1e-10) {
-		// Points are collinear
-		return circle(0, 0, 0);
-	}
+  if (abs(d) < 1e-10) {
+    // Points are collinear
+    return circle(0, 0, 0);
+  }
 
-	const ux =
-		((ax * ax + ay * ay) * (by - cy) +
-			(bx * bx + by * by) * (cy - ay) +
-			(cx * cx + cy * cy) * (ay - by)) /
-		d;
-	const uy =
-		((ax * ax + ay * ay) * (cx - bx) +
-			(bx * bx + by * by) * (ax - cx) +
-			(cx * cx + cy * cy) * (bx - ax)) /
-		d;
+  const ux =
+    ((ax * ax + ay * ay) * (by - cy) +
+      (bx * bx + by * by) * (cy - ay) +
+      (cx * cx + cy * cy) * (ay - by)) /
+    d;
+  const uy =
+    ((ax * ax + ay * ay) * (cx - bx) +
+      (bx * bx + by * by) * (ax - cx) +
+      (cx * cx + cy * cy) * (bx - ax)) /
+    d;
 
-	const radius = pointDistance(point(ux, uy), p1);
-	return circle(ux, uy, radius);
+  const radius = pointDistance(point(ux, uy), p1);
+  return circle(ux, uy, radius);
 };
 
 export const circleCenter = (c: Circle): Point => {
-	return point(c.x, c.y);
+  return point(c.x, c.y);
 };
 
 export const circleArea = (c: Circle): number => {
-	return PI * c.radius * c.radius;
+  return PI * c.radius * c.radius;
 };
 
 export const circleCircumference = (c: Circle): number => {
-	return TWO_PI * c.radius;
+  return TWO_PI * c.radius;
 };
 
 export const circlePointAt = (c: Circle, angle: number): Point => {
-	return point(c.x + c.radius * cos(angle), c.y + c.radius * sin(angle));
+  return point(c.x + c.radius * cos(angle), c.y + c.radius * sin(angle));
 };
 
 export const circleExpandToPoint = (c: Circle, p: Point): Circle => {
-	const distance = pointDistance(circleCenter(c), p);
-	return circle(c.x, c.y, max(c.radius, distance));
+  const distance = pointDistance(circleCenter(c), p);
+  return circle(c.x, c.y, max(c.radius, distance));
 };
 
 // Collision detection
 export const pointInRect = (p: Point, r: Rectangle): boolean => {
-	return (
-		p.x >= r.x && p.x <= r.x + r.width && p.y >= r.y && p.y <= r.y + r.height
-	);
+  return (
+    p.x >= r.x && p.x <= r.x + r.width && p.y >= r.y && p.y <= r.y + r.height
+  );
 };
 
 export const pointInCircle = (p: Point, c: Circle): boolean => {
-	return pointDistanceSq(p, circleCenter(c)) <= c.radius * c.radius;
+  return pointDistanceSq(p, circleCenter(c)) <= c.radius * c.radius;
 };
 
 export const rectIntersects = (a: Rectangle, b: Rectangle): boolean => {
-	return (
-		a.x < b.x + b.width &&
-		a.x + a.width > b.x &&
-		a.y < b.y + b.height &&
-		a.y + a.height > b.y
-	);
+  return (
+    a.x < b.x + b.width &&
+    a.x + a.width > b.x &&
+    a.y < b.y + b.height &&
+    a.y + a.height > b.y
+  );
 };
 
 export const circleIntersects = (a: Circle, b: Circle): boolean => {
-	const distance = pointDistance(circleCenter(a), circleCenter(b));
-	return distance <= a.radius + b.radius;
+  const distance = pointDistance(circleCenter(a), circleCenter(b));
+  return distance <= a.radius + b.radius;
 };
 
 export const circleRectIntersects = (c: Circle, r: Rectangle): boolean => {
-	const closestX = Math.max(r.x, Math.min(c.x, r.x + r.width));
-	const closestY = Math.max(r.y, Math.min(c.y, r.y + r.height));
+  const closestX = Math.max(r.x, Math.min(c.x, r.x + r.width));
+  const closestY = Math.max(r.y, Math.min(c.y, r.y + r.height));
 
-	const distance = pointDistance(circleCenter(c), point(closestX, closestY));
-	return distance <= c.radius;
+  const distance = pointDistance(circleCenter(c), point(closestX, closestY));
+  return distance <= c.radius;
 };
 
 // Line utilities
 export interface Line {
-	readonly start: Point;
-	readonly end: Point;
+  readonly start: Point;
+  readonly end: Point;
 }
 
 export const line = (start: Point, end: Point): Line => ({
-	start,
-	end,
+  start,
+  end,
 });
 
 export const lineLength = (l: Line): number => {
-	return pointDistance(l.start, l.end);
+  return pointDistance(l.start, l.end);
 };
 
 export const lineAngle = (l: Line): number => {
-	return pointAngle(l.start, l.end);
+  return pointAngle(l.start, l.end);
 };
 
 export const linePointAt = (l: Line, t: number): Point => {
-	return pointLerp(l.start, l.end, t);
+  return pointLerp(l.start, l.end, t);
 };
 
 export const lineNormal = (l: Line): Vector2 => {
-	const direction = vec2Sub(l.end, l.start);
-	const normal = vec2(-direction.y, direction.x);
-	return vec2Normalize(normal);
+  const direction = vec2Sub(l.end, l.start);
+  const normal = vec2(-direction.y, direction.x);
+  return vec2Normalize(normal);
 };
 
 export const lineDirection = (l: Line): Vector2 => {
-	return vec2Normalize(vec2Sub(l.end, l.start));
+  return vec2Normalize(vec2Sub(l.end, l.start));
 };
 
 export const lineDistanceToPoint = (l: Line, p: Point): number => {
-	const A = vec2Sub(l.end, l.start);
-	const B = vec2Sub(p, l.start);
-	const dot = A.x * B.x + A.y * B.y;
-	const lenSq = A.x * A.x + A.y * A.y;
+  const A = vec2Sub(l.end, l.start);
+  const B = vec2Sub(p, l.start);
+  const dot = A.x * B.x + A.y * B.y;
+  const lenSq = A.x * A.x + A.y * A.y;
 
-	if (lenSq === 0) {
-		return pointDistance(l.start, p);
-	}
+  if (lenSq === 0) {
+    return pointDistance(l.start, p);
+  }
 
-	const t = Math.max(0, Math.min(1, dot / lenSq));
-	const projection = vec2Add(l.start, vec2Mul(A, t));
-	return pointDistance(projection, p);
+  const t = Math.max(0, Math.min(1, dot / lenSq));
+  const projection = vec2Add(l.start, vec2Mul(A, t));
+  return pointDistance(projection, p);
 };
 
 export const lineIntersection = (l1: Line, l2: Line): Point | null => {
-	const x1 = l1.start.x;
-	const y1 = l1.start.y;
-	const x2 = l1.end.x;
-	const y2 = l1.end.y;
-	const x3 = l2.start.x;
-	const y3 = l2.start.y;
-	const x4 = l2.end.x;
-	const y4 = l2.end.y;
+  const x1 = l1.start.x;
+  const y1 = l1.start.y;
+  const x2 = l1.end.x;
+  const y2 = l1.end.y;
+  const x3 = l2.start.x;
+  const y3 = l2.start.y;
+  const x4 = l2.end.x;
+  const y4 = l2.end.y;
 
-	const denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+  const denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
 
-	if (abs(denom) < 1e-10) {
-		return null; // Lines are parallel
-	}
+  if (abs(denom) < 1e-10) {
+    return null; // Lines are parallel
+  }
 
-	const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
-	const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
+  const t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
+  const u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
 
-	if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
-		return point(x1 + t * (x2 - x1), y1 + t * (y2 - y1));
-	}
+  if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
+    return point(x1 + t * (x2 - x1), y1 + t * (y2 - y1));
+  }
 
-	return null;
+  return null;
 };
 
 // Polygon utilities
 export type Polygon = Point[];
 
 export const polygon = (...points: Point[]): Polygon => {
-	if (points.length < 3)
-		throw new Error("Polygon must have at least 3 vertices");
-	return points;
+  if (points.length < 3)
+    throw new Error("Polygon must have at least 3 vertices");
+  return points;
 };
 
 export const polygonArea = (poly: Polygon): number => {
-	let area = 0;
-	const n = poly.length;
+  let area = 0;
+  const n = poly.length;
 
-	for (let i = 0; i < n; i++) {
-		const j = (i + 1) % n;
-		area += poly[i].x * poly[j].y;
-		area -= poly[j].x * poly[i].y;
-	}
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    area += poly[i].x * poly[j].y;
+    area -= poly[j].x * poly[i].y;
+  }
 
-	return abs(area) / 2;
+  return abs(area) / 2;
 };
 
 export const polygonCentroid = (poly: Polygon): Point => {
-	let x = 0;
-	let y = 0;
-	const n = poly.length;
+  let x = 0;
+  let y = 0;
+  const n = poly.length;
 
-	for (let i = 0; i < n; i++) {
-		x += poly[i].x;
-		y += poly[i].y;
-	}
+  for (let i = 0; i < n; i++) {
+    x += poly[i].x;
+    y += poly[i].y;
+  }
 
-	return point(x / n, y / n);
+  return point(x / n, y / n);
 };
 
 export const polygonPerimeter = (poly: Polygon): number => {
-	let perimeter = 0;
-	const n = poly.length;
+  let perimeter = 0;
+  const n = poly.length;
 
-	for (let i = 0; i < n; i++) {
-		const j = (i + 1) % n;
-		perimeter += pointDistance(poly[i], poly[j]);
-	}
+  for (let i = 0; i < n; i++) {
+    const j = (i + 1) % n;
+    perimeter += pointDistance(poly[i], poly[j]);
+  }
 
-	return perimeter;
+  return perimeter;
 };
 
 export const pointInPolygon = (p: Point, poly: Polygon): boolean => {
-	let inside = false;
-	const n = poly.length;
+  let inside = false;
+  const n = poly.length;
 
-	for (let i = 0, j = n - 1; i < n; j = i++) {
-		const xi = poly[i].x;
-		const yi = poly[i].y;
-		const xj = poly[j].x;
-		const yj = poly[j].y;
+  for (let i = 0, j = n - 1; i < n; j = i++) {
+    const xi = poly[i].x;
+    const yi = poly[i].y;
+    const xj = poly[j].x;
+    const yj = poly[j].y;
 
-		if (
-			yi > p.y !== yj > p.y &&
-			p.x < ((xj - xi) * (p.y - yi)) / (yj - yi) + xi
-		) {
-			inside = !inside;
-		}
-	}
+    if (
+      yi > p.y !== yj > p.y &&
+      p.x < ((xj - xi) * (p.y - yi)) / (yj - yi) + xi
+    ) {
+      inside = !inside;
+    }
+  }
 
-	return inside;
+  return inside;
 };
 
 export const polygonBoundingBox = (poly: Polygon): Rectangle => {
-	if (poly.length === 0) {
-		return rect(0, 0, 0, 0);
-	}
+  if (poly.length === 0) {
+    return rect(0, 0, 0, 0);
+  }
 
-	let minX = poly[0].x;
-	let minY = poly[0].y;
-	let maxX = poly[0].x;
-	let maxY = poly[0].y;
+  let minX = poly[0].x;
+  let minY = poly[0].y;
+  let maxX = poly[0].x;
+  let maxY = poly[0].y;
 
-	for (let i = 1; i < poly.length; i++) {
-		minX = min(minX, poly[i].x);
-		minY = min(minY, poly[i].y);
-		maxX = max(maxX, poly[i].x);
-		maxY = max(maxY, poly[i].y);
-	}
+  for (let i = 1; i < poly.length; i++) {
+    minX = min(minX, poly[i].x);
+    minY = min(minY, poly[i].y);
+    maxX = max(maxX, poly[i].x);
+    maxY = max(maxY, poly[i].y);
+  }
 
-	return rect(minX, minY, maxX - minX, maxY - minY);
+  return rect(minX, minY, maxX - minX, maxY - minY);
 };
 
 // Regular polygon generation
 export const regularPolygon = (
-	center: Point,
-	radius: number,
-	sides: number,
-	rotation: number = 0,
+  center: Point,
+  radius: number,
+  sides: number,
+  rotation: number = 0,
 ): Polygon => {
-	if (sides < 3) throw new Error("Regular polygon must have at least 3 sides");
+  if (sides < 3) throw new Error("Regular polygon must have at least 3 sides");
 
-	const points: Point[] = [];
-	const angleStep = TWO_PI / sides;
+  const points: Point[] = [];
+  const angleStep = TWO_PI / sides;
 
-	for (let i = 0; i < sides; i++) {
-		const angle = i * angleStep + rotation;
-		points.push(
-			point(center.x + radius * cos(angle), center.y + radius * sin(angle)),
-		);
-	}
+  for (let i = 0; i < sides; i++) {
+    const angle = i * angleStep + rotation;
+    points.push(
+      point(center.x + radius * cos(angle), center.y + radius * sin(angle)),
+    );
+  }
 
-	return points;
+  return points;
 };
 
 // Bezier curve utilities
 export const quadraticBezier = (
-	t: number,
-	p0: Point,
-	p1: Point,
-	p2: Point,
+  t: number,
+  p0: Point,
+  p1: Point,
+  p2: Point,
 ): Point => {
-	const u = 1 - t;
-	return point(
-		u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
-		u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y,
-	);
+  const u = 1 - t;
+  return point(
+    u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+    u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y,
+  );
 };
 
 export const cubicBezier = (
-	t: number,
-	p0: Point,
-	p1: Point,
-	p2: Point,
-	p3: Point,
+  t: number,
+  p0: Point,
+  p1: Point,
+  p2: Point,
+  p3: Point,
 ): Point => {
-	const u = 1 - t;
-	return point(
-		u * u * u * p0.x +
-			3 * u * u * t * p1.x +
-			3 * u * t * t * p2.x +
-			t * t * t * p3.x,
-		u * u * u * p0.y +
-			3 * u * u * t * p1.y +
-			3 * u * t * t * p2.y +
-			t * t * t * p3.y,
-	);
+  const u = 1 - t;
+  return point(
+    u * u * u * p0.x +
+      3 * u * u * t * p1.x +
+      3 * u * t * t * p2.x +
+      t * t * t * p3.x,
+    u * u * u * p0.y +
+      3 * u * u * t * p1.y +
+      3 * u * t * t * p2.y +
+      t * t * t * p3.y,
+  );
 };
 
 // Grid utilities
 export const gridPoints = (bounds: Rectangle, cellSize: number): Point[] => {
-	const points: Point[] = [];
-	const cols = Math.floor(bounds.width / cellSize);
-	const rows = Math.floor(bounds.height / cellSize);
+  const points: Point[] = [];
+  const cols = Math.floor(bounds.width / cellSize);
+  const rows = Math.floor(bounds.height / cellSize);
 
-	for (let row = 0; row <= rows; row++) {
-		for (let col = 0; col <= cols; col++) {
-			points.push(point(bounds.x + col * cellSize, bounds.y + row * cellSize));
-		}
-	}
+  for (let row = 0; row <= rows; row++) {
+    for (let col = 0; col <= cols; col++) {
+      points.push(point(bounds.x + col * cellSize, bounds.y + row * cellSize));
+    }
+  }
 
-	return points;
+  return points;
 };
 
 export const hexGrid = (
-	center: Point,
-	radius: number,
-	rings: number,
+  center: Point,
+  radius: number,
+  rings: number,
 ): Point[] => {
-	const points: Point[] = [
-		center,
-	];
+  const points: Point[] = [center];
 
-	for (let ring = 1; ring <= rings; ring++) {
-		for (let side = 0; side < 6; side++) {
-			for (let i = 0; i < ring; i++) {
-				const angle = ((side * 60 + (i * 60) / ring) * PI) / 180;
-				const distance = ring * radius;
-				points.push(
-					point(
-						center.x + distance * cos(angle),
-						center.y + distance * sin(angle),
-					),
-				);
-			}
-		}
-	}
+  for (let ring = 1; ring <= rings; ring++) {
+    for (let side = 0; side < 6; side++) {
+      for (let i = 0; i < ring; i++) {
+        const angle = ((side * 60 + (i * 60) / ring) * PI) / 180;
+        const distance = ring * radius;
+        points.push(
+          point(
+            center.x + distance * cos(angle),
+            center.y + distance * sin(angle),
+          ),
+        );
+      }
+    }
+  }
 
-	return points;
+  return points;
 };
 
 // Utility functions for common shapes
 export const triangle = (p1: Point, p2: Point, p3: Point): Polygon => [
-	p1,
-	p2,
-	p3,
+  p1,
+  p2,
+  p3,
 ];
 
 export const square = (center: Point, size: number): Polygon => {
-	const half = size / 2;
-	return [
-		point(center.x - half, center.y - half),
-		point(center.x + half, center.y - half),
-		point(center.x + half, center.y + half),
-		point(center.x - half, center.y + half),
-	];
+  const half = size / 2;
+  return [
+    point(center.x - half, center.y - half),
+    point(center.x + half, center.y - half),
+    point(center.x + half, center.y + half),
+    point(center.x - half, center.y + half),
+  ];
 };
 
 export const pentagon = (center: Point, radius: number): Polygon => {
-	return regularPolygon(center, radius, 5);
+  return regularPolygon(center, radius, 5);
 };
 
 export const hexagon = (center: Point, radius: number): Polygon => {
-	return regularPolygon(center, radius, 6);
+  return regularPolygon(center, radius, 6);
 };
 
 export const octagon = (center: Point, radius: number): Polygon => {
-	return regularPolygon(center, radius, 8);
+  return regularPolygon(center, radius, 8);
 };
 
 export const star = (
-	center: Point,
-	outerRadius: number,
-	innerRadius: number,
-	points: number,
+  center: Point,
+  outerRadius: number,
+  innerRadius: number,
+  points: number,
 ): Polygon => {
-	const vertices: Point[] = [];
-	const angleStep = TWO_PI / (points * 2);
+  const vertices: Point[] = [];
+  const angleStep = TWO_PI / (points * 2);
 
-	for (let i = 0; i < points * 2; i++) {
-		const angle = i * angleStep;
-		const radius = i % 2 === 0 ? outerRadius : innerRadius;
-		vertices.push(
-			point(center.x + radius * cos(angle), center.y + radius * sin(angle)),
-		);
-	}
+  for (let i = 0; i < points * 2; i++) {
+    const angle = i * angleStep;
+    const radius = i % 2 === 0 ? outerRadius : innerRadius;
+    vertices.push(
+      point(center.x + radius * cos(angle), center.y + radius * sin(angle)),
+    );
+  }
 
-	return vertices;
+  return vertices;
 };

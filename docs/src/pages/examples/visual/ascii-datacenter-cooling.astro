@@ -1,0 +1,12 @@
+---
+import AsciiDatacenterCoolingExample from "../../../components/examples/AsciiDatacenterCoolingExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Datacenter Cooling - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-datacenter-cooling" : "/examples/visual/ascii-datacenter-cooling"} />
+	<main class="min-h-screen bg-background">
+		<AsciiDatacenterCoolingExample client:load />
+	</main>
+</Layout>

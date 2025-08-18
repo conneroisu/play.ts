@@ -1,0 +1,12 @@
+---
+import ProcessControlExample from "../../../components/examples/ProcessControlExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Process Control - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/process-control" : "/examples/engineering/process-control"} />
+	<main class="min-h-screen bg-background">
+		<ProcessControlExample client:load />
+	</main>
+</Layout>

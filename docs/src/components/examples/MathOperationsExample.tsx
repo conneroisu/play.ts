@@ -17,6 +17,7 @@ import {
 	vec3Dot,
 } from "play.ts";
 import { useEffect, useState } from "react";
+import { createUrl } from "@/lib/utils";
 
 export default function MathOperationsExample() {
 	const [results, setResults] = useState<Record<string, unknown>>({});
@@ -167,7 +168,7 @@ export default function MathOperationsExample() {
 
 			<div className="mt-6">
 				<a
-					href="/examples/basic"
+					href={createUrl("/examples/basic")}
 					className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
 				>
 					← Back to Examples

@@ -1,5 +1,6 @@
 import { hexToRgb, hsl, hslToRgb, rgb, rgbToHex, rgbToHsl } from "play.ts";
 import { useEffect, useState } from "react";
+import { createUrl } from "@/lib/utils";
 
 interface ColorExample {
 	hsl?: number[];
@@ -216,7 +217,7 @@ export default function ColorSystemsExample() {
 
 			<div className="mt-6">
 				<a
-					href="/examples/basic"
+					href={createUrl("/examples/basic")}
 					className="inline-block px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
 				>
 					← Back to Examples

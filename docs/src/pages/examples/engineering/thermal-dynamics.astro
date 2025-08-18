@@ -1,0 +1,12 @@
+---
+import ThermalDynamicsExample from "../../../components/examples/ThermalDynamicsExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="Thermal Dynamics - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/thermal-dynamics" : "/examples/engineering/thermal-dynamics"} />
+	<main class="min-h-screen bg-background">
+		<ThermalDynamicsExample client:load />
+	</main>
+</Layout>

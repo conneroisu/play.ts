@@ -1,0 +1,12 @@
+---
+import HvacSystemDesignExample from "../../../components/examples/HvacSystemDesignExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="HVAC System Design - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/engineering/hvac-system-design" : "/examples/engineering/hvac-system-design"} />
+	<main class="min-h-screen bg-background">
+		<HvacSystemDesignExample client:load />
+	</main>
+</Layout>

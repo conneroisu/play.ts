@@ -1,0 +1,12 @@
+---
+import AsciiServerLoadExample from "../../../components/examples/AsciiServerLoadExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Server Load - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-server-load" : "/examples/visual/ascii-server-load"} />
+	<main class="min-h-screen bg-background">
+		<AsciiServerLoadExample client:load />
+	</main>
+</Layout>

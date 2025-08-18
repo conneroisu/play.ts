@@ -1,0 +1,12 @@
+---
+import AsciiLoadBalancerExample from "../../../components/examples/AsciiLoadBalancerExample.tsx";
+import Header from "../../../components/Header.tsx";
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout title="ASCII Load Balancer - play.ts">
+	<Header client:load currentPath={process.env.DEV !== "" ? "/play.ts/examples/visual/ascii-load-balancer" : "/examples/visual/ascii-load-balancer"} />
+	<main class="min-h-screen bg-background">
+		<AsciiLoadBalancerExample client:load />
+	</main>
+</Layout>
